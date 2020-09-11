@@ -5,7 +5,7 @@ import App from "./App";
 import { createBrowserHistory } from "history";
 import * as serviceWorker from "./serviceWorker";
 import { Route, Router, Redirect, Switch } from "react-router-dom";
-import Blog from "./Components/Blogs/Blog";
+import Blog from "./Blogs/Blog";
 
 const hist = createBrowserHistory();
 
