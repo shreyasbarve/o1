@@ -52,10 +52,18 @@ export default function CreateBlog() {
     //   console.log(error);
     // }
     handleClose();
+      setcreateBlog({
+        author: "",
+        title: "",
+        body: "",
+        email: "",
+        fullname: "",
+        key: "",
+      });
   };
   return (
-    <Typography variant="h5" className={AppBarStyle.title}>
-      <Button variant="outlined" color="inherit" onClick={handleClickOpen}>
+    <Typography variant="h5" className={AppBarStyle.title} display="inline">
+      <Button variant="contained" color="primary" onClick={handleClickOpen}>
         Create Blog
       </Button>
       <Dialog

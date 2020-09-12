@@ -32,12 +32,6 @@ export default function Blog(props) {
               Blogs
             </Typography>
 
-            {/* Requesting Blog */}
-            <RequestBlog />
-
-            {/* Creating Blog */}
-            <CreateBlog />
-
             <Typography>
               <Button color="inherit">Login</Button>
               <Button color="inherit">Sign Up</Button>
@@ -46,7 +40,15 @@ export default function Blog(props) {
         </AppBar>
       </div>
 
-      <Container fixed id="back-to-top-anchor" style={{ marginTop: "3%" }}>
+      <Container id="back-to-top-anchor">
+        {/* Requesting Blog */}
+        <RequestBlog />
+
+        {/* Creating Blog */}
+        <CreateBlog />
+      </Container>
+
+      <Container fixed style={{ marginTop: "3%" }}>
         <Typography gutterBottom variant="h4">
           This is the page where blogs of all users are displayed
         </Typography>

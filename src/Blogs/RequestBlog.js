@@ -50,10 +50,16 @@ export default function RequestBlog() {
     //   console.log(error);
     // }
     handleClose();
+    setrequestBlog({
+      fullname: "",
+      college: "",
+      branch: "",
+      email: "",
+    });
   };
   return (
-    <Typography variant="h5" className={AppBarStyle.title}>
-      <Button variant="outlined" color="inherit" onClick={handleClickOpen}>
+    <Typography variant="h5" className={AppBarStyle.title} display="inline" style={{marginRight: "20%"}}>
+      <Button variant="contained" color="primary" onClick={handleClickOpen}>
         Request to post Blog
       </Button>
       <Dialog
