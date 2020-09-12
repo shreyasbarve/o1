@@ -63,7 +63,7 @@ export default function ViewSingleBlog(props) {
             </Tooltip>
           </Typography>
 
-          <Typography variant="h5" className={AppBarStyle.title}>
+          <Typography variant="overline" component="h5" className={AppBarStyle.title}>
             {singleBlog.title}
           </Typography>
         </Toolbar>
