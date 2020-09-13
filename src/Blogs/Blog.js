@@ -2,7 +2,7 @@ import React from "react";
 import ScrollTop from "./ScrollTop.js";
 
 // CSS styling
-import AppBarStyles from "../Styling/AppBarStyles.js";
+import AppBarStyles from "../Styles/AppBarStyles";
 
 import {
   AppBar,
@@ -55,7 +55,7 @@ export default function Blog(props) {
       </Container>
 
       {/* Display Blogs */}
-      <ViewBlogs />
+        <ViewBlogs />
 
       <ScrollTop {...props}>
         <Fab color="secondary" size="small" aria-label="scroll back to top">

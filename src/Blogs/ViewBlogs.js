@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 
 // CSS
-import CardStyles from "../Styling/CardStyles.js";
-import LoadingStyles from "../Styling/LoadingStyles.js";
+import CardStyles from "../Styles/CardStyles";
+import LoadingStyles from "../Styles/LoadingStyles";
 import logo from "../o1_logo.jpg";
+
+// Animation
+import Slide from "react-reveal";
+
+// API
+import BlogModels from "../Models/Blogs/BlogModels";
 
 // Components
 import {
@@ -24,28 +29,22 @@ import {
 import { Link } from "react-router-dom";
 
 export default function ViewBlogs(props) {
-  const [loading, setloading] = useState(true);
   // CSS for styling
   const CardStyle = CardStyles();
   const LoadingStyle = LoadingStyles();
 
   // Get the blog data from server
+  const [loading, setloading] = useState(true);
   const [blogs, setblogs] = useState([]);
-  const getBlogs = async () => {
-    try {
-      const blogdata = await axios.get(
-        "https://o1codingclub.herokuapp.com/blog/"
-      );
-      setblogs(blogdata.data);
+  const viewAllBlogs = () => {
+    BlogModels.viewAllBlogs().then((res) => {
+      setblogs(res.data);
       setloading(false);
-      document.title = "Blogs";
-    } catch (error) {
-      console.log(error);
-    }
+    });
   };
 
   useEffect(() => {
-    getBlogs();
+    viewAllBlogs();
   }, []);
 
   return (
@@ -55,10 +54,10 @@ export default function ViewBlogs(props) {
           <LinearProgress />
         </div>
       ) : (
-        <>
-          <Grid container spacing={3}>
-            {blogs.map((blog) => (
-              <Grid item xs={12} sm={6} lg={3} key={blog.email}>
+        <Grid container spacing={3}>
+          {blogs.map((blog) => (
+            <Grid item xs={12} sm={6} lg={3} key={blog.email}>
+              <Slide bottom>
                 <Card className={CardStyle.root} elevation={3}>
                   <CardActionArea>
                     <CardMedia
@@ -117,10 +116,10 @@ export default function ViewBlogs(props) {
                     </CardActions>
                   </CardActionArea>
                 </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </>
+              </Slide>
+            </Grid>
+          ))}
+        </Grid>
       )}
     </Container>
   );

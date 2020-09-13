@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-// import axios from "axios";
 
 // CSS
-import AppBarStyles from "../Styling/AppBarStyles.js";
+import AppBarStyles from "../Styles/AppBarStyles";
+
+// API
+import BlogModels from "../Models/Blogs/BlogModels";
 
 // Components
 import {
@@ -21,6 +23,7 @@ import {
 export default function RequestBlog() {
   // Styling for elements
   const AppBarStyle = AppBarStyles();
+
   // Dialog control
   const [open, setOpen] = useState(false);
   const theme = useTheme();
@@ -41,14 +44,7 @@ export default function RequestBlog() {
   });
   const postBlog = async (e) => {
     e.preventDefault();
-    // try {
-    //   const postBlogData = await axios.get(
-    //     "https://cors-anywhere.herokuapp.com/https://o1codingclub.herokuapp.com/blog/requestkey/",
-    //     requestBlog
-    //   );
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    BlogModels.requestBlog(requestBlog);
     handleClose();
     setrequestBlog({
       fullname: "",
@@ -58,9 +54,14 @@ export default function RequestBlog() {
     });
   };
   return (
-    <Typography variant="h5" className={AppBarStyle.title} display="inline" style={{marginRight: "20%"}}>
+    <Typography
+      variant="h5"
+      className={AppBarStyle.title}
+      display="inline"
+      style={{ marginRight: "20%" }}
+    >
       <Button variant="contained" color="primary" onClick={handleClickOpen}>
-        Request to post Blog
+        Request Key
       </Button>
       <Dialog
         fullScreen={fullScreen}

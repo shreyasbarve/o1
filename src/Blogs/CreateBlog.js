@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-// import axios from "axios";
 
 // CSS
-import AppBarStyles from "../Styling/AppBarStyles.js";
+import AppBarStyles from "../Styles/AppBarStyles";
+
+// API
+import BlogModels from "../Models/Blogs/BlogModels";
 
 // Components
 import {
@@ -43,23 +45,16 @@ export default function CreateBlog() {
   });
   const postBlog = async (e) => {
     e.preventDefault();
-    // try {
-    //   const postBlogData = await axios.get(
-    //     "https://cors-anywhere.herokuapp.com/https://o1codingclub.herokuapp.com/blog/create/",
-    //     createBlog
-    //   );
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    BlogModels.createBlog(createBlog)
     handleClose();
-      setcreateBlog({
-        author: "",
-        title: "",
-        body: "",
-        email: "",
-        fullname: "",
-        key: "",
-      });
+    setcreateBlog({
+      author: "",
+      title: "",
+      body: "",
+      email: "",
+      fullname: "",
+      key: "",
+    });
   };
   return (
     <Typography variant="h5" className={AppBarStyle.title} display="inline">
@@ -81,6 +76,22 @@ export default function CreateBlog() {
               Please fill correct details in the form. You will need to verify
               your identity in order to post a blog.
             </DialogContentText>
+            <TextField
+              required
+              margin="dense"
+              id="key"
+              label="Key"
+              type="text"
+              fullWidth
+              name="key"
+              value={createBlog.key}
+              onChange={(e) =>
+                setcreateBlog({
+                  ...createBlog,
+                  key: e.currentTarget.value,
+                })
+              }
+            />
             <TextField
               autoFocus
               required
@@ -160,22 +171,6 @@ export default function CreateBlog() {
                 setcreateBlog({
                   ...createBlog,
                   fullname: e.currentTarget.value,
-                })
-              }
-            />
-            <TextField
-              required
-              margin="dense"
-              id="key"
-              label="Key"
-              type="text"
-              fullWidth
-              name="key"
-              value={createBlog.key}
-              onChange={(e) =>
-                setcreateBlog({
-                  ...createBlog,
-                  key: e.currentTarget.value,
                 })
               }
             />

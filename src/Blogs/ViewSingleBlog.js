@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 
 // CSS styling
-import AppBarStyles from "../Styling/AppBarStyles.js";
-import LoadingStyles from "../Styling/LoadingStyles.js";
+import AppBarStyles from "../Styles/AppBarStyles";
+import LoadingStyles from "../Styles/LoadingStyles";
+
+// API
+import BlogModels from "../Models/Blogs/BlogModels";
 
 import {
   AppBar,
@@ -41,19 +43,10 @@ export default function ViewSingleBlog(props) {
   const [singleBlog, setsingleBlog] = useState([]);
 
   useEffect(() => {
-    async function gotoBlog() {
-      try {
-        const specificBlogData = await axios.get(
-          `https://o1codingclub.herokuapp.com/blog/${singleBlogId}`
-        );
-        setsingleBlog(specificBlogData.data);
-        setloading(false);
-        document.title = singleBlog.title;
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    gotoBlog();
+    BlogModels.viewSingleBlog(singleBlogId).then((res) => {
+      setsingleBlog(res.data);
+      setloading(false);
+    });
   }, [singleBlogId, singleBlog.title, loading]);
 
   return (
