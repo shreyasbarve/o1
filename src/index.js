@@ -14,8 +14,8 @@ ReactDOM.render(
   <Router history={hist}>
     <Switch>
       <Route exact path="/" component={App} />
-      <Route path="/blog" component={Blog} />
-      <Route path="/singleblog" component={ViewSingleBlog} />
+      <Route exact path="/blog" component={Blog} />
+      <Route exact path="/singleblog/:id" component={ViewSingleBlog} />
       <Redirect from="*" to="/" />
     </Switch>
   </Router>,
