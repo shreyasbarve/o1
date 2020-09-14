@@ -3,28 +3,28 @@ import axios from "axios";
 export const BASE_URL = "https://o1codingclub.herokuapp.com/placement";
 
 const PlacementModels = {
-  viewAllBlogs: async () => {
+  viewAllPlacements: async () => {
     return await axios.get(`${BASE_URL}`);
   },
-  viewAllBlogsAdmin: async (key) => {
+  viewAllPlacementsAdmin: async (key) => {
     return await axios.post(`${BASE_URL}`, key)
   },
-  approveBlog: async (id, key) => {
+  approvePlacement: async (id, key) => {
     return await axios.post(`${BASE_URL}/approve/${id}`, key)
   },
-  createBlog: async (userData) => {
+  createPlacement: async (userData) => {
     return await axios.post(`${BASE_URL}/create`, userData);
   },
-  deleteBlog: async (id, key) => {
+  deletePlacement: async (id, key) => {
     return await axios.post(`${BASE_URL}/delete/${id}`, key)
   },
-  requestBlog: async (userData) => {
+  requestPlacement: async (userData) => {
     return  await axios.post(`${BASE_URL}/requestkey`, userData)
   },
-  viewSingleBlog: async (id) => {
+  viewSinglePlacement: async (id) => {
     return await axios.get(`${BASE_URL}/${id}`);
   },
-  viewSingleBlogAdmin: async (id, key) => {
+  viewSinglePlacementAdmin: async (id, key) => {
     return await axios.post(`${BASE_URL}/${id}`, key);
   },
 };

@@ -9,7 +9,7 @@ import logo from "../../o1_logo.jpg";
 import Slide from "react-reveal";
 
 // API
-import BlogModels from "../../Models/Blogs/BlogModels";
+import PlacementModels from "../../Models/Placements/PlacementModels";
 
 // Components
 import {
@@ -33,18 +33,18 @@ function ViewPlacements(props) {
   const CardStyle = CardStyles();
   const LoadingStyle = LoadingStyles();
 
-  // Get the blog data from server
+  // Get the placement data from server
   const [loading, setloading] = useState(true);
-  const [blogs, setblogs] = useState([]);
-  const viewAllBlogs = () => {
-    BlogModels.viewAllBlogs().then((res) => {
-      setblogs(res.data);
+  const [placements, setplacements] = useState([]);
+  const viewAllPlacements = () => {
+    PlacementModels.viewAllPlacements.then((res) => {
+      setplacements(res.data);
       setloading(false);
     });
   };
 
   useEffect(() => {
-    viewAllBlogs();
+    viewAllPlacements();
   }, []);
 
   return (
@@ -55,8 +55,8 @@ function ViewPlacements(props) {
         </div>
       ) : (
         <Grid container spacing={3}>
-          {blogs.map((blog) => (
-            <Grid item xs={12} sm={6} lg={3} key={blog.email}>
+          {placements.map((placement) => (
+            <Grid item xs={12} sm={6} lg={3} key={placement.email}>
               <Slide bottom>
                 <Card className={CardStyle.root} elevation={3}>
                   <CardActionArea>
@@ -69,7 +69,7 @@ function ViewPlacements(props) {
                     />
                     <CardContent>
                       <Typography gutterBottom variant="h5" noWrap>
-                        {blog.title}
+                        {placement.title}
                       </Typography>
 
                       <Typography
@@ -79,7 +79,7 @@ function ViewPlacements(props) {
                         gutterBottom
                         noWrap
                       >
-                        {blog.body}
+                        {placement.body}
                       </Typography>
 
                       <Divider />
@@ -91,24 +91,23 @@ function ViewPlacements(props) {
                         aria-rowcount="3"
                         noWrap
                       >
-                        Author: {blog.author}
+                        Author: {placement.author}
                       </Typography>
                     </CardContent>
                     <CardActions>
                       <Link
                         to={{
-                          pathname: `singleblog/${blog.id}`,
-                          state: { idofblog: blog.id },
-                          // state: {idofblog: 1},
+                          pathname: `singleplacement/${placement.id}`,
+                          state: { idofplacement: placement.id },
                         }}
                         color="inherit"
                         style={{ textDecoration: "none" }}
                       >
                         <Chip
                           avatar={
-                            <Avatar>{blog.author.substring(0, 1)}</Avatar>
+                            <Avatar>{placement.author.substring(0, 1)}</Avatar>
                           }
-                          label="Go to Blog"
+                          label="Go to placement"
                           clickable
                           color="primary"
                         />

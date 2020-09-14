@@ -1,5 +1,5 @@
 import React from "react";
-import ScrollTop from "./ScrollTop.js";
+import ScrollTop from "../../Components/ScrollTop";
 
 // CSS styling
 import AppBarStyles from "../../Styles/AppBarStyles";
@@ -14,8 +14,8 @@ import {
 } from "@material-ui/core";
 
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
-import ViewBlogs from "./ViewPlacements.js";
 import Form from "./Form.js";
+import ViewPlacements from "./ViewPlacements";
 
 function Placement(props) {
   // Styling for elements
@@ -28,7 +28,7 @@ function Placement(props) {
         <AppBar position="sticky">
           <Toolbar>
             <Typography variant="h5" className={AppBarStyle.title}>
-              Blogs
+              Placements
             </Typography>
 
             <Typography className={AppBarStyle.title}>
@@ -45,12 +45,12 @@ function Placement(props) {
 
       <Container fixed style={{ marginTop: "3%" }} id="back-to-top-anchor">
         <Typography gutterBottom variant="h4">
-          This is the page where blogs of all users are displayed
+          This is the page where placements of all users are displayed
         </Typography>
       </Container>
 
       {/* Display Blogs */}
-      <ViewBlogs />
+      <ViewPlacements />
 
       <ScrollTop {...props}>
         <Fab color="secondary" size="small" aria-label="scroll back to top">

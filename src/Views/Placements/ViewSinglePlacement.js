@@ -5,7 +5,7 @@ import AppBarStyles from "../../Styles/AppBarStyles";
 import LoadingStyles from "../../Styles/LoadingStyles";
 
 // API
-import BlogModels from "../../Models/Blogs/BlogModels";
+import PlacementModels from "../../Models/Placements/PlacementModels"
 
 import {
   AppBar,
@@ -31,23 +31,23 @@ function ViewSinglePlacement(props) {
   const AppBarStyle = AppBarStyles();
   const LoadingStyle = LoadingStyles();
 
-  const [singleBlogId, setsingleBlogId] = useState(
-    JSON.stringify(props.history.location.state.idofblog)
+  const [singlePlacementId, setsinglePlacementId] = useState(
+    JSON.stringify(props.history.location.state.idofplacement)
   );
 
-  if (singleBlogId === undefined) {
-    setsingleBlogId(1);
+  if (singlePlacementId === undefined) {
+    setsinglePlacementId(1);
   }
 
-  // Getting Data of the Single Blog
-  const [singleBlog, setsingleBlog] = useState([]);
+  // Getting Data of the Single Placement
+  const [singlePlacement, setsinglePlacement] = useState([]);
 
   useEffect(() => {
-    BlogModels.viewSingleBlog(singleBlogId).then((res) => {
-      setsingleBlog(res.data);
+    PlacementModels.viewSinglePlacement(singlePlacementId).then((res) => {
+      setsinglePlacement(res.data);
       setloading(false);
     });
-  }, [singleBlogId, singleBlog.title, loading]);
+  }, [singlePlacementId, singlePlacement.title, loading]);
 
   return (
     <Container fixed>
@@ -61,7 +61,7 @@ function ViewSinglePlacement(props) {
             <Toolbar>
               <Typography className={AppBarStyle.title}>
                 <Tooltip title="Go Back" aria-label="Go Back">
-                  <Link to="/blog" style={{ color: "inherit" }}>
+                  <Link to="/placement" style={{ color: "inherit" }}>
                     <BackIcon />
                   </Link>
                 </Tooltip>
@@ -72,19 +72,19 @@ function ViewSinglePlacement(props) {
                 component="h5"
                 className={AppBarStyle.title}
               >
-                {singleBlog.title}
+                {singlePlacement.title}
               </Typography>
             </Toolbar>
           </AppBar>
 
           <Grid container spacing={3} style={{ marginTop: "8%" }}>
             <Grid item xs={12} sm={9} lg={9}>
-              <Typography variant="overline">by {singleBlog.author}</Typography>
+              <Typography variant="overline">by {singlePlacement.author}</Typography>
               <br />
               <Divider />
               <br />
               <Typography gutterBottom variant="body1">
-                {singleBlog.body}
+                {singlePlacement.body}
               </Typography>
             </Grid>
 
@@ -98,11 +98,11 @@ function ViewSinglePlacement(props) {
                     <Divider />
                     <br />
                     <Typography gutterBottom variant="subtitle1">
-                      Name: {singleBlog.fullname}
+                      Name: {singlePlacement.fullname}
                     </Typography>
 
                     <Typography gutterBottom variant="subtitle1">
-                      Email: {singleBlog.email}
+                      Email: {singlePlacement.email}
                     </Typography>
                   </CardContent>
                   <CardActions></CardActions>

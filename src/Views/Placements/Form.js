@@ -31,7 +31,7 @@ function Form() {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">Post Blog</DialogTitle>
+        <DialogTitle id="form-dialog-title">Post Placement</DialogTitle>
         <Divider />
         <FillForm />
         <DialogActions>

@@ -10,19 +10,19 @@ import {
   Paper,
   Step,
 } from "@material-ui/core";
-import RequestBlog from "./RequestPlacement";
-import CreateBlog from "./CreatePlacement";
+import RequestPlacement from "./RequestPlacement";
+import CreatePlacement from "./CreatePlacement";
 
 function getSteps() {
-  return ["Request Permission", "Create your Blog"];
+  return ["Request Permission", "Create your Placement"];
 }
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <RequestBlog />;
+      return <RequestPlacement />;
     case 1:
-      return <CreateBlog />;
+      return <CreatePlacement />;
     default:
       return "Unknown step";
   }

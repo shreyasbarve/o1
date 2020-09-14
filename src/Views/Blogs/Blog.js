@@ -1,5 +1,5 @@
 import React from "react";
-import ScrollTop from "./ScrollTop.js";
+import ScrollTop from "../../Components/ScrollTop";
 
 // CSS styling
 import AppBarStyles from "../../Styles/AppBarStyles";

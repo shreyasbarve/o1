@@ -7,6 +7,8 @@ import * as serviceWorker from "./serviceWorker";
 import { Route, Router, Redirect, Switch } from "react-router-dom";
 import Blog from "./Views/Blogs/Blog";
 import ViewSingleBlog from "./Views/Blogs/ViewSingleBlog";
+import Placement from "./Views/Placements/Placement";
+import ViewSinglePlacement from "./Views/Placements/ViewSinglePlacement";
 
 const hist = createBrowserHistory();
 
@@ -14,8 +16,14 @@ ReactDOM.render(
   <Router history={hist}>
     <Switch>
       <Route exact path="/" component={App} />
+
+      {/* Blogs */}
       <Route exact path="/blog" component={Blog} />
       <Route exact path="/singleblog/:id" component={ViewSingleBlog} />
+
+      {/* Placements */}
+      <Route exact path="/placement" component={Placement} />
+      <Route exact path="/singleplacement/:id" component={ViewSinglePlacement} />
       <Redirect from="*" to="/" />
     </Switch>
   </Router>,

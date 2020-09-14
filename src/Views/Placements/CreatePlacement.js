@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // API
-import BlogModels from "../../Models/Blogs/BlogModels";
+import PlacementModels from "../../Models/Placements/PlacementModels";
 
 // Components
 import { Button, TextField, Typography } from "@material-ui/core";
@@ -44,8 +44,8 @@ function CreatePlacement() {
     "image",
     "video",
   ]);
-  // Posting the blog
-  const [createBlog, setcreateBlog] = useState({
+  // Posting the placement
+  const [createPlacement, setcreatePlacement] = useState({
     author: "",
     title: "",
     body: "",
@@ -53,11 +53,11 @@ function CreatePlacement() {
     fullname: "",
     key: "",
   });
-  const postBlog = async (e) => {
+  const postPlacement = async (e) => {
     e.preventDefault();
-    console.log(createBlog);
-    // BlogModels.createBlog(createBlog);
-    setcreateBlog({
+    console.log(createPlacement);
+    // PlacementModels.createPlacement(createPlacement);
+    setcreatePlacement({
       author: "",
       title: "",
       body: "",
@@ -73,7 +73,7 @@ function CreatePlacement() {
         <br />
         If you have done the last step, Fill up this form
       </Typography>
-      <form onSubmit={postBlog} noValidate autoComplete="off">
+      <form onSubmit={postPlacement} noValidate autoComplete="off">
         <TextField
           autoFocus
           required
@@ -83,10 +83,10 @@ function CreatePlacement() {
           type="text"
           fullWidth
           name="key"
-          value={createBlog.key}
+          value={createPlacement.key}
           onChange={(e) =>
-            setcreateBlog({
-              ...createBlog,
+            setcreatePlacement({
+              ...createPlacement,
               key: e.currentTarget.value,
             })
           }
@@ -99,10 +99,10 @@ function CreatePlacement() {
           type="text"
           fullWidth
           name="author"
-          value={createBlog.author}
+          value={createPlacement.author}
           onChange={(e) =>
-            setcreateBlog({
-              ...createBlog,
+            setcreatePlacement({
+              ...createPlacement,
               author: e.currentTarget.value,
             })
           }
@@ -115,10 +115,10 @@ function CreatePlacement() {
           type="text"
           fullWidth
           name="fullname"
-          value={createBlog.fullname}
+          value={createPlacement.fullname}
           onChange={(e) =>
-            setcreateBlog({
-              ...createBlog,
+            setcreatePlacement({
+              ...createPlacement,
               fullname: e.currentTarget.value,
             })
           }
@@ -131,10 +131,10 @@ function CreatePlacement() {
           type="email"
           fullWidth
           name="email"
-          value={createBlog.email}
+          value={createPlacement.email}
           onChange={(e) =>
-            setcreateBlog({
-              ...createBlog,
+            setcreatePlacement({
+              ...createPlacement,
               email: e.currentTarget.value,
             })
           }
@@ -147,10 +147,10 @@ function CreatePlacement() {
           type="text"
           fullWidth
           name="title"
-          value={createBlog.title}
+          value={createPlacement.title}
           onChange={(e) =>
-            setcreateBlog({
-              ...createBlog,
+            setcreatePlacement({
+              ...createPlacement,
               title: e.currentTarget.value,
             })
           }
@@ -165,10 +165,10 @@ function CreatePlacement() {
           multiline
           rows={30}
           name="body"
-          value={createBlog.body}
+          value={createPlacement.body}
           onChange={(e) =>
-            setcreateBlog({
-              ...createBlog,
+            setcreatePlacement({
+              ...createPlacement,
               body: e.currentTarget.value,
             })
           }
@@ -181,19 +181,19 @@ function CreatePlacement() {
           Body
         </Typography>
         <ReactQuill
-          placeholder="Enter your blog body here"
+          placeholder="Enter your placement body here"
           id="body"
           theme="snow"
           modules={modules}
           formats={formats}
           onChange={(e) =>
-            setcreateBlog({
-              ...createBlog,
+            setcreatePlacement({
+              ...createPlacement,
               // body: e.currentTarget.value,
               body: e,
             })
           }
-          value={createBlog.body}
+          value={createPlacement.body}
         />
         <Button
           type="submit"

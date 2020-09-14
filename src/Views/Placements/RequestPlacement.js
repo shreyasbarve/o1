@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 
 // API
-import BlogModels from "../../Models/Blogs/BlogModels";
+import PlacementModels from "../../Models/Placements/PlacementModels";
 
 // Components
 import { TextField, Button, Typography } from "@material-ui/core";
 
 function RequestPlacement() {
-  // Posting the blog
-  const [requestBlog, setrequestBlog] = useState({
+  // Posting the placement
+  const [requestPlacement, setrequestPlacement] = useState({
     fullname: "",
     college: "",
     branch: "",
     email: "",
   });
-  const postBlog = async (e) => {
+  const postPlacement = async (e) => {
     e.preventDefault();
-    BlogModels.requestBlog(requestBlog);
-    setrequestBlog({
+    PlacementModels.requestPlacement(requestPlacement);
+    setrequestPlacement({
       fullname: "",
       college: "",
       branch: "",
@@ -30,7 +30,7 @@ function RequestPlacement() {
         Fill up the request form. Ensure that all the details are correct. You
         will be contacted from the admin
       </Typography>
-      <form onSubmit={postBlog} noValidate autoComplete="off">
+      <form onSubmit={postPlacement} noValidate autoComplete="off">
         <TextField
           autoFocus
           required
@@ -40,10 +40,10 @@ function RequestPlacement() {
           type="text"
           fullWidth
           name="fullname"
-          value={requestBlog.fullname}
+          value={requestPlacement.fullname}
           onChange={(e) =>
-            setrequestBlog({
-              ...requestBlog,
+            setrequestPlacement({
+              ...requestPlacement,
               fullname: e.currentTarget.value,
             })
           }
@@ -56,10 +56,10 @@ function RequestPlacement() {
           type="text"
           fullWidth
           name="college"
-          value={requestBlog.college}
+          value={requestPlacement.college}
           onChange={(e) =>
-            setrequestBlog({
-              ...requestBlog,
+            setrequestPlacement({
+              ...requestPlacement,
               college: e.currentTarget.value,
             })
           }
@@ -72,10 +72,10 @@ function RequestPlacement() {
           type="text"
           fullWidth
           name="branch"
-          value={requestBlog.branch}
+          value={requestPlacement.branch}
           onChange={(e) =>
-            setrequestBlog({
-              ...requestBlog,
+            setrequestPlacement({
+              ...requestPlacement,
               branch: e.currentTarget.value,
             })
           }
@@ -88,10 +88,10 @@ function RequestPlacement() {
           type="email"
           fullWidth
           name="email"
-          value={requestBlog.email}
+          value={requestPlacement.email}
           onChange={(e) =>
-            setrequestBlog({
-              ...requestBlog,
+            setrequestPlacement({
+              ...requestPlacement,
               email: e.currentTarget.value,
             })
           }
