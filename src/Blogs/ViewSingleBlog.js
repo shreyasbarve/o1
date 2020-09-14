@@ -25,7 +25,7 @@ import {
 import BackIcon from "@material-ui/icons/ArrowBackIos";
 import { Link } from "react-router-dom";
 
-export default function ViewSingleBlog(props) {
+function ViewSingleBlog(props) {
   const [loading, setloading] = useState(true);
   // Styling for elements
   const AppBarStyle = AppBarStyles();
@@ -115,3 +115,5 @@ export default function ViewSingleBlog(props) {
     </Container>
   );
 }
+
+export default ViewSingleBlog;

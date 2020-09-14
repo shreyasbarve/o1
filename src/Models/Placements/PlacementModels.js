@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const BASE_URL = "https://o1codingclub.herokuapp.com/blog";
+export const BASE_URL = "https://o1codingclub.herokuapp.com/placement";
 
-const BlogModels = {
+const PlacementModels = {
   viewAllBlogs: async () => {
     return await axios.get(`${BASE_URL}`);
   },
@@ -29,4 +29,4 @@ const BlogModels = {
   },
 };
 
-export default BlogModels;
+export default PlacementModels;

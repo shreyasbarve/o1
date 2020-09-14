@@ -2,7 +2,7 @@ import React from "react";
 
 import { Zoom, useScrollTrigger } from "@material-ui/core";
 
-export default function ScrollTop(props) {
+function ScrollTop(props) {
   const { children, window } = props;
 
   const trigger = useScrollTrigger({
@@ -37,3 +37,5 @@ export default function ScrollTop(props) {
     </Zoom>
   );
 }
+
+export default ScrollTop;

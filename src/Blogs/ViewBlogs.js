@@ -28,7 +28,7 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
-export default function ViewBlogs(props) {
+function ViewBlogs(props) {
   // CSS for styling
   const CardStyle = CardStyles();
   const LoadingStyle = LoadingStyles();
@@ -124,3 +124,5 @@ export default function ViewBlogs(props) {
     </Container>
   );
 }
+
+export default ViewBlogs;
