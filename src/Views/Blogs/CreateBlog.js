@@ -1,12 +1,49 @@
 import React, { useState } from "react";
 
 // API
-import BlogModels from "../Models/Blogs/BlogModels";
+import BlogModels from "../../Models/Blogs/BlogModels";
 
 // Components
 import { Button, TextField, Typography } from "@material-ui/core";
 
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+
 function CreateBlog() {
+  // Quill
+  // eslint-disable-next-line
+  const [modules, setmodules] = React.useState({
+    toolbar: [
+      [{ header: "1" }, { header: "2" }, { font: [] }],
+      [{ size: [] }],
+      ["bold", "italic", "underline", "strike", "blockquote"],
+      [
+        { list: "ordered" },
+        { list: "bullet" },
+        { indent: "-1" },
+        { indent: "+1" },
+      ],
+      ["link", "image", "video"],
+      ["clean"],
+    ],
+  });
+  // eslint-disable-next-line
+  const [formats, setformats] = React.useState([
+    "header",
+    "font",
+    "size",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "indent",
+    "link",
+    "image",
+    "video",
+  ]);
   // Posting the blog
   const [createBlog, setcreateBlog] = useState({
     author: "",
@@ -18,7 +55,8 @@ function CreateBlog() {
   });
   const postBlog = async (e) => {
     e.preventDefault();
-    BlogModels.createBlog(createBlog);
+    console.log(createBlog);
+    // BlogModels.createBlog(createBlog);
     setcreateBlog({
       author: "",
       title: "",
@@ -117,7 +155,7 @@ function CreateBlog() {
             })
           }
         />
-        <TextField
+        {/* <TextField
           required
           margin="dense"
           id="body"
@@ -125,6 +163,7 @@ function CreateBlog() {
           type="text"
           fullWidth
           multiline
+          rows={30}
           name="body"
           value={createBlog.body}
           onChange={(e) =>
@@ -133,9 +172,35 @@ function CreateBlog() {
               body: e.currentTarget.value,
             })
           }
+        /> */}
+        <Typography
+          variant="body1"
+          color="textSecondary"
+          style={{marginTop: "2%"}}
+        >
+          Body
+        </Typography>
+        <ReactQuill
+          placeholder="Enter your blog body here"
+          id="body"
+          theme="snow"
+          modules={modules}
+          formats={formats}
+          onChange={(e) =>
+            setcreateBlog({
+              ...createBlog,
+              // body: e.currentTarget.value,
+              body: e,
+            })
+          }
+          value={createBlog.body}
         />
-
-        <Button type="submit" variant="contained" color="primary">
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          style={{ marginTop: "2%", marginBottom: "2%" }}
+        >
           Create
         </Button>
       </form>

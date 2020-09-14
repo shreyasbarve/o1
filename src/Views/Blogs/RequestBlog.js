@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // API
-import BlogModels from "../Models/Blogs/BlogModels";
+import BlogModels from "../../Models/Blogs/BlogModels";
 
 // Components
 import { TextField, Button, Typography } from "@material-ui/core";
@@ -96,7 +96,7 @@ function RequestBlog() {
             })
           }
         />
-        <Button type="submit" variant="contained" color="primary">
+        <Button type="submit" variant="contained" color="primary" style={{marginTop: "2%", marginBottom: "2%"}}>
           Request
         </Button>
       </form>

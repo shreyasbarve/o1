@@ -21,7 +21,7 @@ function Form() {
     setOpen(false);
   };
   return (
-    <div>
+    <>
       <Button variant="outlined" color="inherit" onClick={handleClickOpen}>
         Post a Blog
       </Button>
@@ -36,11 +36,11 @@ function Form() {
         <FillForm />
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-            Cancel
+            Exit
           </Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </>
   );
 }
 

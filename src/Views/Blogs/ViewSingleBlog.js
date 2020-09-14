@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 
 // CSS styling
-import AppBarStyles from "../Styles/AppBarStyles";
-import LoadingStyles from "../Styles/LoadingStyles";
+import AppBarStyles from "../../Styles/AppBarStyles";
+import LoadingStyles from "../../Styles/LoadingStyles";
 
 // API
-import BlogModels from "../Models/Blogs/BlogModels";
+import BlogModels from "../../Models/Blogs/BlogModels";
 
 import {
   AppBar,

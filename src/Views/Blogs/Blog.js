@@ -2,7 +2,7 @@ import React from "react";
 import ScrollTop from "./ScrollTop.js";
 
 // CSS styling
-import AppBarStyles from "../Styles/AppBarStyles";
+import AppBarStyles from "../../Styles/AppBarStyles";
 
 import {
   AppBar,
@@ -22,7 +22,7 @@ function Blog(props) {
   const AppBarStyle = AppBarStyles();
 
   return (
-    <div>
+    <>
       {/* Top Navbar */}
       <div className={AppBarStyle.root}>
         <AppBar position="sticky">
@@ -43,8 +43,6 @@ function Blog(props) {
         </AppBar>
       </div>
 
-      <Container></Container>
-
       <Container fixed style={{ marginTop: "3%" }} id="back-to-top-anchor">
         <Typography gutterBottom variant="h4">
           This is the page where blogs of all users are displayed
@@ -59,7 +57,7 @@ function Blog(props) {
           <KeyboardArrowUpIcon />
         </Fab>
       </ScrollTop>
-    </div>
+    </>
   );
 }
 

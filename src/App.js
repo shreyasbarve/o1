@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      <Link to="/blog">Blogs</Link>
+      <div style={{marginTop: "50%"}}>
+        <Link to="/blog">Blogs</Link>
+      </div>
     </div>
   );
 }

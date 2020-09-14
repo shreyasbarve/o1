@@ -5,8 +5,8 @@ import App from "./App";
 import { createBrowserHistory } from "history";
 import * as serviceWorker from "./serviceWorker";
 import { Route, Router, Redirect, Switch } from "react-router-dom";
-import Blog from "./Blogs/Blog";
-import ViewSingleBlog from "./Blogs/ViewSingleBlog";
+import Blog from "./Views/Blogs/Blog";
+import ViewSingleBlog from "./Views/Blogs/ViewSingleBlog";
 
 const hist = createBrowserHistory();
 
@@ -25,4 +25,4 @@ ReactDOM.render(
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.register();
+serviceWorker.unregister();

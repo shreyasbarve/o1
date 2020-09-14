@@ -1,5 +1,5 @@
 import React from "react";
-import StepperStyles from "../Styles/StepperStyles";
+import StepperStyles from "../../Styles/StepperStyles";
 
 import {
   Stepper,
@@ -14,19 +14,15 @@ import RequestBlog from "./RequestBlog";
 import CreateBlog from "./CreateBlog";
 
 function getSteps() {
-  return ["Request Permission", "Create your Blog", "Finish"];
+  return ["Request Permission", "Create your Blog"];
 }
 
 function getStepContent(step) {
   switch (step) {
     case 0:
       return <RequestBlog />;
-    // `Fill up the request form. Ensure that all the details are correct. You will be contacted from the admin
     case 1:
       return <CreateBlog />;
-    // "";
-    case 2:
-      return `Congratulations! your Blog is posted`;
     default:
       return "Unknown step";
   }
@@ -49,7 +45,7 @@ function FillForm() {
     setActiveStep(0);
   };
   return (
-    <div className={StepperStyle.root}>
+    <React.Fragment className={StepperStyle.root}>
       <Stepper activeStep={activeStep} orientation="vertical">
         {steps.map((label, index) => (
           <Step key={label}>
@@ -81,13 +77,13 @@ function FillForm() {
       </Stepper>
       {activeStep === steps.length && (
         <Paper square elevation={0} className={StepperStyle.resetContainer}>
-          <Typography>All steps completed - you&apos;re finished</Typography>
+          <Typography>All steps completed - you&apos;re finished. Your Blog will appear in the list soon.</Typography>
           <Button onClick={handleReset} className={StepperStyle.button}>
             Reset
           </Button>
         </Paper>
       )}
-    </div>
+    </React.Fragment>
   );
 }
 

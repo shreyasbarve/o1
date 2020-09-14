@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 
 // CSS
-import CardStyles from "../Styles/CardStyles";
-import LoadingStyles from "../Styles/LoadingStyles";
-import logo from "../o1_logo.jpg";
+import CardStyles from "../../Styles/CardStyles";
+import LoadingStyles from "../../Styles/LoadingStyles";
+import logo from "../../o1_logo.jpg";
 
 // Animation
 import Slide from "react-reveal";
 
 // API
-import BlogModels from "../Models/Blogs/BlogModels";
+import BlogModels from "../../Models/Blogs/BlogModels";
 
 // Components
 import {
