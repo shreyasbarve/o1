@@ -37,7 +37,7 @@ function ViewPlacements(props) {
   const [loading, setloading] = useState(true);
   const [placements, setplacements] = useState([]);
   const viewAllPlacements = () => {
-    PlacementModels.viewAllPlacements.then((res) => {
+    PlacementModels.viewAllPlacements().then((res) => {
       setplacements(res.data);
       setloading(false);
     });
