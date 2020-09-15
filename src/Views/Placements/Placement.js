@@ -2,7 +2,7 @@ import React from "react";
 import ScrollTop from "../../Components/ScrollTop";
 
 // CSS styling
-import AppBarStyles from "../../Styles/AppBarStyles";
+import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
 
 import {
   AppBar,
@@ -11,6 +11,7 @@ import {
   Typography,
   Container,
   Fab,
+  ThemeProvider,
 } from "@material-ui/core";
 
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
@@ -24,26 +25,34 @@ function Placement(props) {
   return (
     <>
       {/* Top Navbar */}
-      <div className={AppBarStyle.root}>
-        <AppBar position="sticky">
-          <Toolbar>
-            <Typography variant="h5" className={AppBarStyle.title}>
-              Placements
-            </Typography>
+      <ThemeProvider theme={AppbarTheme}>
+        <div className={AppBarStyle.root}>
+          <AppBar position="sticky">
+            <Toolbar>
+              <Typography variant="h5" className={AppBarStyle.title}>
+                Placements
+              </Typography>
 
-            <Typography className={AppBarStyle.title}>
-              <Form />
-            </Typography>
+              <Typography>
+                <Button color="inherit">Login</Button>
+                <Button color="inherit">Sign Up</Button>
+              </Typography>
+            </Toolbar>
+          </AppBar>
+        </div>
+      </ThemeProvider>
 
-            <Typography>
-              <Button color="inherit">Login</Button>
-              <Button color="inherit">Sign Up</Button>
-            </Typography>
-          </Toolbar>
-        </AppBar>
-      </div>
+      <Container
+        fixed
+        style={{ marginTop: "3%", marginBottom: "3%" }}
+        id="back-to-top-anchor"
+      >
+        <Typography className={AppBarStyle.title}>
+          <Form />
+        </Typography>
+      </Container>
 
-      <Container fixed style={{ marginTop: "3%" }} id="back-to-top-anchor">
+      <Container fixed>
         <Typography gutterBottom variant="h4">
           This is the page where placements of all users are displayed
         </Typography>

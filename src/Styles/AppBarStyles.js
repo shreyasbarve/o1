@@ -1,4 +1,12 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
+
+export const AppbarTheme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#ffffff[500]",
+    },
+  },
+});
 
 const AppBarStyles = makeStyles((theme) => ({
   root: {

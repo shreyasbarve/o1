@@ -1,18 +1,23 @@
 import React from "react";
-import "./App.css";
 import { Link } from "react-router-dom";
 
-import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  ThemeProvider,
+} from "@material-ui/core";
 
 // CSS styling
-import AppBarStyles from "./Styles/AppBarStyles";
+import AppBarStyles, { AppbarTheme } from "./Styles/AppBarStyles";
 
 function App() {
   // Styling for elements
   const AppBarStyle = AppBarStyles();
 
   return (
-    <div className="App">
+    <ThemeProvider theme={AppbarTheme}>
       <div className={AppBarStyle.root}>
         <AppBar position="sticky">
           <Toolbar>
@@ -20,26 +25,20 @@ function App() {
               Home
             </Typography>
 
-            <Typography>
-              <Link
-                to="/blog"
-                color="inherit"
-                style={{ textDecoration: "none" }}
-              >
-                <Button style={{color: "white"}}>Blogs</Button>
-              </Link>
-              <Link
-                to="/placement"
-                color="inherit"
-                style={{ textDecoration: "none" }}
-              >
-                <Button style={{color: "white"}}>Placements</Button>
-              </Link>
-            </Typography>
+            <Link to="/blog" style={{ textDecoration: "none" }}>
+              <Button>Blogs</Button>
+            </Link>
+            <Link
+              to="/placement"
+              color="inherit"
+              style={{ textDecoration: "none" }}
+            >
+              <Button>Placements</Button>
+            </Link>
           </Toolbar>
         </AppBar>
       </div>
-    </div>
+    </ThemeProvider>
   );
 }
 

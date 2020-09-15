@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 
 // CSS styling
-import AppBarStyles from "../../Styles/AppBarStyles";
+import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
 import LoadingStyles from "../../Styles/LoadingStyles";
 
 // API
-import PlacementModels from "../../Models/Placements/PlacementModels"
+import PlacementModels from "../../Models/Placements/PlacementModels";
 
 import {
   AppBar,
@@ -20,6 +20,7 @@ import {
   CardContent,
   CardActions,
   LinearProgress,
+  ThemeProvider,
 } from "@material-ui/core";
 
 import BackIcon from "@material-ui/icons/ArrowBackIos";
@@ -57,29 +58,33 @@ function ViewSinglePlacement(props) {
         </div>
       ) : (
         <>
-          <AppBar position="sticky">
-            <Toolbar>
-              <Typography className={AppBarStyle.title}>
-                <Tooltip title="Go Back" aria-label="Go Back">
-                  <Link to="/placement" style={{ color: "inherit" }}>
-                    <BackIcon />
-                  </Link>
-                </Tooltip>
-              </Typography>
+          <ThemeProvider theme={AppbarTheme}>
+            <AppBar position="sticky">
+              <Toolbar>
+                <Typography className={AppBarStyle.title}>
+                  <Tooltip title="Go Back" aria-label="Go Back">
+                    <Link to="/placement" style={{ color: "inherit" }}>
+                      <BackIcon />
+                    </Link>
+                  </Tooltip>
+                </Typography>
 
-              <Typography
-                variant="overline"
-                component="h5"
-                className={AppBarStyle.title}
-              >
-                {singlePlacement.title}
-              </Typography>
-            </Toolbar>
-          </AppBar>
+                <Typography
+                  variant="overline"
+                  component="h5"
+                  className={AppBarStyle.title}
+                >
+                  {singlePlacement.title}
+                </Typography>
+              </Toolbar>
+            </AppBar>
+          </ThemeProvider>
 
           <Grid container spacing={3} style={{ marginTop: "8%" }}>
             <Grid item xs={12} sm={9} lg={9}>
-              <Typography variant="overline">by {singlePlacement.author}</Typography>
+              <Typography variant="overline">
+                by {singlePlacement.author}
+              </Typography>
               <br />
               <Divider />
               <br />
