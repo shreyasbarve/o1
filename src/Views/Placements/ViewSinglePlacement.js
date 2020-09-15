@@ -47,6 +47,7 @@ function ViewSinglePlacement(props) {
     PlacementModels.viewSinglePlacement(singlePlacementId).then((res) => {
       setsinglePlacement(res.data);
       setloading(false);
+      document.title = `${singlePlacement.title}`
     });
   }, [singlePlacementId, singlePlacement.title, loading]);
 

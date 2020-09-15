@@ -44,6 +44,7 @@ function ViewBlogs(props) {
   };
 
   useEffect(() => {
+    document.title = "Blogs";
     viewAllBlogs();
   }, []);
 

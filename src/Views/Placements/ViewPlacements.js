@@ -44,6 +44,7 @@ function ViewPlacements(props) {
   };
 
   useEffect(() => {
+    document.title = "Placements";
     viewAllPlacements();
   }, []);
 

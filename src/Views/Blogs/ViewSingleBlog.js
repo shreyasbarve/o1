@@ -48,6 +48,7 @@ function ViewSingleBlog(props) {
     BlogModels.viewSingleBlog(singleBlogId).then((res) => {
       setsingleBlog(res.data);
       setloading(false);
+      document.title = `${singleBlog.title}`
     });
   }, [singleBlogId, singleBlog.title, loading]);
 
