@@ -7,6 +7,7 @@ import image from "../../codeImage.jpg";
 
 // API
 import BlogModels from "../../Models/Blogs/BlogModels";
+import parse from "html-react-parser";
 
 import {
   AppBar,
@@ -48,13 +49,13 @@ function ViewSingleBlog(props) {
     BlogModels.viewSingleBlog(singleBlogId).then((res) => {
       setsingleBlog(res.data);
       setloading(false);
-      document.title = `${singleBlog.title}`
+      document.title = `${singleBlog.title}`;
     });
   }, [singleBlogId, singleBlog.title, loading]);
 
   return (
-    <div style={{ backgroundImage: `url(${image})`, height: "100vh"}}>
-      <Container fixed style={{ backgroundColor: "#ffffff", height: "100vh" }}>
+    <div style={{ backgroundImage: `url(${image})`, height: "100rem" }}>
+      <Container fixed style={{ backgroundColor: "#ffffff", height: "100rem" }}>
         {loading ? (
           <div className={LoadingStyle.root}>
             <LinearProgress />
@@ -92,7 +93,7 @@ function ViewSingleBlog(props) {
                 <Divider />
                 <br />
                 <Typography gutterBottom variant="body1">
-                  {singleBlog.body}
+                  {parse(singleBlog.body)}
                 </Typography>
               </Grid>
 

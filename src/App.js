@@ -37,7 +37,9 @@ function App() {
             </Link>
           </Toolbar>
         </AppBar>
-      </div>
+        <h2>ADMIN key:</h2>
+        <h4>gAAAAABfONaVoTJS5s8Q8bfFDnxpg5fLL_XtPtm_uGAMPvAVupgPgK0qxiaOLv_Lj66mSA1YrL9BjwY29dU1wUj07gaXJncLOQ==</h4>
+      </div>  
     </ThemeProvider>
   );
 }

@@ -13,13 +13,13 @@ const PlacementModels = {
     return await axios.post(`${BASE_URL}/approve/${id}`, key)
   },
   createPlacement: async (userData) => {
-    return await axios.post(`${BASE_URL}/create`, userData);
+    return await axios.post(`${BASE_URL}/create/`, userData);
   },
   deletePlacement: async (id, key) => {
     return await axios.post(`${BASE_URL}/delete/${id}`, key)
   },
   requestPlacement: async (userData) => {
-    return  await axios.post(`${BASE_URL}/requestkey`, userData)
+    return  await axios.post(`${BASE_URL}/requestkey/`, userData)
   },
   viewSinglePlacement: async (id) => {
     return await axios.get(`${BASE_URL}/${id}`);

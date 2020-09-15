@@ -10,6 +10,7 @@ import Slide from "react-reveal";
 
 // API
 import BlogModels from "../../Models/Blogs/BlogModels";
+// import parse from "html-react-parser";
 
 // Components
 import {
@@ -73,15 +74,15 @@ function ViewBlogs(props) {
                         {blog.title}
                       </Typography>
 
-                      <Typography
+                      {/* <Typography
                         variant="body2"
                         color="textSecondary"
                         component="p"
                         gutterBottom
                         noWrap
                       >
-                        {blog.body}
-                      </Typography>
+                        {parse(blog.body)}
+                      </Typography> */}
 
                       <Divider />
 
@@ -100,7 +101,6 @@ function ViewBlogs(props) {
                         to={{
                           pathname: `singleblog/${blog.id}`,
                           state: { idofblog: blog.id },
-                          // state: {idofblog: 1},
                         }}
                         color="inherit"
                         style={{ textDecoration: "none" }}

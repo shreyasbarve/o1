@@ -10,6 +10,7 @@ import Slide from "react-reveal";
 
 // API
 import PlacementModels from "../../Models/Placements/PlacementModels";
+// import parse from "html-react-parser";
 
 // Components
 import {
@@ -73,15 +74,15 @@ function ViewPlacements(props) {
                         {placement.title}
                       </Typography>
 
-                      <Typography
+                      {/* <Typography
                         variant="body2"
                         color="textSecondary"
                         component="p"
                         gutterBottom
                         noWrap
                       >
-                        {placement.body}
-                      </Typography>
+                        {parse(placement.body)}
+                      </Typography> */}
 
                       <Divider />
 

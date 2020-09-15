@@ -55,8 +55,7 @@ function CreateBlog() {
   });
   const postBlog = async (e) => {
     e.preventDefault();
-    console.log(createBlog);
-    // BlogModels.createBlog(createBlog);
+    BlogModels.createBlog(createBlog);
     setcreateBlog({
       author: "",
       title: "",

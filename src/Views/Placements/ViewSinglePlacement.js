@@ -3,9 +3,11 @@ import React, { useState, useEffect } from "react";
 // CSS styling
 import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
 import LoadingStyles from "../../Styles/LoadingStyles";
+import image from "../../codeImage.jpg";
 
 // API
 import PlacementModels from "../../Models/Placements/PlacementModels";
+import parse from "html-react-parser";
 
 import {
   AppBar,
@@ -47,78 +49,80 @@ function ViewSinglePlacement(props) {
     PlacementModels.viewSinglePlacement(singlePlacementId).then((res) => {
       setsinglePlacement(res.data);
       setloading(false);
-      document.title = `${singlePlacement.title}`
+      document.title = `${singlePlacement.title}`;
     });
   }, [singlePlacementId, singlePlacement.title, loading]);
 
   return (
-    <Container fixed>
-      {loading ? (
-        <div className={LoadingStyle.root}>
-          <LinearProgress />
-        </div>
-      ) : (
-        <>
-          <ThemeProvider theme={AppbarTheme}>
-            <AppBar position="sticky">
-              <Toolbar>
-                <Typography className={AppBarStyle.title}>
-                  <Tooltip title="Go Back" aria-label="Go Back">
-                    <Link to="/placement" style={{ color: "inherit" }}>
-                      <BackIcon />
-                    </Link>
-                  </Tooltip>
+    <div style={{ backgroundImage: `url(${image})`, height: "100rem" }}>
+      <Container fixed style={{ backgroundColor: "#ffffff", height: "100rem" }}>
+        {loading ? (
+          <div className={LoadingStyle.root}>
+            <LinearProgress />
+          </div>
+        ) : (
+          <>
+            <ThemeProvider theme={AppbarTheme}>
+              <AppBar position="sticky">
+                <Toolbar>
+                  <Typography className={AppBarStyle.title}>
+                    <Tooltip title="Go Back" aria-label="Go Back">
+                      <Link to="/placement" style={{ color: "inherit" }}>
+                        <BackIcon />
+                      </Link>
+                    </Tooltip>
+                  </Typography>
+
+                  <Typography
+                    variant="overline"
+                    component="h5"
+                    className={AppBarStyle.title}
+                  >
+                    {singlePlacement.title}
+                  </Typography>
+                </Toolbar>
+              </AppBar>
+            </ThemeProvider>
+
+            <Grid container spacing={3} style={{ marginTop: "8%" }}>
+              <Grid item xs={12} sm={9} lg={9}>
+                <Typography variant="overline">
+                  by {singlePlacement.author}
                 </Typography>
-
-                <Typography
-                  variant="overline"
-                  component="h5"
-                  className={AppBarStyle.title}
-                >
-                  {singlePlacement.title}
+                <br />
+                <Divider />
+                <br />
+                <Typography gutterBottom variant="body1">
+                  {parse(singlePlacement.body)}
                 </Typography>
-              </Toolbar>
-            </AppBar>
-          </ThemeProvider>
+              </Grid>
 
-          <Grid container spacing={3} style={{ marginTop: "8%" }}>
-            <Grid item xs={12} sm={9} lg={9}>
-              <Typography variant="overline">
-                by {singlePlacement.author}
-              </Typography>
-              <br />
-              <Divider />
-              <br />
-              <Typography gutterBottom variant="body1">
-                {singlePlacement.body}
-              </Typography>
+              <Grid item xs={12} sm={3} lg={3}>
+                <Card variant="outlined">
+                  <CardActionArea>
+                    <CardContent>
+                      <Typography gutterBottom variant="h5">
+                        About Author
+                      </Typography>
+                      <Divider />
+                      <br />
+                      <Typography gutterBottom variant="subtitle1">
+                        Name: {singlePlacement.fullname}
+                      </Typography>
+
+                      <Typography gutterBottom variant="subtitle1">
+                        Email: {singlePlacement.email}
+                      </Typography>
+                    </CardContent>
+                    <CardActions></CardActions>
+                  </CardActionArea>
+                </Card>
+              </Grid>
             </Grid>
-
-            <Grid item xs={12} sm={3} lg={3}>
-              <Card variant="outlined">
-                <CardActionArea>
-                  <CardContent>
-                    <Typography gutterBottom variant="h5">
-                      About Author
-                    </Typography>
-                    <Divider />
-                    <br />
-                    <Typography gutterBottom variant="subtitle1">
-                      Name: {singlePlacement.fullname}
-                    </Typography>
-
-                    <Typography gutterBottom variant="subtitle1">
-                      Email: {singlePlacement.email}
-                    </Typography>
-                  </CardContent>
-                  <CardActions></CardActions>
-                </CardActionArea>
-              </Card>
-            </Grid>
-          </Grid>
-        </>
-      )}
-    </Container>
+          </>
+        )}
+      </Container>
+    </div>
   );
 }
 

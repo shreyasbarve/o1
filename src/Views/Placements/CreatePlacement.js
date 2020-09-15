@@ -55,8 +55,7 @@ function CreatePlacement() {
   });
   const postPlacement = async (e) => {
     e.preventDefault();
-    console.log(createPlacement);
-    // PlacementModels.createPlacement(createPlacement);
+    PlacementModels.createPlacement(createPlacement);
     setcreatePlacement({
       author: "",
       title: "",

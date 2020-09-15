@@ -13,13 +13,13 @@ const BlogModels = {
     return await axios.post(`${BASE_URL}/approve/${id}`, key)
   },
   createBlog: async (userData) => {
-    return await axios.post(`${BASE_URL}/create`, userData);
+    return await axios.post(`${BASE_URL}/create/`, userData);
   },
   deleteBlog: async (id, key) => {
     return await axios.post(`${BASE_URL}/delete/${id}`, key)
   },
   requestBlog: async (userData) => {
-    return  await axios.post(`${BASE_URL}/requestkey`, userData)
+    return  await axios.post(`${BASE_URL}/requestkey/`, userData)
   },
   viewSingleBlog: async (id) => {
     return await axios.get(`${BASE_URL}/${id}`);
