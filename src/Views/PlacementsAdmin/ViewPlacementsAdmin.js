@@ -47,6 +47,11 @@ function ViewPlacementsAdmin(props) {
     });
   };
 
+  const deletePlacement = (placementid) => {
+    PlacementModels.deletePlacement(placementid , key);
+  }
+  
+
   useEffect(() => {
     document.title = "Admin Placements";
     viewAllPlacements();
@@ -105,7 +110,7 @@ function ViewPlacementsAdmin(props) {
                           color="primary"
                         />
                       </Link>
-                      <Button variant="outlined" startIcon={<Delete />} color="secondary">Delete</Button>
+                      <Button variant="outlined" startIcon={<Delete />} color="secondary" onClick={() => deletePlacement(placement.id)}>Delete</Button>
                     </CardActions>
                   </CardActionArea>
                 </Card>

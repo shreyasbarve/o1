@@ -8,8 +8,8 @@ import { Route, Router, Redirect, Switch } from "react-router-dom";
 
 import Blog from "./Views/Blogs/Blog";
 import ViewSingleBlog from "./Views/Blogs/ViewSingleBlog";
-import BlogAdmin from "./Views/BlogAdmin/BlogAdmin";
-import ViewSingleBlogAdmin from "./Views/BlogAdmin/ViewSingleBlogAdmin";
+import BlogAdmin from "./Views/BlogsAdmin/BlogAdmin";
+import ViewSingleBlogAdmin from "./Views/BlogsAdmin/ViewSingleBlogAdmin";
 
 import Placement from "./Views/Placements/Placement";
 import ViewSinglePlacement from "./Views/Placements/ViewSinglePlacement";

@@ -47,6 +47,10 @@ function ViewBlogsAdmin(props) {
     });
   };
 
+  const deleteBlog = (blogid) => {
+    BlogModels.deleteBlog(blogid, key);
+  };
+
   useEffect(() => {
     document.title = "Admin Blogs";
     viewAllBlogs();
@@ -105,7 +109,14 @@ function ViewBlogsAdmin(props) {
                           color="primary"
                         />
                       </Link>
-                      <Button variant="outlined" startIcon={<Delete />} color="secondary">Delete</Button>
+                      <Button
+                        variant="outlined"
+                        startIcon={<Delete />}
+                        color="secondary"
+                        onClick={() => deleteBlog(blog.id)}
+                      >
+                        Delete
+                      </Button>
                     </CardActions>
                   </CardActionArea>
                 </Card>
