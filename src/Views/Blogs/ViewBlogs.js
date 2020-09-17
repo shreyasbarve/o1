@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 // CSS
 import CardStyles from "../../Styles/CardStyles";
@@ -10,7 +11,6 @@ import Slide from "react-reveal";
 
 // API
 import BlogModels from "../../Models/Blogs/BlogModels";
-// import parse from "html-react-parser";
 
 // Components
 import {
@@ -27,7 +27,6 @@ import {
   Avatar,
   LinearProgress,
 } from "@material-ui/core";
-import { Link } from "react-router-dom";
 
 function ViewBlogs(props) {
   // CSS for styling
@@ -74,23 +73,11 @@ function ViewBlogs(props) {
                         {blog.title}
                       </Typography>
 
-                      {/* <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        component="p"
-                        gutterBottom
-                        noWrap
-                      >
-                        {parse(blog.body)}
-                      </Typography> */}
-
                       <Divider />
 
                       <Typography
                         variant="overline"
                         color="textSecondary"
-                        component="p"
-                        aria-rowcount="3"
                         noWrap
                       >
                         Author: {blog.author}

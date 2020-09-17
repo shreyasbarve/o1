@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ScrollTop from "../../Components/ScrollTop";
 
-// CSS
+// CSS styling
 import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
-import BackIcon from "@material-ui/icons/ArrowBackIos";
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 
 import {
   AppBar,
@@ -14,13 +13,15 @@ import {
   Container,
   Fab,
   ThemeProvider,
-  Tooltip,
+  Tooltip
 } from "@material-ui/core";
-import ScrollTop from "../../Components/ScrollTop";
-import Form from "./Form.js";
-import ViewPlacements from "./ViewPlacements";
 
-function Placement(props) {
+import BackIcon from "@material-ui/icons/ArrowBackIos";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+
+import ViewBlogsAdmin from "./ViewBlogsAdmin.js";
+
+function Blog(props) {
   // Styling for elements
   const AppBarStyle = AppBarStyles();
 
@@ -32,14 +33,14 @@ function Placement(props) {
           <AppBar position="sticky">
             <Toolbar>
               <Typography className={AppBarStyle.title}>
-                <Tooltip title="Go Back">
+                <Tooltip title="Go Back" aria-label="Go Back">
                   <Link to="/" style={{ color: "inherit" }}>
                     <BackIcon />
                   </Link>
                 </Tooltip>
               </Typography>
               <Typography variant="h5" className={AppBarStyle.title}>
-                Placements
+                Blogs
               </Typography>
 
               <Typography>
@@ -51,27 +52,17 @@ function Placement(props) {
         </div>
       </ThemeProvider>
 
-      <Container
-        fixed
-        style={{ marginTop: "3%", marginBottom: "3%" }}
-        id="back-to-top-anchor"
-      >
-        <Typography className={AppBarStyle.title}>
-          <Form />
-        </Typography>
-      </Container>
-
       <Container fixed>
         <Typography gutterBottom variant="h4">
-          This is the page where placements of all users are displayed
+          This is the page where blogs of all users are displayed
         </Typography>
       </Container>
 
-      {/* Display Placements */}
-      <ViewPlacements />
+      {/* Display Blogs */}
+      <ViewBlogsAdmin />
 
       <ScrollTop {...props}>
-        <Fab color="secondary" size="small">
+        <Fab color="secondary" size="small" aria-label="scroll back to top">
           <KeyboardArrowUpIcon />
         </Fab>
       </ScrollTop>
@@ -79,4 +70,4 @@ function Placement(props) {
   );
 }
 
-export default Placement;
+export default Blog;

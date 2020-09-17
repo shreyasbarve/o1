@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-// CSS styling
+// CSS
 import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
 import LoadingStyles from "../../Styles/LoadingStyles";
 import image from "../../codeImage.jpg";
+import BackIcon from "@material-ui/icons/ArrowBackIos";
 
 // API
 import BlogModels from "../../Models/Blogs/BlogModels";
 import parse from "html-react-parser";
 
+// Component
 import {
   AppBar,
   Toolbar,
@@ -24,9 +27,6 @@ import {
   LinearProgress,
   ThemeProvider,
 } from "@material-ui/core";
-
-import BackIcon from "@material-ui/icons/ArrowBackIos";
-import { Link } from "react-router-dom";
 
 function ViewSingleBlog(props) {
   const [loading, setloading] = useState(true);
@@ -73,11 +73,7 @@ function ViewSingleBlog(props) {
                     </Tooltip>
                   </Typography>
 
-                  <Typography
-                    variant="overline"
-                    component="h5"
-                    className={AppBarStyle.title}
-                  >
+                  <Typography variant="overline" className={AppBarStyle.title}>
                     {singleBlog.title}
                   </Typography>
                 </Toolbar>

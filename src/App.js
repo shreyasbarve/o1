@@ -28,18 +28,20 @@ function App() {
             <Link to="/blog" style={{ textDecoration: "none" }}>
               <Button>Blogs</Button>
             </Link>
-            <Link
-              to="/placement"
-              color="inherit"
-              style={{ textDecoration: "none" }}
-            >
+            <Link to="/blogAdmin" style={{ textDecoration: "none" }}>
+              <Button>Admin Blog</Button>
+            </Link>
+
+            <Link to="/placement" style={{ textDecoration: "none" }}>
               <Button>Placements</Button>
             </Link>
           </Toolbar>
         </AppBar>
         <h2>ADMIN key:</h2>
-        <h4>gAAAAABfONaVoTJS5s8Q8bfFDnxpg5fLL_XtPtm_uGAMPvAVupgPgK0qxiaOLv_Lj66mSA1YrL9BjwY29dU1wUj07gaXJncLOQ==</h4>
-      </div>  
+        <h4>
+          gAAAAABfYyrPc24Rm_-3GlzW0nzgy2kfCHevEb3KnbDEBUwnwqIrBMVhBaTxcf1PS6FgRjSDJ6o1IBcbfhTycyQFuqR3sJn_XQ==
+        </h4>
+      </div>
     </ThemeProvider>
   );
 }

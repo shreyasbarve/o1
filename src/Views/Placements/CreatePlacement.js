@@ -6,6 +6,7 @@ import PlacementModels from "../../Models/Placements/PlacementModels";
 // Components
 import { Button, TextField, Typography } from "@material-ui/core";
 
+// Quill
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
@@ -55,7 +56,7 @@ function CreatePlacement() {
   });
   const postPlacement = async (e) => {
     e.preventDefault();
-    PlacementModels.createPlacement(createPlacement);
+    PlacementModels.createPlacement(createPlacement).then(res => console.log(res.data))
     setcreatePlacement({
       author: "",
       title: "",
@@ -154,24 +155,6 @@ function CreatePlacement() {
             })
           }
         />
-        {/* <TextField
-          required
-          margin="dense"
-          id="body"
-          label="Body"
-          type="text"
-          fullWidth
-          multiline
-          rows={30}
-          name="body"
-          value={createPlacement.body}
-          onChange={(e) =>
-            setcreatePlacement({
-              ...createPlacement,
-              body: e.currentTarget.value,
-            })
-          }
-        /> */}
         <Typography
           variant="body1"
           color="textSecondary"
@@ -188,7 +171,6 @@ function CreatePlacement() {
           onChange={(e) =>
             setcreatePlacement({
               ...createPlacement,
-              // body: e.currentTarget.value,
               body: e,
             })
           }

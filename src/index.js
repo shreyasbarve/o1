@@ -5,8 +5,12 @@ import App from "./App";
 import { createBrowserHistory } from "history";
 import * as serviceWorker from "./serviceWorker";
 import { Route, Router, Redirect, Switch } from "react-router-dom";
+
 import Blog from "./Views/Blogs/Blog";
 import ViewSingleBlog from "./Views/Blogs/ViewSingleBlog";
+import BlogAdmin from "./Views/BlogAdmin/BlogAdmin";
+import ViewSingleBlogAdmin from "./Views/BlogAdmin/ViewBlogsAdmin";
+
 import Placement from "./Views/Placements/Placement";
 import ViewSinglePlacement from "./Views/Placements/ViewSinglePlacement";
 
@@ -21,9 +25,16 @@ ReactDOM.render(
       <Route exact path="/blog" component={Blog} />
       <Route exact path="/singleblog/:id" component={ViewSingleBlog} />
 
+      <Route exact path="/blogAdmin" component={BlogAdmin} />
+      <Route exact path="/singleblogAdmin/:id" component={ViewSingleBlogAdmin} />
+
       {/* Placements */}
       <Route exact path="/placement" component={Placement} />
-      <Route exact path="/singleplacement/:id" component={ViewSinglePlacement} />
+      <Route
+        exact
+        path="/singleplacement/:id"
+        component={ViewSinglePlacement}
+      />
       <Redirect from="*" to="/" />
     </Switch>
   </Router>,

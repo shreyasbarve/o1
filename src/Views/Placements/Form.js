@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+
+// CSS
+import CloseIcon from "@material-ui/icons/Close";
+
+// Components
 import {
   Button,
   Dialog,
@@ -7,6 +12,7 @@ import {
   useMediaQuery,
   DialogActions,
   Divider,
+  IconButton,
 } from "@material-ui/core";
 import FillForm from "./StepperForm";
 
@@ -29,9 +35,19 @@ function Form() {
         fullScreen={fullScreen}
         open={open}
         onClose={handleClose}
-        aria-labelledby="form-dialog-title"
       >
         <DialogTitle id="form-dialog-title">Post Placement</DialogTitle>
+        <IconButton
+          onClick={handleClose}
+          style={{
+            position: "absolute",
+            right: theme.spacing(1),
+            top: theme.spacing(1),
+            color: theme.palette.grey[500],
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
         <Divider />
         <FillForm />
         <DialogActions>

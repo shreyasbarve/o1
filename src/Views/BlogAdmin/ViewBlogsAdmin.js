@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 
 // CSS
 import CardStyles from "../../Styles/CardStyles";
@@ -10,7 +9,8 @@ import logo from "../../o1_logo.jpg";
 import Slide from "react-reveal";
 
 // API
-import PlacementModels from "../../Models/Placements/PlacementModels";
+import BlogModels from "../../Models/Blogs/BlogModels";
+// import parse from "html-react-parser";
 
 // Components
 import {
@@ -27,25 +27,26 @@ import {
   Avatar,
   LinearProgress,
 } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
-function ViewPlacements(props) {
+function ViewBlogs(props) {
   // CSS for styling
   const CardStyle = CardStyles();
   const LoadingStyle = LoadingStyles();
 
-  // Get the placement data from server
+  // Get the blog data from server
   const [loading, setloading] = useState(true);
-  const [placements, setplacements] = useState([]);
-  const viewAllPlacements = () => {
-    PlacementModels.viewAllPlacements().then((res) => {
-      setplacements(res.data);
+  const [blogs, setblogs] = useState([]);
+  const viewAllBlogs = () => {
+    BlogModels.viewAllBlogs().then((res) => {
+      setblogs(res.data);
       setloading(false);
     });
   };
 
   useEffect(() => {
-    document.title = "Placements";
-    viewAllPlacements();
+    document.title = "Blogs";
+    viewAllBlogs();
   }, []);
 
   return (
@@ -56,8 +57,8 @@ function ViewPlacements(props) {
         </div>
       ) : (
         <Grid container spacing={3}>
-          {placements.map((placement) => (
-            <Grid item xs={12} sm={6} lg={3} key={placement.email}>
+          {blogs.map((blog) => (
+            <Grid item xs={12} sm={6} lg={3} key={blog.email}>
               <Slide bottom>
                 <Card className={CardStyle.root} elevation={3}>
                   <CardActionArea>
@@ -70,33 +71,45 @@ function ViewPlacements(props) {
                     />
                     <CardContent>
                       <Typography gutterBottom variant="h5" noWrap>
-                        {placement.title}
+                        {blog.title}
                       </Typography>
+
+                      {/* <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        component="p"
+                        gutterBottom
+                        noWrap
+                      >
+                        {parse(blog.body)}
+                      </Typography> */}
 
                       <Divider />
 
                       <Typography
                         variant="overline"
                         color="textSecondary"
+                        component="p"
+                        aria-rowcount="3"
                         noWrap
                       >
-                        Author: {placement.author}
+                        Author: {blog.author}
                       </Typography>
                     </CardContent>
                     <CardActions>
                       <Link
                         to={{
-                          pathname: `singleplacement/${placement.id}`,
-                          state: { idofplacement: placement.id },
+                          pathname: `singleblog/${blog.id}`,
+                          state: { idofblog: blog.id },
                         }}
                         color="inherit"
                         style={{ textDecoration: "none" }}
                       >
                         <Chip
                           avatar={
-                            <Avatar>{placement.author.substring(0, 1)}</Avatar>
+                            <Avatar>{blog.author.substring(0, 1)}</Avatar>
                           }
-                          label="Go to placement"
+                          label="Go to Blog"
                           clickable
                           color="primary"
                         />
@@ -113,4 +126,4 @@ function ViewPlacements(props) {
   );
 }
 
-export default ViewPlacements;
+export default ViewBlogs;

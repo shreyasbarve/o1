@@ -6,6 +6,7 @@ import BlogModels from "../../Models/Blogs/BlogModels";
 // Components
 import { Button, TextField, Typography } from "@material-ui/core";
 
+// Quill
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
@@ -154,24 +155,6 @@ function CreateBlog() {
             })
           }
         />
-        {/* <TextField
-          required
-          margin="dense"
-          id="body"
-          label="Body"
-          type="text"
-          fullWidth
-          multiline
-          rows={30}
-          name="body"
-          value={createBlog.body}
-          onChange={(e) =>
-            setcreateBlog({
-              ...createBlog,
-              body: e.currentTarget.value,
-            })
-          }
-        /> */}
         <Typography
           variant="body1"
           color="textSecondary"
@@ -188,7 +171,6 @@ function CreateBlog() {
           onChange={(e) =>
             setcreateBlog({
               ...createBlog,
-              // body: e.currentTarget.value,
               body: e,
             })
           }

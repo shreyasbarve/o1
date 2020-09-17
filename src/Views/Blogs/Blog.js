@@ -1,9 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ScrollTop from "../../Components/ScrollTop";
 
-// CSS styling
+// CSS
 import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
+import BackIcon from "@material-ui/icons/ArrowBackIos";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 
+// Components
 import {
   AppBar,
   Toolbar,
@@ -12,9 +16,8 @@ import {
   Container,
   Fab,
   ThemeProvider,
+  Tooltip
 } from "@material-ui/core";
-
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import ViewBlogs from "./ViewBlogs.js";
 import Form from "./Form.js";
 
@@ -29,6 +32,13 @@ function Blog(props) {
         <div className={AppBarStyle.root}>
           <AppBar position="sticky">
             <Toolbar>
+              <Typography className={AppBarStyle.title}>
+                <Tooltip title="Go Back">
+                  <Link to="/" style={{ color: "inherit" }}>
+                    <BackIcon />
+                  </Link>
+                </Tooltip>
+              </Typography>
               <Typography variant="h5" className={AppBarStyle.title}>
                 Blogs
               </Typography>
@@ -62,7 +72,7 @@ function Blog(props) {
       <ViewBlogs />
 
       <ScrollTop {...props}>
-        <Fab color="secondary" size="small" aria-label="scroll back to top">
+        <Fab color="secondary" size="small">
           <KeyboardArrowUpIcon />
         </Fab>
       </ScrollTop>

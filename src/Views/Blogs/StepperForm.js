@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+
+// CSS
 import StepperStyles from "../../Styles/StepperStyles";
 
+// Components
 import {
   Stepper,
   StepLabel,
@@ -30,7 +33,7 @@ function getStepContent(step) {
 
 function FillForm() {
   const StepperStyle = StepperStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
 
   const handleNext = () => {

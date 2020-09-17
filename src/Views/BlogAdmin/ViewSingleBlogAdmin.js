@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 
-// CSS
+// CSS styling
 import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
 import LoadingStyles from "../../Styles/LoadingStyles";
 import image from "../../codeImage.jpg";
-import BackIcon from "@material-ui/icons/ArrowBackIos";
 
 // API
-import PlacementModels from "../../Models/Placements/PlacementModels";
+import BlogModels from "../../Models/Blogs/BlogModels";
 import parse from "html-react-parser";
 
-// Components
 import {
   AppBar,
   Toolbar,
@@ -28,30 +25,33 @@ import {
   ThemeProvider,
 } from "@material-ui/core";
 
-function ViewSinglePlacement(props) {
+import BackIcon from "@material-ui/icons/ArrowBackIos";
+import { Link } from "react-router-dom";
+
+function ViewSingleBlog(props) {
   const [loading, setloading] = useState(true);
   // Styling for elements
   const AppBarStyle = AppBarStyles();
   const LoadingStyle = LoadingStyles();
 
-  const [singlePlacementId, setsinglePlacementId] = useState(
-    JSON.stringify(props.history.location.state.idofplacement)
+  const [singleBlogId, setsingleBlogId] = useState(
+    JSON.stringify(props.history.location.state.idofblog)
   );
 
-  if (singlePlacementId === undefined) {
-    setsinglePlacementId(1);
+  if (singleBlogId === undefined) {
+    setsingleBlogId(1);
   }
 
-  // Getting Data of the Single Placement
-  const [singlePlacement, setsinglePlacement] = useState([]);
+  // Getting Data of the Single Blog
+  const [singleBlog, setsingleBlog] = useState([]);
 
   useEffect(() => {
-    PlacementModels.viewSinglePlacement(singlePlacementId).then((res) => {
-      setsinglePlacement(res.data);
+    BlogModels.viewSingleBlog(singleBlogId).then((res) => {
+      setsingleBlog(res.data);
       setloading(false);
-      document.title = `${singlePlacement.title}`;
+      document.title = `${singleBlog.title}`;
     });
-  }, [singlePlacementId, singlePlacement.title, loading]);
+  }, [singleBlogId, singleBlog.title, loading]);
 
   return (
     <div style={{ backgroundImage: `url(${image})`, height: "100rem" }}>
@@ -66,8 +66,8 @@ function ViewSinglePlacement(props) {
               <AppBar position="sticky">
                 <Toolbar>
                   <Typography className={AppBarStyle.title}>
-                    <Tooltip title="Go Back">
-                      <Link to="/placement" style={{ color: "inherit" }}>
+                    <Tooltip title="Go Back" aria-label="Go Back">
+                      <Link to="/blog" style={{ color: "inherit" }}>
                         <BackIcon />
                       </Link>
                     </Tooltip>
@@ -75,24 +75,25 @@ function ViewSinglePlacement(props) {
 
                   <Typography
                     variant="overline"
+                    component="h5"
                     className={AppBarStyle.title}
                   >
-                    {singlePlacement.title}
+                    {singleBlog.title}
                   </Typography>
                 </Toolbar>
               </AppBar>
             </ThemeProvider>
 
-            <Grid container spacing={3} style={{ marginTop: "8%" }}>
+            <Grid container style={{ marginTop: "8%" }}>
               <Grid item xs={12} sm={9} lg={9}>
                 <Typography variant="overline">
-                  by {singlePlacement.author}
+                  by {singleBlog.author}
                 </Typography>
                 <br />
                 <Divider />
                 <br />
                 <Typography gutterBottom variant="body1">
-                  {parse(singlePlacement.body)}
+                  {parse(singleBlog.body)}
                 </Typography>
               </Grid>
 
@@ -106,11 +107,11 @@ function ViewSinglePlacement(props) {
                       <Divider />
                       <br />
                       <Typography gutterBottom variant="subtitle1">
-                        Name: {singlePlacement.fullname}
+                        Name: {singleBlog.fullname}
                       </Typography>
 
                       <Typography gutterBottom variant="subtitle1">
-                        Email: {singlePlacement.email}
+                        Email: {singleBlog.email}
                       </Typography>
                     </CardContent>
                     <CardActions></CardActions>
@@ -125,4 +126,4 @@ function ViewSinglePlacement(props) {
   );
 }
 
-export default ViewSinglePlacement;
+export default ViewSingleBlog;
