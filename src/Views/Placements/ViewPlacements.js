@@ -57,7 +57,7 @@ function ViewPlacements(props) {
       ) : (
         <Grid container spacing={3}>
           {placements.map((placement) => (
-            <Grid item xs={12} sm={6} lg={3} key={placement.email}>
+            <Grid item xs={12} sm={6} lg={3} key={placement.id}>
               <Slide bottom>
                 <Card className={CardStyle.root} elevation={3}>
                   <CardActionArea>

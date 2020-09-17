@@ -8,7 +8,7 @@ import image from "../../codeImage.jpg";
 import BackIcon from "@material-ui/icons/ArrowBackIos";
 
 // API
-import BlogModels from "../../Models/Blogs/BlogModels";
+import PlacementModels from "../../Models/Placements/PlacementModels";
 import parse from "html-react-parser";
 
 // Components
@@ -27,31 +27,31 @@ import {
   ThemeProvider,
 } from "@material-ui/core";
 
-function ViewSingleBlogAdmin(props) {
+function ViewSinglePlacementAdmin(props) {
   const [loading, setloading] = useState(true);
   // Styling for elements
   const AppBarStyle = AppBarStyles();
   const LoadingStyle = LoadingStyles();
 
-  const [singleBlogId, setsingleBlogId] = useState(
-    JSON.stringify(props.history.location.state.idofblog)
+  const [singlePlacementId, setsinglePlacementId] = useState(
+    JSON.stringify(props.history.location.state.idofplacement)
   );
 
-  if (singleBlogId === undefined) {
-    setsingleBlogId(1);
+  if (singlePlacementId === undefined) {
+    setsinglePlacementId(1);
   }
 
-  // Getting Data of the Single Blog
-  const [singleBlog, setsingleBlog] = useState([]);
+  // Getting Data of the Single Placement
+  const [singlePlacement, setsinglePlacement] = useState([]);
   const key =
     "gAAAAABfYyrPc24Rm_-3GlzW0nzgy2kfCHevEb3KnbDEBUwnwqIrBMVhBaTxcf1PS6FgRjSDJ6o1IBcbfhTycyQFuqR3sJn_XQ==";
   useEffect(() => {
-    BlogModels.viewSingleBlogAdmin(singleBlogId, key).then((res) => {
-      setsingleBlog(res.data);
+    PlacementModels.viewSinglePlacementAdmin(singlePlacementId, key).then((res) => {
+      setsinglePlacement(res.data);
       setloading(false);
-      document.title = `${singleBlog.title}`;
+      document.title = `${singlePlacement.title}`;
     });
-  }, [singleBlogId, singleBlog.title, loading]);
+  }, [singlePlacementId, singlePlacement.title, loading]);
 
   return (
     <div style={{ backgroundImage: `url(${image})`, height: "100rem" }}>
@@ -67,14 +67,14 @@ function ViewSingleBlogAdmin(props) {
                 <Toolbar>
                   <Typography className={AppBarStyle.title}>
                     <Tooltip title="Go Back">
-                      <Link to="/blog" style={{ color: "inherit" }}>
+                      <Link to="/placement" style={{ color: "inherit" }}>
                         <BackIcon />
                       </Link>
                     </Tooltip>
                   </Typography>
 
                   <Typography variant="overline" className={AppBarStyle.title}>
-                    {singleBlog.title}
+                    {singlePlacement.title}
                   </Typography>
                 </Toolbar>
               </AppBar>
@@ -83,13 +83,13 @@ function ViewSingleBlogAdmin(props) {
             <Grid container style={{ marginTop: "8%" }}>
               <Grid item xs={12} sm={9} lg={9}>
                 <Typography variant="overline">
-                  by {singleBlog.author}
+                  by {singlePlacement.author}
                 </Typography>
                 <br />
                 <Divider />
                 <br />
                 <Typography gutterBottom variant="body1">
-                  {parse(singleBlog.body)}
+                  {parse(singlePlacement.body)}
                 </Typography>
               </Grid>
 
@@ -103,11 +103,11 @@ function ViewSingleBlogAdmin(props) {
                       <Divider />
                       <br />
                       <Typography gutterBottom variant="subtitle1">
-                        Name: {singleBlog.fullname}
+                        Name: {singlePlacement.fullname}
                       </Typography>
 
                       <Typography gutterBottom variant="subtitle1">
-                        Email: {singleBlog.email}
+                        Email: {singlePlacement.email}
                       </Typography>
                     </CardContent>
                   </CardActionArea>
@@ -121,4 +121,4 @@ function ViewSingleBlogAdmin(props) {
   );
 }
 
-export default ViewSingleBlogAdmin;
+export default ViewSinglePlacementAdmin;

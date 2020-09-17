@@ -10,7 +10,7 @@ import logo from "../../o1_logo.jpg";
 import Slide from "react-reveal";
 
 // API
-import BlogModels from "../../Models/Blogs/BlogModels";
+import PlacementModels from "../../Models/Placements/PlacementModels";
 
 // Components
 import {
@@ -28,26 +28,26 @@ import {
   LinearProgress,
 } from "@material-ui/core";
 
-function ViewBlogsAdmin(props) {
+function ViewPlacementsAdmin(props) {
   // CSS for styling
   const CardStyle = CardStyles();
   const LoadingStyle = LoadingStyles();
 
-  // Get the blog data from server
+  // Get the placement data from server
   const key =
     "gAAAAABfYyrPc24Rm_-3GlzW0nzgy2kfCHevEb3KnbDEBUwnwqIrBMVhBaTxcf1PS6FgRjSDJ6o1IBcbfhTycyQFuqR3sJn_XQ==";
   const [loading, setloading] = useState(true);
-  const [blogs, setblogs] = useState([]);
-  const viewAllBlogs = () => {
-    BlogModels.viewAllBlogsAdmin(key).then((res) => {
-      setblogs(res.data);
+  const [placements, setplacements] = useState([]);
+  const viewAllPlacements = () => {
+    PlacementModels.viewAllPlacementsAdmin(key).then((res) => {
+      setplacements(res.data);
       setloading(false);
     });
   };
 
   useEffect(() => {
-    document.title = "Admin Blogs";
-    viewAllBlogs();
+    document.title = "Admin Placements";
+    viewAllPlacements();
   }, []);
 
   return (
@@ -58,8 +58,8 @@ function ViewBlogsAdmin(props) {
         </div>
       ) : (
         <Grid container spacing={3}>
-          {blogs.map((blog) => (
-            <Grid item xs={12} sm={6} lg={3} key={blog.id}>
+          {placements.map((placement) => (
+            <Grid item xs={12} sm={6} lg={3} key={placement.id}>
               <Slide bottom>
                 <Card className={CardStyle.root} elevation={3}>
                   <CardActionArea>
@@ -72,7 +72,7 @@ function ViewBlogsAdmin(props) {
                     />
                     <CardContent>
                       <Typography gutterBottom variant="h5" noWrap>
-                        {blog.title}
+                        {placement.title}
                       </Typography>
 
                       <Divider />
@@ -82,23 +82,23 @@ function ViewBlogsAdmin(props) {
                         color="textSecondary"
                         noWrap
                       >
-                        Author: {blog.author}
+                        Author: {placement.author}
                       </Typography>
                     </CardContent>
                     <CardActions>
                       <Link
                         to={{
-                          pathname: `singleblogAdmin/${blog.id}`,
-                          state: { idofblog: blog.id },
+                          pathname: `singleplacementAdmin/${placement.id}`,
+                          state: { idofplacement: placement.id },
                         }}
                         color="inherit"
                         style={{ textDecoration: "none" }}
                       >
                         <Chip
                           avatar={
-                            <Avatar>{blog.author.substring(0, 1)}</Avatar>
+                            <Avatar>{placement.author.substring(0, 1)}</Avatar>
                           }
-                          label="Go to Blog"
+                          label="Go to Placement"
                           clickable
                           color="primary"
                         />
@@ -115,4 +115,4 @@ function ViewBlogsAdmin(props) {
   );
 }
 
-export default ViewBlogsAdmin;
+export default ViewPlacementsAdmin;

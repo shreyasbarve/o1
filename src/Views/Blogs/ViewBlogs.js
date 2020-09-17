@@ -57,7 +57,7 @@ function ViewBlogs(props) {
       ) : (
         <Grid container spacing={3}>
           {blogs.map((blog) => (
-            <Grid item xs={12} sm={6} lg={3} key={blog.email}>
+            <Grid item xs={12} sm={6} lg={3} key={blog.id}>
               <Slide bottom>
                 <Card className={CardStyle.root} elevation={3}>
                   <CardActionArea>

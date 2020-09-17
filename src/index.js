@@ -9,10 +9,12 @@ import { Route, Router, Redirect, Switch } from "react-router-dom";
 import Blog from "./Views/Blogs/Blog";
 import ViewSingleBlog from "./Views/Blogs/ViewSingleBlog";
 import BlogAdmin from "./Views/BlogAdmin/BlogAdmin";
-import ViewSingleBlogAdmin from "./Views/BlogAdmin/ViewBlogsAdmin";
+import ViewSingleBlogAdmin from "./Views/BlogAdmin/ViewSingleBlogAdmin";
 
 import Placement from "./Views/Placements/Placement";
 import ViewSinglePlacement from "./Views/Placements/ViewSinglePlacement";
+import PlacementAdmin from "./Views/PlacementsAdmin/PlacementAdmin";
+import ViewSinglePlacementAdmin from "./Views/PlacementsAdmin/ViewSinglePlacementAdmin";
 
 const hist = createBrowserHistory();
 
@@ -26,7 +28,11 @@ ReactDOM.render(
       <Route exact path="/singleblog/:id" component={ViewSingleBlog} />
 
       <Route exact path="/blogAdmin" component={BlogAdmin} />
-      <Route exact path="/singleblogAdmin/:id" component={ViewSingleBlogAdmin} />
+      <Route
+        exact
+        path="/singleblogAdmin/:id"
+        component={ViewSingleBlogAdmin}
+      />
 
       {/* Placements */}
       <Route exact path="/placement" component={Placement} />
@@ -35,6 +41,14 @@ ReactDOM.render(
         path="/singleplacement/:id"
         component={ViewSinglePlacement}
       />
+
+      <Route exact path="/placementAdmin" component={PlacementAdmin} />
+      <Route
+        exact
+        path="/singleplacementAdmin/:id"
+        component={ViewSinglePlacementAdmin}
+      />
+
       <Redirect from="*" to="/" />
     </Switch>
   </Router>,

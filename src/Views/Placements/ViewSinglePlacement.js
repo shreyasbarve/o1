@@ -23,7 +23,6 @@ import {
   Card,
   CardActionArea,
   CardContent,
-  CardActions,
   LinearProgress,
   ThemeProvider,
 } from "@material-ui/core";
@@ -113,7 +112,6 @@ function ViewSinglePlacement(props) {
                         Email: {singlePlacement.email}
                       </Typography>
                     </CardContent>
-                    <CardActions></CardActions>
                   </CardActionArea>
                 </Card>
               </Grid>

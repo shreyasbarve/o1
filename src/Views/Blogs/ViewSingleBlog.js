@@ -23,7 +23,6 @@ import {
   Card,
   CardActionArea,
   CardContent,
-  CardActions,
   LinearProgress,
   ThemeProvider,
 } from "@material-ui/core";
@@ -110,7 +109,6 @@ function ViewSingleBlog(props) {
                         Email: {singleBlog.email}
                       </Typography>
                     </CardContent>
-                    <CardActions></CardActions>
                   </CardActionArea>
                 </Card>
               </Grid>

@@ -28,6 +28,7 @@ function App() {
             <Link to="/blog" style={{ textDecoration: "none" }}>
               <Button>Blogs</Button>
             </Link>
+
             <Link to="/blogAdmin" style={{ textDecoration: "none" }}>
               <Button>Admin Blog</Button>
             </Link>
@@ -35,6 +36,11 @@ function App() {
             <Link to="/placement" style={{ textDecoration: "none" }}>
               <Button>Placements</Button>
             </Link>
+
+            <Link to="/placementAdmin" style={{ textDecoration: "none" }}>
+              <Button>Admin Placement</Button>
+            </Link>
+
           </Toolbar>
         </AppBar>
         <h2>ADMIN key:</h2>

@@ -4,28 +4,28 @@ export const BASE_URL = "https://o1codingclub.herokuapp.com/placement";
 
 const PlacementModels = {
   viewAllPlacements: async () => {
-    return await axios.get(`${BASE_URL}`);
+    return await axios.get(`${BASE_URL}/`);
   },
-  viewAllPlacementsAdmin: async (key) => {
-    return await axios.post(`${BASE_URL}`, key)
+  viewAllPlacementsAdmin: async (hashid) => {
+    return await axios.post(`${BASE_URL}/`, { key: hashid })
   },
-  approvePlacement: async (id, key) => {
-    return await axios.post(`${BASE_URL}/approve/${id}`, key)
+  approvePlacement: async (id, hashid) => {
+    return await axios.post(`${BASE_URL}/approve/${id}`, { key: hashid })
   },
   createPlacement: async (userData) => {
     return await axios.post(`${BASE_URL}/create/`, userData);
   },
-  deletePlacement: async (id, key) => {
-    return await axios.post(`${BASE_URL}/delete/${id}`, key)
+  deletePlacement: async (id, hashid) => {
+    return await axios.post(`${BASE_URL}/delete/${id}`, { key: hashid })
   },
   requestPlacement: async (userData) => {
     return  await axios.post(`${BASE_URL}/requestkey/`, userData)
   },
   viewSinglePlacement: async (id) => {
-    return await axios.get(`${BASE_URL}/${id}`);
+    return await axios.get(`${BASE_URL}/${id}/`);
   },
-  viewSinglePlacementAdmin: async (id, key) => {
-    return await axios.post(`${BASE_URL}/${id}`, key);
+  viewSinglePlacementAdmin: async (id, hashid) => {
+    return await axios.post(`${BASE_URL}/${id}/`, { key: hashid });
   },
 };
 

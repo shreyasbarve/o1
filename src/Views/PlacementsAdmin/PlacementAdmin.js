@@ -17,9 +17,9 @@ import {
   Tooltip
 } from "@material-ui/core";
 import ScrollTop from "../../Components/ScrollTop";
-import ViewBlogsAdmin from "./ViewBlogsAdmin.js";
+import ViewPlacementsAdmin from "./ViewPlacementsAdmin.js";
 
-function BlogAdmin(props) {
+function PlacementAdmin(props) {
   // Styling for elements
   const AppBarStyle = AppBarStyles();
 
@@ -38,7 +38,7 @@ function BlogAdmin(props) {
                 </Tooltip>
               </Typography>
               <Typography variant="h5" className={AppBarStyle.title}>
-                Admin Blogs
+                Admin Placements
               </Typography>
 
               <Typography>
@@ -52,12 +52,12 @@ function BlogAdmin(props) {
 
       <Container fixed id="back-to-top-anchor">
         <Typography gutterBottom variant="h4">
-          This is the page where blogs of all users are displayed
+          This is the page where placements of all users are displayed
         </Typography>
       </Container>
 
-      {/* Display Admin Blogs */}
-      <ViewBlogsAdmin />
+      {/* Display Admin Placements */}
+      <ViewPlacementsAdmin />
 
       <ScrollTop {...props}>
         <Fab color="secondary" size="small">
@@ -68,4 +68,4 @@ function BlogAdmin(props) {
   );
 }
 
-export default BlogAdmin;
+export default PlacementAdmin;
