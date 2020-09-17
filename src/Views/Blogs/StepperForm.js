@@ -40,13 +40,13 @@ function FillForm() {
     setActiveStep(0);
   };
   return (
-    <React.Fragment className={StepperStyle.root}>
+    <div className={StepperStyle.root}>
       <Stepper activeStep={activeStep} orientation="vertical">
         {steps.map((label, index) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
             <StepContent>
-              <Typography>{getStepContent(index)}</Typography>
+              {getStepContent(index)}
               <div className={StepperStyle.actionsContainer}>
                 <div>
                   <Button disabled={activeStep === 0} onClick={handleBack} className={StepperStyle.button}>
@@ -69,7 +69,7 @@ function FillForm() {
           </Button>
         </Paper>
       )}
-    </React.Fragment>
+    </div>
   );
 }
 

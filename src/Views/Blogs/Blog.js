@@ -43,9 +43,7 @@ function Blog(props) {
       </ThemeProvider>
 
       <Container fixed style={{ marginTop: "3%", marginBottom: "3%" }} id="back-to-top-anchor">
-        <Typography className={AppBarStyle.title}>
-          <Form />
-        </Typography>
+        <Form />
       </Container>
 
       <Container fixed>
