@@ -36,8 +36,7 @@ function ViewBlogsAdmin(props) {
   const LoadingStyle = LoadingStyles();
 
   // Get the blog data from server
-  const key =
-    "gAAAAABfYyrPc24Rm_-3GlzW0nzgy2kfCHevEb3KnbDEBUwnwqIrBMVhBaTxcf1PS6FgRjSDJ6o1IBcbfhTycyQFuqR3sJn_XQ==";
+  const key = "gAAAAABfYyrPc24Rm_-3GlzW0nzgy2kfCHevEb3KnbDEBUwnwqIrBMVhBaTxcf1PS6FgRjSDJ6o1IBcbfhTycyQFuqR3sJn_XQ==";
   const [loading, setloading] = useState(true);
   const [blogs, setblogs] = useState([]);
   const viewAllBlogs = () => {
@@ -69,13 +68,7 @@ function ViewBlogsAdmin(props) {
               <Slide bottom>
                 <Card className={CardStyle.root} elevation={3}>
                   <CardActionArea>
-                    <CardMedia
-                      component="img"
-                      alt="Some Image"
-                      image={logo}
-                      title="Image Title"
-                      className={CardStyle.media}
-                    />
+                    <CardMedia component="img" alt="Some Image" image={logo} title="Image Title" className={CardStyle.media} />
                     <CardContent>
                       <Typography gutterBottom variant="h5" noWrap>
                         {blog.title}
@@ -83,11 +76,7 @@ function ViewBlogsAdmin(props) {
 
                       <Divider />
 
-                      <Typography
-                        variant="overline"
-                        color="textSecondary"
-                        noWrap
-                      >
+                      <Typography variant="overline" color="textSecondary" noWrap>
                         Author: {blog.author}
                       </Typography>
                     </CardContent>
@@ -100,21 +89,9 @@ function ViewBlogsAdmin(props) {
                         color="inherit"
                         style={{ textDecoration: "none", flex: "1" }}
                       >
-                        <Chip
-                          avatar={
-                            <Avatar>{blog.author.substring(0, 1)}</Avatar>
-                          }
-                          label="Go to Blog"
-                          clickable
-                          color="primary"
-                        />
+                        <Chip avatar={<Avatar>{blog.author.substring(0, 1)}</Avatar>} label="Go to Blog" clickable color="primary" />
                       </Link>
-                      <Button
-                        variant="outlined"
-                        startIcon={<Delete />}
-                        color="secondary"
-                        onClick={() => deleteBlog(blog.id)}
-                      >
+                      <Button variant="outlined" startIcon={<Delete />} color="secondary" onClick={() => deleteBlog(blog.id)}>
                         Delete
                       </Button>
                     </CardActions>

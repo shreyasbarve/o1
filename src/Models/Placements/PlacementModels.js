@@ -7,19 +7,19 @@ const PlacementModels = {
     return await axios.get(`${BASE_URL}/`);
   },
   viewAllPlacementsAdmin: async (hashid) => {
-    return await axios.post(`${BASE_URL}/`, { key: hashid })
+    return await axios.post(`${BASE_URL}/`, { key: hashid });
   },
   approvePlacement: async (id, hashid) => {
-    return await axios.post(`${BASE_URL}/approve/${id}`, { key: hashid })
+    return await axios.post(`${BASE_URL}/approve/${id}`, { key: hashid });
   },
   createPlacement: async (userData) => {
     return await axios.post(`${BASE_URL}/create/`, userData);
   },
   deletePlacement: async (id, hashid) => {
-    return await axios.post(`${BASE_URL}/delete/${id}`, { key: hashid })
+    return await axios.post(`${BASE_URL}/delete/${id}`, { key: hashid });
   },
   requestPlacement: async (userData) => {
-    return  await axios.post(`${BASE_URL}/requestkey/`, userData)
+    return await axios.post(`${BASE_URL}/requestkey/`, userData);
   },
   viewSinglePlacement: async (id) => {
     return await axios.get(`${BASE_URL}/${id}/`);

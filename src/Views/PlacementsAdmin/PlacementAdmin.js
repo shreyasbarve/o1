@@ -5,16 +5,7 @@ import { Link } from "react-router-dom";
 import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
 import { ArrowBackIos, KeyboardArrowUp } from "@material-ui/icons";
 
-import {
-  AppBar,
-  Toolbar,
-  Button,
-  Typography,
-  Container,
-  Fab,
-  ThemeProvider,
-  Tooltip
-} from "@material-ui/core";
+import { AppBar, Toolbar, Button, Typography, Container, Fab, ThemeProvider, Tooltip } from "@material-ui/core";
 import ScrollTop from "../../Components/ScrollTop";
 import ViewPlacementsAdmin from "./ViewPlacementsAdmin.js";
 

@@ -7,16 +7,7 @@ import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
 import { ArrowBackIos, KeyboardArrowUp } from "@material-ui/icons";
 
 // Components
-import {
-  AppBar,
-  Toolbar,
-  Button,
-  Typography,
-  Container,
-  Fab,
-  ThemeProvider,
-  Tooltip,
-} from "@material-ui/core";
+import { AppBar, Toolbar, Button, Typography, Container, Fab, ThemeProvider, Tooltip } from "@material-ui/core";
 import ViewBlogs from "./ViewBlogs.js";
 import Form from "./Form.js";
 
@@ -51,11 +42,7 @@ function Blog(props) {
         </div>
       </ThemeProvider>
 
-      <Container
-        fixed
-        style={{ marginTop: "3%", marginBottom: "3%" }}
-        id="back-to-top-anchor"
-      >
+      <Container fixed style={{ marginTop: "3%", marginBottom: "3%" }} id="back-to-top-anchor">
         <Typography className={AppBarStyle.title}>
           <Form />
         </Typography>

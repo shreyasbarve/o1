@@ -18,12 +18,7 @@ function CreatePlacement() {
       [{ header: "1" }, { header: "2" }, { font: [] }],
       [{ size: [] }],
       ["bold", "italic", "underline", "strike", "blockquote"],
-      [
-        { list: "ordered" },
-        { list: "bullet" },
-        { indent: "-1" },
-        { indent: "+1" },
-      ],
+      [{ list: "ordered" }, { list: "bullet" }, { indent: "-1" }, { indent: "+1" }],
       ["link", "image", "video"],
       ["clean"],
     ],
@@ -56,7 +51,7 @@ function CreatePlacement() {
   });
   const postPlacement = async (e) => {
     e.preventDefault();
-    PlacementModels.createPlacement(createPlacement).then(res => console.log(res.data))
+    PlacementModels.createPlacement(createPlacement).then((res) => console.log(res.data));
     setcreatePlacement({
       author: "",
       title: "",
@@ -155,11 +150,7 @@ function CreatePlacement() {
             })
           }
         />
-        <Typography
-          variant="body1"
-          color="textSecondary"
-          style={{marginTop: "2%"}}
-        >
+        <Typography variant="body1" color="textSecondary" style={{ marginTop: "2%" }}>
           Body
         </Typography>
         <ReactQuill
@@ -176,12 +167,7 @@ function CreatePlacement() {
           }
           value={createPlacement.body}
         />
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          style={{ marginTop: "2%", marginBottom: "2%" }}
-        >
+        <Button type="submit" variant="contained" color="primary" style={{ marginTop: "2%", marginBottom: "2%" }}>
           Create
         </Button>
       </form>

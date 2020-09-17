@@ -5,16 +5,7 @@ import { Link } from "react-router-dom";
 import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
 import { ArrowBackIos, KeyboardArrowUp } from "@material-ui/icons";
 
-import {
-  AppBar,
-  Toolbar,
-  Button,
-  Typography,
-  Container,
-  Fab,
-  ThemeProvider,
-  Tooltip,
-} from "@material-ui/core";
+import { AppBar, Toolbar, Button, Typography, Container, Fab, ThemeProvider, Tooltip } from "@material-ui/core";
 import ScrollTop from "../../Components/ScrollTop";
 import Form from "./Form.js";
 import ViewPlacements from "./ViewPlacements";
@@ -50,11 +41,7 @@ function Placement(props) {
         </div>
       </ThemeProvider>
 
-      <Container
-        fixed
-        style={{ marginTop: "3%", marginBottom: "3%" }}
-        id="back-to-top-anchor"
-      >
+      <Container fixed style={{ marginTop: "3%", marginBottom: "3%" }} id="back-to-top-anchor">
         <Typography className={AppBarStyle.title}>
           <Form />
         </Typography>

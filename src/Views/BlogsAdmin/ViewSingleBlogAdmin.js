@@ -33,9 +33,7 @@ function ViewSingleBlogAdmin(props) {
   const AppBarStyle = AppBarStyles();
   const LoadingStyle = LoadingStyles();
 
-  const [singleBlogId, setsingleBlogId] = useState(
-    JSON.stringify(props.history.location.state.idofblog)
-  );
+  const [singleBlogId, setsingleBlogId] = useState(JSON.stringify(props.history.location.state.idofblog));
 
   if (singleBlogId === undefined) {
     setsingleBlogId(1);
@@ -43,8 +41,7 @@ function ViewSingleBlogAdmin(props) {
 
   // Getting Data of the Single Blog
   const [singleBlog, setsingleBlog] = useState([]);
-  const key =
-    "gAAAAABfYyrPc24Rm_-3GlzW0nzgy2kfCHevEb3KnbDEBUwnwqIrBMVhBaTxcf1PS6FgRjSDJ6o1IBcbfhTycyQFuqR3sJn_XQ==";
+  const key = "gAAAAABfYyrPc24Rm_-3GlzW0nzgy2kfCHevEb3KnbDEBUwnwqIrBMVhBaTxcf1PS6FgRjSDJ6o1IBcbfhTycyQFuqR3sJn_XQ==";
   useEffect(() => {
     BlogModels.viewSingleBlogAdmin(singleBlogId, key).then((res) => {
       setsingleBlog(res.data);
@@ -82,9 +79,7 @@ function ViewSingleBlogAdmin(props) {
 
             <Grid container style={{ marginTop: "8%" }}>
               <Grid item xs={12} sm={9} lg={9}>
-                <Typography variant="overline">
-                  by {singleBlog.author}
-                </Typography>
+                <Typography variant="overline">by {singleBlog.author}</Typography>
                 <br />
                 <Divider />
                 <br />

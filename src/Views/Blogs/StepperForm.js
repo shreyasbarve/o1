@@ -4,15 +4,7 @@ import React, { useState } from "react";
 import StepperStyles from "../../Styles/StepperStyles";
 
 // Components
-import {
-  Stepper,
-  StepLabel,
-  StepContent,
-  Typography,
-  Button,
-  Paper,
-  Step,
-} from "@material-ui/core";
+import { Stepper, StepLabel, StepContent, Typography, Button, Paper, Step } from "@material-ui/core";
 import RequestBlog from "./RequestBlog";
 import CreateBlog from "./CreateBlog";
 
@@ -57,19 +49,10 @@ function FillForm() {
               <Typography>{getStepContent(index)}</Typography>
               <div className={StepperStyle.actionsContainer}>
                 <div>
-                  <Button
-                    disabled={activeStep === 0}
-                    onClick={handleBack}
-                    className={StepperStyle.button}
-                  >
+                  <Button disabled={activeStep === 0} onClick={handleBack} className={StepperStyle.button}>
                     Back
                   </Button>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleNext}
-                    className={StepperStyle.button}
-                  >
+                  <Button variant="contained" color="primary" onClick={handleNext} className={StepperStyle.button}>
                     {activeStep === steps.length - 1 ? "Finish" : "Next"}
                   </Button>
                 </div>

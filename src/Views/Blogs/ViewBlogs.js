@@ -61,13 +61,7 @@ function ViewBlogs(props) {
               <Slide bottom>
                 <Card className={CardStyle.root} elevation={3}>
                   <CardActionArea>
-                    <CardMedia
-                      component="img"
-                      alt="Some Image"
-                      image={logo}
-                      title="Image Title"
-                      className={CardStyle.media}
-                    />
+                    <CardMedia component="img" alt="Some Image" image={logo} title="Image Title" className={CardStyle.media} />
                     <CardContent>
                       <Typography gutterBottom variant="h5" noWrap>
                         {blog.title}
@@ -75,11 +69,7 @@ function ViewBlogs(props) {
 
                       <Divider />
 
-                      <Typography
-                        variant="overline"
-                        color="textSecondary"
-                        noWrap
-                      >
+                      <Typography variant="overline" color="textSecondary" noWrap>
                         Author: {blog.author}
                       </Typography>
                     </CardContent>
@@ -92,14 +82,7 @@ function ViewBlogs(props) {
                         color="inherit"
                         style={{ textDecoration: "none" }}
                       >
-                        <Chip
-                          avatar={
-                            <Avatar>{blog.author.substring(0, 1)}</Avatar>
-                          }
-                          label="Go to Blog"
-                          clickable
-                          color="primary"
-                        />
+                        <Chip avatar={<Avatar>{blog.author.substring(0, 1)}</Avatar>} label="Go to Blog" clickable color="primary" />
                       </Link>
                     </CardActions>
                   </CardActionArea>

@@ -18,12 +18,7 @@ function CreateBlog() {
       [{ header: "1" }, { header: "2" }, { font: [] }],
       [{ size: [] }],
       ["bold", "italic", "underline", "strike", "blockquote"],
-      [
-        { list: "ordered" },
-        { list: "bullet" },
-        { indent: "-1" },
-        { indent: "+1" },
-      ],
+      [{ list: "ordered" }, { list: "bullet" }, { indent: "-1" }, { indent: "+1" }],
       ["link", "image", "video"],
       ["clean"],
     ],
@@ -155,11 +150,7 @@ function CreateBlog() {
             })
           }
         />
-        <Typography
-          variant="body1"
-          color="textSecondary"
-          style={{marginTop: "2%"}}
-        >
+        <Typography variant="body1" color="textSecondary" style={{ marginTop: "2%" }}>
           Body
         </Typography>
         <ReactQuill
@@ -176,12 +167,7 @@ function CreateBlog() {
           }
           value={createBlog.body}
         />
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          style={{ marginTop: "2%", marginBottom: "2%" }}
-        >
+        <Button type="submit" variant="contained" color="primary" style={{ marginTop: "2%", marginBottom: "2%" }}>
           Create
         </Button>
       </form>

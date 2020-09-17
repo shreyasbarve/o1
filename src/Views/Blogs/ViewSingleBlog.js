@@ -33,9 +33,7 @@ function ViewSingleBlog(props) {
   const AppBarStyle = AppBarStyles();
   const LoadingStyle = LoadingStyles();
 
-  const [singleBlogId, setsingleBlogId] = useState(
-    JSON.stringify(props.history.location.state.idofblog)
-  );
+  const [singleBlogId, setsingleBlogId] = useState(JSON.stringify(props.history.location.state.idofblog));
 
   if (singleBlogId === undefined) {
     setsingleBlogId(1);
@@ -81,9 +79,7 @@ function ViewSingleBlog(props) {
 
             <Grid container style={{ marginTop: "8%" }}>
               <Grid item xs={12} sm={9} lg={9}>
-                <Typography variant="overline">
-                  by {singleBlog.author}
-                </Typography>
+                <Typography variant="overline">by {singleBlog.author}</Typography>
                 <br />
                 <Divider />
                 <br />

@@ -11,7 +11,7 @@ export const AppbarTheme = createMuiTheme({
 const AppBarStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    marginBottom: "2%"
+    marginBottom: "2%",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -21,7 +21,7 @@ const AppBarStyles = makeStyles((theme) => ({
   },
   fab: {
     margin: theme.spacing(2),
-  }
+  },
 }));
 
 export default AppBarStyles;

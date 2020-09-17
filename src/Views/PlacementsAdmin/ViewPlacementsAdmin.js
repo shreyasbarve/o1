@@ -27,7 +27,7 @@ import {
   Chip,
   Avatar,
   LinearProgress,
-  Button
+  Button,
 } from "@material-ui/core";
 
 function ViewPlacementsAdmin(props) {
@@ -36,8 +36,7 @@ function ViewPlacementsAdmin(props) {
   const LoadingStyle = LoadingStyles();
 
   // Get the placement data from server
-  const key =
-    "gAAAAABfYyrPc24Rm_-3GlzW0nzgy2kfCHevEb3KnbDEBUwnwqIrBMVhBaTxcf1PS6FgRjSDJ6o1IBcbfhTycyQFuqR3sJn_XQ==";
+  const key = "gAAAAABfYyrPc24Rm_-3GlzW0nzgy2kfCHevEb3KnbDEBUwnwqIrBMVhBaTxcf1PS6FgRjSDJ6o1IBcbfhTycyQFuqR3sJn_XQ==";
   const [loading, setloading] = useState(true);
   const [placements, setplacements] = useState([]);
   const viewAllPlacements = () => {
@@ -48,9 +47,8 @@ function ViewPlacementsAdmin(props) {
   };
 
   const deletePlacement = (placementid) => {
-    PlacementModels.deletePlacement(placementid , key);
-  }
-  
+    PlacementModels.deletePlacement(placementid, key);
+  };
 
   useEffect(() => {
     document.title = "Admin Placements";
@@ -70,13 +68,7 @@ function ViewPlacementsAdmin(props) {
               <Slide bottom>
                 <Card className={CardStyle.root} elevation={3}>
                   <CardActionArea>
-                    <CardMedia
-                      component="img"
-                      alt="Some Image"
-                      image={logo}
-                      title="Image Title"
-                      className={CardStyle.media}
-                    />
+                    <CardMedia component="img" alt="Some Image" image={logo} title="Image Title" className={CardStyle.media} />
                     <CardContent>
                       <Typography gutterBottom variant="h5" noWrap>
                         {placement.title}
@@ -84,11 +76,7 @@ function ViewPlacementsAdmin(props) {
 
                       <Divider />
 
-                      <Typography
-                        variant="overline"
-                        color="textSecondary"
-                        noWrap
-                      >
+                      <Typography variant="overline" color="textSecondary" noWrap>
                         Author: {placement.author}
                       </Typography>
                     </CardContent>
@@ -101,16 +89,11 @@ function ViewPlacementsAdmin(props) {
                         color="inherit"
                         style={{ textDecoration: "none", flex: "1" }}
                       >
-                        <Chip
-                          avatar={
-                            <Avatar>{placement.author.substring(0, 1)}</Avatar>
-                          }
-                          label="Go to Placement"
-                          clickable
-                          color="primary"
-                        />
+                        <Chip avatar={<Avatar>{placement.author.substring(0, 1)}</Avatar>} label="Go to Placement" clickable color="primary" />
                       </Link>
-                      <Button variant="outlined" startIcon={<Delete />} color="secondary" onClick={() => deletePlacement(placement.id)}>Delete</Button>
+                      <Button variant="outlined" startIcon={<Delete />} color="secondary" onClick={() => deletePlacement(placement.id)}>
+                        Delete
+                      </Button>
                     </CardActions>
                   </CardActionArea>
                 </Card>

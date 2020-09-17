@@ -33,9 +33,7 @@ function ViewSinglePlacementAdmin(props) {
   const AppBarStyle = AppBarStyles();
   const LoadingStyle = LoadingStyles();
 
-  const [singlePlacementId, setsinglePlacementId] = useState(
-    JSON.stringify(props.history.location.state.idofplacement)
-  );
+  const [singlePlacementId, setsinglePlacementId] = useState(JSON.stringify(props.history.location.state.idofplacement));
 
   if (singlePlacementId === undefined) {
     setsinglePlacementId(1);
@@ -43,16 +41,13 @@ function ViewSinglePlacementAdmin(props) {
 
   // Getting Data of the Single Placement
   const [singlePlacement, setsinglePlacement] = useState([]);
-  const key =
-    "gAAAAABfYyrPc24Rm_-3GlzW0nzgy2kfCHevEb3KnbDEBUwnwqIrBMVhBaTxcf1PS6FgRjSDJ6o1IBcbfhTycyQFuqR3sJn_XQ==";
+  const key = "gAAAAABfYyrPc24Rm_-3GlzW0nzgy2kfCHevEb3KnbDEBUwnwqIrBMVhBaTxcf1PS6FgRjSDJ6o1IBcbfhTycyQFuqR3sJn_XQ==";
   useEffect(() => {
-    PlacementModels.viewSinglePlacementAdmin(singlePlacementId, key).then(
-      (res) => {
-        setsinglePlacement(res.data);
-        setloading(false);
-        document.title = `${singlePlacement.title}`;
-      }
-    );
+    PlacementModels.viewSinglePlacementAdmin(singlePlacementId, key).then((res) => {
+      setsinglePlacement(res.data);
+      setloading(false);
+      document.title = `${singlePlacement.title}`;
+    });
   }, [singlePlacementId, singlePlacement.title, loading]);
 
   return (
@@ -84,9 +79,7 @@ function ViewSinglePlacementAdmin(props) {
 
             <Grid container style={{ marginTop: "8%" }}>
               <Grid item xs={12} sm={9} lg={9}>
-                <Typography variant="overline">
-                  by {singlePlacement.author}
-                </Typography>
+                <Typography variant="overline">by {singlePlacement.author}</Typography>
                 <br />
                 <Divider />
                 <br />

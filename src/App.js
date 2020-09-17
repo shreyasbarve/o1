@@ -1,13 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Button,
-  ThemeProvider,
-} from "@material-ui/core";
+import { AppBar, Toolbar, Typography, Button, ThemeProvider } from "@material-ui/core";
 
 // CSS styling
 import AppBarStyles, { AppbarTheme } from "./Styles/AppBarStyles";
@@ -40,13 +34,10 @@ function App() {
             <Link to="/placementAdmin" style={{ textDecoration: "none" }}>
               <Button>Admin Placement</Button>
             </Link>
-
           </Toolbar>
         </AppBar>
         <h2>ADMIN key:</h2>
-        <h4>
-          gAAAAABfYyrPc24Rm_-3GlzW0nzgy2kfCHevEb3KnbDEBUwnwqIrBMVhBaTxcf1PS6FgRjSDJ6o1IBcbfhTycyQFuqR3sJn_XQ==
-        </h4>
+        <h4>gAAAAABfYyrPc24Rm_-3GlzW0nzgy2kfCHevEb3KnbDEBUwnwqIrBMVhBaTxcf1PS6FgRjSDJ6o1IBcbfhTycyQFuqR3sJn_XQ==</h4>
       </div>
     </ThemeProvider>
   );

@@ -27,8 +27,7 @@ function RequestBlog() {
   return (
     <>
       <Typography variant="button" gutterBottom>
-        Fill up the request form. Ensure that all the details are correct. You
-        will be contacted from the admin
+        Fill up the request form. Ensure that all the details are correct. You will be contacted from the admin
       </Typography>
       <form onSubmit={postBlog} noValidate autoComplete="off">
         <TextField
@@ -96,7 +95,7 @@ function RequestBlog() {
             })
           }
         />
-        <Button type="submit" variant="contained" color="primary" style={{marginTop: "2%", marginBottom: "2%"}}>
+        <Button type="submit" variant="contained" color="primary" style={{ marginTop: "2%", marginBottom: "2%" }}>
           Request
         </Button>
       </form>

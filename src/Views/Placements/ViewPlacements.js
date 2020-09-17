@@ -61,13 +61,7 @@ function ViewPlacements(props) {
               <Slide bottom>
                 <Card className={CardStyle.root} elevation={3}>
                   <CardActionArea>
-                    <CardMedia
-                      component="img"
-                      alt="Some Image"
-                      image={logo}
-                      title="Image Title"
-                      className={CardStyle.media}
-                    />
+                    <CardMedia component="img" alt="Some Image" image={logo} title="Image Title" className={CardStyle.media} />
                     <CardContent>
                       <Typography gutterBottom variant="h5" noWrap>
                         {placement.title}
@@ -75,11 +69,7 @@ function ViewPlacements(props) {
 
                       <Divider />
 
-                      <Typography
-                        variant="overline"
-                        color="textSecondary"
-                        noWrap
-                      >
+                      <Typography variant="overline" color="textSecondary" noWrap>
                         Author: {placement.author}
                       </Typography>
                     </CardContent>
@@ -92,14 +82,7 @@ function ViewPlacements(props) {
                         color="inherit"
                         style={{ textDecoration: "none" }}
                       >
-                        <Chip
-                          avatar={
-                            <Avatar>{placement.author.substring(0, 1)}</Avatar>
-                          }
-                          label="Go to placement"
-                          clickable
-                          color="primary"
-                        />
+                        <Chip avatar={<Avatar>{placement.author.substring(0, 1)}</Avatar>} label="Go to placement" clickable color="primary" />
                       </Link>
                     </CardActions>
                   </CardActionArea>

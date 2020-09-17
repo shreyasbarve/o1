@@ -28,26 +28,14 @@ ReactDOM.render(
       <Route exact path="/singleblog/:id" component={ViewSingleBlog} />
 
       <Route exact path="/blogAdmin" component={BlogAdmin} />
-      <Route
-        exact
-        path="/singleblogAdmin/:id"
-        component={ViewSingleBlogAdmin}
-      />
+      <Route exact path="/singleblogAdmin/:id" component={ViewSingleBlogAdmin} />
 
       {/* Placements */}
       <Route exact path="/placement" component={Placement} />
-      <Route
-        exact
-        path="/singleplacement/:id"
-        component={ViewSinglePlacement}
-      />
+      <Route exact path="/singleplacement/:id" component={ViewSinglePlacement} />
 
       <Route exact path="/placementAdmin" component={PlacementAdmin} />
-      <Route
-        exact
-        path="/singleplacementAdmin/:id"
-        component={ViewSinglePlacementAdmin}
-      />
+      <Route exact path="/singleplacementAdmin/:id" component={ViewSinglePlacementAdmin} />
 
       <Redirect from="*" to="/" />
     </Switch>
