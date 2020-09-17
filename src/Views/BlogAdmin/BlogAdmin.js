@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 
 // CSS
 import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
-import BackIcon from "@material-ui/icons/ArrowBackIos";
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import { ArrowBackIos, KeyboardArrowUp } from "@material-ui/icons";
 
 import {
   AppBar,
@@ -14,7 +13,7 @@ import {
   Container,
   Fab,
   ThemeProvider,
-  Tooltip
+  Tooltip,
 } from "@material-ui/core";
 import ScrollTop from "../../Components/ScrollTop";
 import ViewBlogsAdmin from "./ViewBlogsAdmin.js";
@@ -33,7 +32,7 @@ function BlogAdmin(props) {
               <Typography className={AppBarStyle.title}>
                 <Tooltip title="Go Back">
                   <Link to="/" style={{ color: "inherit" }}>
-                    <BackIcon />
+                    <ArrowBackIos />
                   </Link>
                 </Tooltip>
               </Typography>
@@ -61,7 +60,7 @@ function BlogAdmin(props) {
 
       <ScrollTop {...props}>
         <Fab color="secondary" size="small">
-          <KeyboardArrowUpIcon />
+          <KeyboardArrowUp />
         </Fab>
       </ScrollTop>
     </>

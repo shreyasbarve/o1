@@ -4,8 +4,7 @@ import ScrollTop from "../../Components/ScrollTop";
 
 // CSS
 import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
-import BackIcon from "@material-ui/icons/ArrowBackIos";
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import { ArrowBackIos, KeyboardArrowUp } from "@material-ui/icons";
 
 // Components
 import {
@@ -16,7 +15,7 @@ import {
   Container,
   Fab,
   ThemeProvider,
-  Tooltip
+  Tooltip,
 } from "@material-ui/core";
 import ViewBlogs from "./ViewBlogs.js";
 import Form from "./Form.js";
@@ -35,7 +34,7 @@ function Blog(props) {
               <Typography className={AppBarStyle.title}>
                 <Tooltip title="Go Back">
                   <Link to="/" style={{ color: "inherit" }}>
-                    <BackIcon />
+                    <ArrowBackIos />
                   </Link>
                 </Tooltip>
               </Typography>
@@ -73,7 +72,7 @@ function Blog(props) {
 
       <ScrollTop {...props}>
         <Fab color="secondary" size="small">
-          <KeyboardArrowUpIcon />
+          <KeyboardArrowUp />
         </Fab>
       </ScrollTop>
     </>

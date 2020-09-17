@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // CSS
-import CloseIcon from "@material-ui/icons/Close";
+import { Close } from "@material-ui/icons";
 
 // Components
 import {
@@ -42,7 +42,7 @@ function Form() {
             color: theme.palette.grey[500],
           }}
         >
-          <CloseIcon />
+          <Close />
         </IconButton>
         <Divider />
         <StepperForm />

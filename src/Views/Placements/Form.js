@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // CSS
-import CloseIcon from "@material-ui/icons/Close";
+import { Close } from "@material-ui/icons";
 
 // Components
 import {
@@ -31,11 +31,7 @@ function Form() {
       <Button variant="outlined" color="inherit" onClick={handleClickOpen}>
         Post a Placement
       </Button>
-      <Dialog
-        fullScreen={fullScreen}
-        open={open}
-        onClose={handleClose}
-      >
+      <Dialog fullScreen={fullScreen} open={open} onClose={handleClose}>
         <DialogTitle id="form-dialog-title">Post Placement</DialogTitle>
         <IconButton
           onClick={handleClose}
@@ -46,7 +42,7 @@ function Form() {
             color: theme.palette.grey[500],
           }}
         >
-          <CloseIcon />
+          <Close />
         </IconButton>
         <Divider />
         <FillForm />

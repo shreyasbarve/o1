@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import CardStyles from "../../Styles/CardStyles";
 import LoadingStyles from "../../Styles/LoadingStyles";
 import logo from "../../o1_logo.jpg";
+import { Delete } from "@material-ui/icons";
 
 // Animation
 import Slide from "react-reveal";
@@ -26,6 +27,7 @@ import {
   Chip,
   Avatar,
   LinearProgress,
+  Button
 } from "@material-ui/core";
 
 function ViewPlacementsAdmin(props) {
@@ -92,7 +94,7 @@ function ViewPlacementsAdmin(props) {
                           state: { idofplacement: placement.id },
                         }}
                         color="inherit"
-                        style={{ textDecoration: "none" }}
+                        style={{ textDecoration: "none", flex: "1" }}
                       >
                         <Chip
                           avatar={
@@ -103,6 +105,7 @@ function ViewPlacementsAdmin(props) {
                           color="primary"
                         />
                       </Link>
+                      <Button variant="outlined" startIcon={<Delete />} color="secondary">Delete</Button>
                     </CardActions>
                   </CardActionArea>
                 </Card>

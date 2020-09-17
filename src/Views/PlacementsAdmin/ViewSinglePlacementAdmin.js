@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
 import LoadingStyles from "../../Styles/LoadingStyles";
 import image from "../../codeImage.jpg";
-import BackIcon from "@material-ui/icons/ArrowBackIos";
+import { ArrowBackIos } from "@material-ui/icons";
 
 // API
 import PlacementModels from "../../Models/Placements/PlacementModels";
@@ -46,11 +46,13 @@ function ViewSinglePlacementAdmin(props) {
   const key =
     "gAAAAABfYyrPc24Rm_-3GlzW0nzgy2kfCHevEb3KnbDEBUwnwqIrBMVhBaTxcf1PS6FgRjSDJ6o1IBcbfhTycyQFuqR3sJn_XQ==";
   useEffect(() => {
-    PlacementModels.viewSinglePlacementAdmin(singlePlacementId, key).then((res) => {
-      setsinglePlacement(res.data);
-      setloading(false);
-      document.title = `${singlePlacement.title}`;
-    });
+    PlacementModels.viewSinglePlacementAdmin(singlePlacementId, key).then(
+      (res) => {
+        setsinglePlacement(res.data);
+        setloading(false);
+        document.title = `${singlePlacement.title}`;
+      }
+    );
   }, [singlePlacementId, singlePlacement.title, loading]);
 
   return (
@@ -68,7 +70,7 @@ function ViewSinglePlacementAdmin(props) {
                   <Typography className={AppBarStyle.title}>
                     <Tooltip title="Go Back">
                       <Link to="/placement" style={{ color: "inherit" }}>
-                        <BackIcon />
+                        <ArrowBackIos />
                       </Link>
                     </Tooltip>
                   </Typography>

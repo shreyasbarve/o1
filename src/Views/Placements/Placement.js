@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 
 // CSS
 import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
-import BackIcon from "@material-ui/icons/ArrowBackIos";
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import { ArrowBackIos, KeyboardArrowUp } from "@material-ui/icons";
 
 import {
   AppBar,
@@ -34,7 +33,7 @@ function Placement(props) {
               <Typography className={AppBarStyle.title}>
                 <Tooltip title="Go Back">
                   <Link to="/" style={{ color: "inherit" }}>
-                    <BackIcon />
+                    <ArrowBackIos />
                   </Link>
                 </Tooltip>
               </Typography>
@@ -72,7 +71,7 @@ function Placement(props) {
 
       <ScrollTop {...props}>
         <Fab color="secondary" size="small">
-          <KeyboardArrowUpIcon />
+          <KeyboardArrowUp />
         </Fab>
       </ScrollTop>
     </>

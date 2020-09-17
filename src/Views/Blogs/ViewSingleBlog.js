@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
 import LoadingStyles from "../../Styles/LoadingStyles";
 import image from "../../codeImage.jpg";
-import BackIcon from "@material-ui/icons/ArrowBackIos";
+import { ArrowBackIos } from "@material-ui/icons";
 
 // API
 import BlogModels from "../../Models/Blogs/BlogModels";
@@ -67,7 +67,7 @@ function ViewSingleBlog(props) {
                   <Typography className={AppBarStyle.title}>
                     <Tooltip title="Go Back" aria-label="Go Back">
                       <Link to="/blog" style={{ color: "inherit" }}>
-                        <BackIcon />
+                        <ArrowBackIos />
                       </Link>
                     </Tooltip>
                   </Typography>
