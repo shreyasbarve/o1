@@ -78,7 +78,7 @@ function ViewSinglePlacement(props) {
             </ThemeProvider>
 
             <Grid container spacing={3} style={{ marginTop: "8%" }}>
-              <Grid item xs={12} sm={9} lg={9}>
+              <Grid item xs={12} sm={8} lg={9}>
                 <Typography variant="overline">by {singlePlacement.author}</Typography>
                 <br />
                 <Divider />
@@ -88,7 +88,7 @@ function ViewSinglePlacement(props) {
                 </Typography>
               </Grid>
 
-              <Grid item xs={12} sm={3} lg={3}>
+              <Grid item xs={12} sm={4} lg={3}>
                 <Card variant="outlined">
                   <CardActionArea>
                     <CardContent>

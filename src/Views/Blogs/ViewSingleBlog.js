@@ -78,7 +78,7 @@ function ViewSingleBlog(props) {
             </ThemeProvider>
 
             <Grid container style={{ marginTop: "8%" }}>
-              <Grid item xs={12} sm={9} lg={9}>
+              <Grid item xs={12} sm={8} lg={9}>
                 <Typography variant="overline">by {singleBlog.author}</Typography>
                 <br />
                 <Divider />
@@ -88,7 +88,7 @@ function ViewSingleBlog(props) {
                 </Typography>
               </Grid>
 
-              <Grid item xs={12} sm={3} lg={3}>
+              <Grid item xs={12} sm={4} lg={3}>
                 <Card variant="outlined">
                   <CardActionArea>
                     <CardContent>
