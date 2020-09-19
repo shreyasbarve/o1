@@ -19,7 +19,6 @@ import {
   Container,
   Grid,
   Card,
-  CardActionArea,
   CardMedia,
   CardContent,
   Divider,
@@ -67,7 +66,6 @@ function ViewPlacementsAdmin(props) {
             <Grid item xs={12} sm={6} lg={3} key={placement.id}>
               <Slide bottom>
                 <Card className={CardStyle.root} elevation={3}>
-                  {/* <CardActionArea> */}
                     <CardMedia component="img" alt="Some Image" image={logo} title="Image Title" className={CardStyle.media} />
                     <CardContent>
                       <Typography gutterBottom variant="h5" noWrap>
@@ -95,7 +93,6 @@ function ViewPlacementsAdmin(props) {
                         Delete
                       </Button>
                     </CardActions>
-                  {/* </CardActionArea> */}
                 </Card>
               </Slide>
             </Grid>

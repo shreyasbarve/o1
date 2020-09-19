@@ -82,7 +82,7 @@ function CreateBlog() {
           onChange={(e) =>
             setcreateBlog({
               ...createBlog,
-              key: e.currentTarget.value,
+              key: e.target.value,
             })
           }
         />
@@ -98,7 +98,7 @@ function CreateBlog() {
           onChange={(e) =>
             setcreateBlog({
               ...createBlog,
-              author: e.currentTarget.value,
+              author: e.target.value,
             })
           }
         />
@@ -114,7 +114,7 @@ function CreateBlog() {
           onChange={(e) =>
             setcreateBlog({
               ...createBlog,
-              fullname: e.currentTarget.value,
+              fullname: e.target.value,
             })
           }
         />
@@ -130,7 +130,7 @@ function CreateBlog() {
           onChange={(e) =>
             setcreateBlog({
               ...createBlog,
-              email: e.currentTarget.value,
+              email: e.target.value,
             })
           }
         />
@@ -146,7 +146,7 @@ function CreateBlog() {
           onChange={(e) =>
             setcreateBlog({
               ...createBlog,
-              title: e.currentTarget.value,
+              title: e.target.value,
             })
           }
         />

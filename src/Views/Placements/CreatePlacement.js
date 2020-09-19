@@ -82,7 +82,7 @@ function CreatePlacement() {
           onChange={(e) =>
             setcreatePlacement({
               ...createPlacement,
-              key: e.currentTarget.value,
+              key: e.target.value,
             })
           }
         />
@@ -98,7 +98,7 @@ function CreatePlacement() {
           onChange={(e) =>
             setcreatePlacement({
               ...createPlacement,
-              author: e.currentTarget.value,
+              author: e.target.value,
             })
           }
         />
@@ -114,7 +114,7 @@ function CreatePlacement() {
           onChange={(e) =>
             setcreatePlacement({
               ...createPlacement,
-              fullname: e.currentTarget.value,
+              fullname: e.target.value,
             })
           }
         />
@@ -130,7 +130,7 @@ function CreatePlacement() {
           onChange={(e) =>
             setcreatePlacement({
               ...createPlacement,
-              email: e.currentTarget.value,
+              email: e.target.value,
             })
           }
         />
@@ -146,7 +146,7 @@ function CreatePlacement() {
           onChange={(e) =>
             setcreatePlacement({
               ...createPlacement,
-              title: e.currentTarget.value,
+              title: e.target.value,
             })
           }
         />
