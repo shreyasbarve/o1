@@ -5,6 +5,7 @@ import BlogModels from "../../Models/Blogs/BlogModels";
 
 // Components
 import { TextField, Button, Typography } from "@material-ui/core";
+import Snackbar from "../../Components/SnackBar";
 
 function RequestBlog() {
   // Posting the blog
@@ -98,6 +99,8 @@ function RequestBlog() {
         <Button type="submit" variant="contained" color="primary" style={{ marginTop: "2%", marginBottom: "2%" }}>
           Request
         </Button>
+
+        <Snackbar notification="Request Submitted"/>
       </form>
     </>
   );

@@ -44,6 +44,7 @@ function ViewPlacementsAdmin(props) {
 
   const deletePlacement = (placementid) => {
     PlacementModels.deletePlacement(placementid, key);
+    window.location.reload(true);
   };
 
   const approvePlacement = (placementid) => {

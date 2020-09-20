@@ -44,6 +44,7 @@ function ViewBlogsAdmin(props) {
 
   const deleteBlog = (blogid) => {
     BlogModels.deleteBlog(blogid, key);
+    window.location.reload(true);
   };
 
   const approveBlog = (blogid) => {
