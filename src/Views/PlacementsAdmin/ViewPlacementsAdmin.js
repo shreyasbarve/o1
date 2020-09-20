@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 // CSS
 import CardStyles from "../../Styles/CardStyles";
 import LoadingStyles from "../../Styles/LoadingStyles";
-import { Delete } from "@material-ui/icons";
+import { Delete, Check } from "@material-ui/icons";
 
 // Animation
 import Slide from "react-reveal";
@@ -22,8 +22,6 @@ import {
   CardContent,
   Divider,
   CardActions,
-  Chip,
-  Avatar,
   LinearProgress,
   Button,
 } from "@material-ui/core";
@@ -48,6 +46,10 @@ function ViewPlacementsAdmin(props) {
     PlacementModels.deletePlacement(placementid, key);
   };
 
+  const approvePlacement = (placementid) => {
+    PlacementModels.approvePlacement(placementid, key);
+  };
+
   useEffect(() => {
     document.title = "Admin Placements";
     viewAllPlacements();
@@ -65,33 +67,53 @@ function ViewPlacementsAdmin(props) {
             <Grid item xs={12} sm={6} lg={3} key={placement.id}>
               <Slide bottom>
                 <Card className={CardStyle.root} elevation={3}>
-                    <CardMedia component="img" alt="Some Image" image={`https://source.unsplash.com/1600x900/?coding,programming`} title="Image Title" className={CardStyle.media} />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" noWrap>
-                        {placement.title}
-                      </Typography>
+                  <Link
+                    to={{
+                      pathname: `singleplacementAdmin/${placement.id}`,
+                      state: { idofplacement: placement.id },
+                    }}
+                    style={{ textDecoration: "none", flex: "1" }}
+                  >
+                    <CardMedia
+                      component="img"
+                      alt="Some Image"
+                      image={`https://source.unsplash.com/1600x900/?coding,programming`}
+                      title="Image Title"
+                      className={CardStyle.media}
+                    />
+                  </Link>
 
-                      <Divider />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" noWrap>
+                      {placement.title}
+                    </Typography>
 
-                      <Typography variant="overline" color="textSecondary" noWrap>
-                        Author: {placement.author}
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                      <Link
-                        to={{
-                          pathname: `singleplacementAdmin/${placement.id}`,
-                          state: { idofplacement: placement.id },
-                        }}
-                        color="inherit"
-                        style={{ textDecoration: "none", flex: "1" }}
-                      >
-                        <Chip avatar={<Avatar>{placement.author.substring(0, 1)}</Avatar>} label="Go to Placement" clickable color="primary" />
-                      </Link>
-                      <Button variant="outlined" startIcon={<Delete />} color="secondary" onClick={() => deletePlacement(placement.id)}>
-                        Delete
-                      </Button>
-                    </CardActions>
+                    <Divider />
+
+                    <Typography variant="overline" color="textSecondary" noWrap>
+                      Author: {placement.author}
+                    </Typography>
+                  </CardContent>
+
+                  <CardActions>
+                    <Button
+                      variant="outlined"
+                      startIcon={<Check />}
+                      color="primary"
+                      onClick={() => approvePlacement(placement.id)}
+                    >
+                      Delete
+                    </Button>
+
+                    <Button
+                      variant="outlined"
+                      startIcon={<Delete />}
+                      color="secondary"
+                      onClick={() => deletePlacement(placement.id)}
+                    >
+                      Delete
+                    </Button>
+                  </CardActions>
                 </Card>
               </Slide>
             </Grid>
