@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 // CSS
 import CardStyles from "../../Styles/CardStyles";
 import LoadingStyles from "../../Styles/LoadingStyles";
-import logo from "../../o1_logo.jpg";
 import { Delete } from "@material-ui/icons";
 
 // Animation
@@ -66,7 +65,7 @@ function ViewBlogsAdmin(props) {
             <Grid item xs={12} sm={6} lg={3} key={blog.id}>
               <Slide bottom>
                 <Card className={CardStyle.root} elevation={3}>
-                    <CardMedia component="img" alt="Some Image" image={logo} title="Image Title" className={CardStyle.media} />
+                    <CardMedia component="img" alt="Some Image" image={`https://source.unsplash.com/1600x900/?coding,programming`} title="Image Title" className={CardStyle.media} />
                     <CardContent>
                       <Typography gutterBottom variant="h5" noWrap>
                         {blog.title}

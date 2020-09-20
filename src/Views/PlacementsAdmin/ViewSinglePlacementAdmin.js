@@ -44,7 +44,7 @@ function ViewSinglePlacementAdmin(props) {
   const key = "gAAAAABfYyrPc24Rm_-3GlzW0nzgy2kfCHevEb3KnbDEBUwnwqIrBMVhBaTxcf1PS6FgRjSDJ6o1IBcbfhTycyQFuqR3sJn_XQ==";
   useEffect(() => {
     PlacementModels.viewSinglePlacementAdmin(singlePlacementId, key).then((res) => {
-      setsinglePlacement(res.data);
+      setsinglePlacement(res.data[0]);
       setloading(false);
       document.title = `${singlePlacement.title}`;
     });

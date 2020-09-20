@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 // CSS
 import CardStyles from "../../Styles/CardStyles";
 import LoadingStyles from "../../Styles/LoadingStyles";
-import logo from "../../o1_logo.jpg";
 
 // Animation
 import Slide from "react-reveal";
@@ -61,7 +60,7 @@ function ViewPlacements(props) {
               <Slide bottom>
                 <Card className={CardStyle.root} elevation={3}>
                   <CardActionArea>
-                    <CardMedia component="img" alt="Some Image" image={logo} title="Image Title" className={CardStyle.media} />
+                    <CardMedia component="img" alt="Some Image" image={`https://source.unsplash.com/1600x900/?coding,programming`} title="Image Title" className={CardStyle.media} />
                     <CardContent>
                       <Typography gutterBottom variant="h5" noWrap>
                         {placement.title}

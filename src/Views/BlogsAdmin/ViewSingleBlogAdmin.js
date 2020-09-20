@@ -44,7 +44,7 @@ function ViewSingleBlogAdmin(props) {
   const key = "gAAAAABfYyrPc24Rm_-3GlzW0nzgy2kfCHevEb3KnbDEBUwnwqIrBMVhBaTxcf1PS6FgRjSDJ6o1IBcbfhTycyQFuqR3sJn_XQ==";
   useEffect(() => {
     BlogModels.viewSingleBlogAdmin(singleBlogId, key).then((res) => {
-      setsingleBlog(res.data);
+      setsingleBlog(res.data[0]);
       setloading(false);
       document.title = `${singleBlog.title}`;
     });
