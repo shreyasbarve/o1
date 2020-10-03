@@ -19,6 +19,7 @@ import Testimonial2 from "../../assets/img/testimonial-2.jpg";
 import Testimonial3 from "../../assets/img/testimonial-3.jpg";
 import Testimonial4 from "../../assets/img/testimonial-4.jpg";
 import { NavLink } from "react-router-dom";
+import MailModels from "../../Models/Mail/MailModels";
 
 const Home = () => {
   const [studentinfo, setstudentinfo] = useState({
@@ -30,34 +31,24 @@ const Home = () => {
     key: "",
   });
 
-  const registerstudent = (e) => {
+  const registerstudent = async (e) => {
     e.preventDefault();
-    axios
-      .post("https://o1codingclub.herokuapp.com/mail/verify/", studentinfo)
-      .then((response) => {
-        console.log(response);
-        alert("A key has been sent to enterd Mail");
-      })
-      .catch((error) => {
-        alert("Email already in use");
-        console.log(studentinfo);
-        console.log(error);
-      });
+    try {
+      await MailModels.verifyMail(studentinfo);
+      alert("A key has been sent to enterd Mail");
+    } catch (error) {
+      alert("Email already in use");
+    }
   };
 
-  const subscribestudent = (e) => {
+  const subscribestudent = async (e) => {
     e.preventDefault();
-    axios
-      .post("https://o1codingclub.herokuapp.com/mail/add/", subscribe)
-      .then((response) => {
-        console.log(response);
-        alert("registered Succesfully");
-      })
-      .catch((error) => {
-        alert("Invalid Email or Key");
-        console.log(studentinfo);
-        console.log(error);
-      });
+    try {
+      await MailModels.addMail(subscribe)
+      alert("registered Succesfully");
+    } catch (error) {
+      alert("Invalid Email or Key");
+    }
   };
 
   return (

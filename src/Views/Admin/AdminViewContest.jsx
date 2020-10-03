@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { NavLink } from "react-router-dom";
 import "../../assets/css/style.css";
+import ContestModels from "../../Models/Contests/ContestModels";
 
 const AdminViewContest = () => {
   const [addcontest, setAddcontest] = useState({
@@ -16,16 +16,13 @@ const AdminViewContest = () => {
     key: "",
   });
 
-  const addContest = (e) => {
+  const addContest = async (e) => {
     e.preventDefault();
-    axios
-      .post("https://o1codingclub.herokuapp.com/contest/", addcontest)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      await ContestModels.viewContestAdmin(addcontest);
+    } catch (error) {
+      alert("Some Error Occured");
+    }
   };
 
   // const [contests, setContests] = useState([]);

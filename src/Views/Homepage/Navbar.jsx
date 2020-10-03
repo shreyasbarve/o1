@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import { NavLink, useHistory } from "react-router-dom";
+import AdminModels from "../../Models/Admin/AdminModels";
 
 const Navbar = () => {
   const history = useHistory();
@@ -12,16 +12,14 @@ const Navbar = () => {
     key: "",
   });
 
-  const enterKey = () => {
-    // e.preventDefault();
-    axios
-      .post("https://o1codingclub.herokuapp.com/verifyadmin/", admin)
-      .then((res) => {
-        history.push("/adminContest");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const enterKey = async (e) => {
+    e.preventDefault();
+    try {
+      await AdminModels.verifyAdmin(admin);
+      history.push("/adminContest");
+    } catch (error) {
+      alert("Some error occured");
+    }
   };
 
   return (
@@ -79,7 +77,10 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <nav className="navbar navbar-dark navbar-expand-sm bg-primary  fixed-top" id="top">
+      <nav
+        className="navbar navbar-dark navbar-expand-sm bg-primary  fixed-top"
+        id="top"
+      >
         <div className="container">
           <button
             className="navbar-toggler"
@@ -89,7 +90,9 @@ const Navbar = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <a className="navbar-brand" href="#top">O(1) Coding Club</a>
+          <a className="navbar-brand" href="#top">
+            O(1) Coding Club
+          </a>
           <div className="collapse navbar-collapse" id="Navbar">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item mr-2">

@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import "../../assets/css/contest.css";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import ContestModels from "../../Models/Contests/ContestModels";
 
 const AddContest = () => {
   const [contests, setContests] = useState([]);
   const getcontest = async () => {
-    axios
-      .get("https://o1codingclub.herokuapp.com/contest/")
-      .then((response) => {
-        console.log(response.data);
-        setContests(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      const res = await ContestModels.viewContest();
+      setContests(res.data);
+    } catch (error) {
+      alert("Some Error Occured");
+    }
   };
 
   const [addcontest, setAddcontest] = useState({
@@ -28,16 +25,13 @@ const AddContest = () => {
     key: "",
   });
 
-  const addContest = (e) => {
+  const addContest = async (e) => {
     e.preventDefault();
-    axios
-      .post("https://o1codingclub.herokuapp.com/contest/", addcontest)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      await ContestModels.viewContestAdmin(addcontest);
+    } catch (error) {
+      alert("Some error has occured");
+    }
   };
 
   useEffect(() => {
