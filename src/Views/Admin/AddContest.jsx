@@ -55,30 +55,30 @@ const AddContest = () => {
         data-target="#modalLoginForm"
         className="btn btn-primary addcontest"
       >
-        <i class="fa fa-plus"></i>
+        <i className="fa fa-plus"></i>
       </button>
       <div className="contest">
         {contests.map((contest) => (
-          <div class="card" style={{ width: "18rem" }}>
-            <div class="card-body">
-              <h5 class="card-title">{contest.name}</h5>
-              <p class="card-text">{contest.platform}</p>
+          <div className="card" style={{ width: "18rem" }}>
+            <div className="card-body">
+              <h5 className="card-title">{contest.name}</h5>
+              <p className="card-text">{contest.platform}</p>
             </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item">
                 Start Time : {contest.startTime.substring(12, 19)} &nbsp;{" "}
                 {contest.startTime.substring(0, 10)}
               </li>
-              <li class="list-group-item">
+              <li className="list-group-item">
                 End Time : {contest.endTime.substring(12, 19)} &nbsp;{" "}
                 {contest.startTime.substring(0, 10)}
               </li>
             </ul>
-            <div class="card-body">
+            <div className="card-body">
               <a
                 href={contest.url}
                 target="_blank"
-                class="btn btn-primary"
+                className="btn btn-primary"
                 rel="noopener noreferrer"
               >
                 Participate

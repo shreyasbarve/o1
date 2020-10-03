@@ -119,7 +119,7 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                {/* <button type="submit" class="btn sendbtn"> */}
+                {/* <button type="submit" className="btn sendbtn"> */}
                 <a
                   href="#top"
                   className="nav-link"
