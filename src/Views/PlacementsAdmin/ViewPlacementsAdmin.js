@@ -36,23 +36,36 @@ function ViewPlacementsAdmin(props) {
     "gAAAAABfYys99vhKbNtgKJ5PB_HgqIeQ5qFW_Nz4j8m_p8p0zOKVFjs4y6VxMeCLJMmJtB2e7X7F69tYenleGxfBxeOqPyPjJll-60Ol9AJWW48JI6cCAKG0fDAGdJPlDAom8TUl_r6l";
   const [loading, setloading] = useState(true);
   const [placements, setplacements] = useState([]);
-  const viewAllPlacements = () => {
-    PlacementModels.viewAllPlacementsAdmin(key).then((res) => {
+  const viewAllPlacements = async () => {
+    try {
+      const res = await PlacementModels.viewAllPlacementsAdmin(key);
       setplacements(res.data);
       setloading(false);
-    });
+    } catch (error) {
+      alert("Some Errror Occured");
+    }
   };
 
-  const deletePlacement = (placementid) => {
-    PlacementModels.deletePlacement(placementid, key).then(() => {
-      setplacements((placement) =>
-        placement.filter((i) => i.id !== placementid)
-      );
-    });
+  const deletePlacement = async (placementid) => {
+    try {
+      await PlacementModels.deletePlacement(placementid, key);
+      () => {
+        setplacements((placement) =>
+          placement.filter((i) => i.id !== placementid)
+        );
+      };
+    } catch (error) {
+      alert("Some Errror Occured");
+    }
   };
 
-  const approvePlacement = (placementid) => {
-    PlacementModels.approvePlacement(placementid, key);
+  const approvePlacement = async (placementid) => {
+    try {
+      await PlacementModels.approvePlacement(placementid, key);
+      alert("Blog Approved");
+    } catch (error) {
+      alert("Some Error Occured");
+    }
   };
 
   useEffect(() => {

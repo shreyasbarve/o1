@@ -36,21 +36,34 @@ function ViewBlogsAdmin(props) {
     "gAAAAABfYys99vhKbNtgKJ5PB_HgqIeQ5qFW_Nz4j8m_p8p0zOKVFjs4y6VxMeCLJMmJtB2e7X7F69tYenleGxfBxeOqPyPjJll-60Ol9AJWW48JI6cCAKG0fDAGdJPlDAom8TUl_r6l";
   const [loading, setloading] = useState(true);
   const [blogs, setblogs] = useState([]);
-  const viewAllBlogs = () => {
-    BlogModels.viewAllBlogsAdmin(key).then((res) => {
+  const viewAllBlogs = async () => {
+    try {
+      const res = await BlogModels.viewAllBlogsAdmin(key);
       setblogs(res.data);
       setloading(false);
-    });
+    } catch (error) {
+      alert("Some Error Occured");
+    }
   };
 
-  const deleteBlog = (blogid) => {
-    BlogModels.deleteBlog(blogid, key).then(() => {
-      setblogs((blogs) => blogs.filter((i) => i.id !== blogid));
-    });
+  const deleteBlog = async (blogid) => {
+    try {
+      await BlogModels.deleteBlog(blogid, key);
+      () => {
+        setblogs((blogs) => blogs.filter((i) => i.id !== blogid));
+      };
+    } catch (error) {
+      alert("Some Error Occured");
+    }
   };
 
-  const approveBlog = (blogid) => {
-    BlogModels.approveBlog(blogid, key);
+  const approveBlog = async (blogid) => {
+    try {
+      await BlogModels.approveBlog(blogid, key);
+      alert("Blog Approved");
+    } catch (error) {
+      alert("Some Error Occured");
+    }
   };
 
   useEffect(() => {
