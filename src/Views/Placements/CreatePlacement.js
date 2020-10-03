@@ -10,7 +10,7 @@ import { Button, TextField, Typography } from "@material-ui/core";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-function CreatePlacement() {
+function CreatePlacement(props) {
   // Quill
   // eslint-disable-next-line
   const [modules, setmodules] = React.useState({
@@ -18,7 +18,12 @@ function CreatePlacement() {
       [{ header: "1" }, { header: "2" }, { font: [] }],
       [{ size: [] }],
       ["bold", "italic", "underline", "strike", "blockquote"],
-      [{ list: "ordered" }, { list: "bullet" }, { indent: "-1" }, { indent: "+1" }],
+      [
+        { list: "ordered" },
+        { list: "bullet" },
+        { indent: "-1" },
+        { indent: "+1" },
+      ],
       ["link", "image", "video"],
       ["clean"],
     ],
@@ -40,26 +45,30 @@ function CreatePlacement() {
     "image",
     "video",
   ]);
+
+  // Server response
+  const [serverReply, setserverReply] = useState("");
+
   // Posting the placement
-  const [createPlacement, setcreatePlacement] = useState({
+  const initialState = {
     author: "",
     title: "",
     body: "",
     email: "",
     fullname: "",
     key: "",
-  });
+  };
+  const [createPlacement, setcreatePlacement] = useState(initialState);
   const postPlacement = async (e) => {
     e.preventDefault();
-    PlacementModels.createPlacement(createPlacement).then((res) => console.log(res.data));
-    setcreatePlacement({
-      author: "",
-      title: "",
-      body: "",
-      email: "",
-      fullname: "",
-      key: "",
-    });
+    try {
+      await PlacementModels.createPlacement(createPlacement);
+      setcreatePlacement(initialState);
+      setserverReply("Post created");
+      props.onAfterCreate();
+    } catch (error) {
+      setserverReply("Post not created");
+    }
   };
   return (
     <>
@@ -150,7 +159,11 @@ function CreatePlacement() {
             })
           }
         />
-        <Typography variant="body1" color="textSecondary" style={{ marginTop: "2%" }}>
+        <Typography
+          variant="body1"
+          color="textSecondary"
+          style={{ marginTop: "2%" }}
+        >
           Body
         </Typography>
         <ReactQuill
@@ -167,10 +180,16 @@ function CreatePlacement() {
           }
           value={createPlacement.body}
         />
-        <Button type="submit" variant="contained" color="primary" style={{ marginTop: "2%", marginBottom: "2%" }}>
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          style={{ marginTop: "2%", marginBottom: "2%" }}
+        >
           Create
         </Button>
       </form>
+      <Typography variant="overline">{serverReply}</Typography>
     </>
   );
 }

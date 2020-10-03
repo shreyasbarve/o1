@@ -32,7 +32,8 @@ function ViewPlacementsAdmin(props) {
   const LoadingStyle = LoadingStyles();
 
   // Get the placement data from server
-  const key = "gAAAAABfYyrPc24Rm_-3GlzW0nzgy2kfCHevEb3KnbDEBUwnwqIrBMVhBaTxcf1PS6FgRjSDJ6o1IBcbfhTycyQFuqR3sJn_XQ==";
+  const key =
+    "gAAAAABfYys99vhKbNtgKJ5PB_HgqIeQ5qFW_Nz4j8m_p8p0zOKVFjs4y6VxMeCLJMmJtB2e7X7F69tYenleGxfBxeOqPyPjJll-60Ol9AJWW48JI6cCAKG0fDAGdJPlDAom8TUl_r6l";
   const [loading, setloading] = useState(true);
   const [placements, setplacements] = useState([]);
   const viewAllPlacements = () => {
@@ -43,8 +44,11 @@ function ViewPlacementsAdmin(props) {
   };
 
   const deletePlacement = (placementid) => {
-    PlacementModels.deletePlacement(placementid, key);
-    window.location.reload(true);
+    PlacementModels.deletePlacement(placementid, key).then(() => {
+      setplacements((placement) =>
+        placement.filter((i) => i.id !== placementid)
+      );
+    });
   };
 
   const approvePlacement = (placementid) => {
@@ -69,10 +73,7 @@ function ViewPlacementsAdmin(props) {
               <Slide bottom>
                 <Card className={CardStyle.root} elevation={3}>
                   <Link
-                    to={{
-                      pathname: `singleplacementAdmin/${placement.id}`,
-                      state: { idofplacement: placement.id },
-                    }}
+                    to={`singleplacementAdmin/${placement.id}`}
                     style={{ textDecoration: "none", flex: "1" }}
                   >
                     <CardMedia

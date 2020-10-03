@@ -32,7 +32,8 @@ function ViewBlogsAdmin(props) {
   const LoadingStyle = LoadingStyles();
 
   // Get the blog data from server
-  const key = "gAAAAABfYyrPc24Rm_-3GlzW0nzgy2kfCHevEb3KnbDEBUwnwqIrBMVhBaTxcf1PS6FgRjSDJ6o1IBcbfhTycyQFuqR3sJn_XQ==";
+  const key =
+    "gAAAAABfYys99vhKbNtgKJ5PB_HgqIeQ5qFW_Nz4j8m_p8p0zOKVFjs4y6VxMeCLJMmJtB2e7X7F69tYenleGxfBxeOqPyPjJll-60Ol9AJWW48JI6cCAKG0fDAGdJPlDAom8TUl_r6l";
   const [loading, setloading] = useState(true);
   const [blogs, setblogs] = useState([]);
   const viewAllBlogs = () => {
@@ -43,8 +44,9 @@ function ViewBlogsAdmin(props) {
   };
 
   const deleteBlog = (blogid) => {
-    BlogModels.deleteBlog(blogid, key);
-    window.location.reload(true);
+    BlogModels.deleteBlog(blogid, key).then(() => {
+      setblogs((blogs) => blogs.filter((i) => i.id !== blogid));
+    });
   };
 
   const approveBlog = (blogid) => {
@@ -69,10 +71,7 @@ function ViewBlogsAdmin(props) {
               <Slide bottom>
                 <Card className={CardStyle.root} elevation={3}>
                   <Link
-                    to={{
-                      pathname: `singleblogAdmin/${blog.id}`,
-                      state: { idofblog: blog.id },
-                    }}
+                    to={`singleblogAdmin/${blog.id}`}
                     color="inherit"
                     style={{ textDecoration: "none", flex: "1" }}
                   >
@@ -98,11 +97,21 @@ function ViewBlogsAdmin(props) {
                   </CardContent>
 
                   <CardActions>
-                    <Button variant="outlined" startIcon={<Check />} color="primary" onClick={() => approveBlog(blog.id)}>
+                    <Button
+                      variant="outlined"
+                      startIcon={<Check />}
+                      color="primary"
+                      onClick={() => approveBlog(blog.id)}
+                    >
                       Approve
                     </Button>
 
-                    <Button variant="outlined" startIcon={<Delete />} color="secondary" onClick={() => deleteBlog(blog.id)}>
+                    <Button
+                      variant="outlined"
+                      startIcon={<Delete />}
+                      color="secondary"
+                      onClick={() => deleteBlog(blog.id)}
+                    >
                       Delete
                     </Button>
                   </CardActions>

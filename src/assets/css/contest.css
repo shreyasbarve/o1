@@ -1,0 +1,43 @@
+.contest{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2rem;
+}
+.addcontest{
+    
+    border-radius: 50%;
+    position: fixed;
+    top: 120px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.fa-plus{
+    font-size: 30px;
+}
+.card:hover{
+    transform: scale(1.1);
+	box-shadow: 2px 0px 20px 0px rgba(0, 0, 0, 0.3);
+	transition: box-shadow 0.5s, transform 0.5s;
+}
+.card{
+    margin: 15px;
+}
+.heading{
+    align-items: center;
+    justify-content: center;
+    color: black;
+    padding-top: 80px;
+    font-size: 35px;
+}
+
+.card-title{
+    color:#f0ad4e;
+}
+button{
+    border-radius: 50%;
+}

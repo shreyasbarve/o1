@@ -10,7 +10,7 @@ import { Button, TextField, Typography } from "@material-ui/core";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-function CreateBlog() {
+function CreateBlog(props) {
   // Quill
   // eslint-disable-next-line
   const [modules, setmodules] = React.useState({
@@ -18,7 +18,12 @@ function CreateBlog() {
       [{ header: "1" }, { header: "2" }, { font: [] }],
       [{ size: [] }],
       ["bold", "italic", "underline", "strike", "blockquote"],
-      [{ list: "ordered" }, { list: "bullet" }, { indent: "-1" }, { indent: "+1" }],
+      [
+        { list: "ordered" },
+        { list: "bullet" },
+        { indent: "-1" },
+        { indent: "+1" },
+      ],
       ["link", "image", "video"],
       ["clean"],
     ],
@@ -40,27 +45,32 @@ function CreateBlog() {
     "image",
     "video",
   ]);
+
+  // Server response
+  const [serverReply, setserverReply] = useState("");
+
   // Posting the blog
-  const [createBlog, setcreateBlog] = useState({
+  const initialState = {
     author: "",
     title: "",
     body: "",
     email: "",
     fullname: "",
     key: "",
-  });
+  };
+  const [createBlog, setcreateBlog] = useState(initialState);
   const postBlog = async (e) => {
     e.preventDefault();
-    BlogModels.createBlog(createBlog);
-    setcreateBlog({
-      author: "",
-      title: "",
-      body: "",
-      email: "",
-      fullname: "",
-      key: "",
-    });
+    try {
+      await BlogModels.createBlog(createBlog);
+      setcreateBlog(initialState);
+      setserverReply("post Created");
+      props.onAfterCreate();
+    } catch (error) {
+      setserverReply("Post Not Created");
+    }
   };
+
   return (
     <>
       <Typography variant="button" gutterBottom>
@@ -150,7 +160,11 @@ function CreateBlog() {
             })
           }
         />
-        <Typography variant="body1" color="textSecondary" style={{ marginTop: "2%" }}>
+        <Typography
+          variant="body1"
+          color="textSecondary"
+          style={{ marginTop: "2%" }}
+        >
           Body
         </Typography>
         <ReactQuill
@@ -167,10 +181,16 @@ function CreateBlog() {
           }
           value={createBlog.body}
         />
-        <Button type="submit" variant="contained" color="primary" style={{ marginTop: "2%", marginBottom: "2%" }}>
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          style={{ marginTop: "2%", marginBottom: "2%" }}
+        >
           Create
         </Button>
       </form>
+      <Typography variant="overline">{serverReply}</Typography>
     </>
   );
 }

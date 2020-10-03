@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 
 // CSS
 import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
@@ -33,21 +33,29 @@ function ViewSinglePlacement(props) {
   const AppBarStyle = AppBarStyles();
   const LoadingStyle = LoadingStyles();
 
-  const [singlePlacementId, setsinglePlacementId] = useState(JSON.stringify(props.history.location.state.idofplacement));
+  const match = useRouteMatch();
 
-  if (singlePlacementId === undefined) {
-    setsinglePlacementId(1);
-  }
+  const placementid = match.params.id;
+// eslint-disable-next-line
+  const [singlePlacementId, setsinglePlacementId] = useState(placementid);
 
   // Getting Data of the Single Placement
   const [singlePlacement, setsinglePlacement] = useState([]);
 
   useEffect(() => {
-    PlacementModels.viewSinglePlacement(singlePlacementId).then((res) => {
-      setsinglePlacement(res.data);
-      setloading(false);
-      document.title = `${singlePlacement.title}`;
-    });
+    async function viewSinglePlacement() {
+      try {
+        const res = await PlacementModels.viewSinglePlacement(
+          singlePlacementId
+        );
+        setsinglePlacement(res.data);
+        setloading(false);
+        document.title = `${singlePlacement.title}`;
+      } catch (error) {
+        alert("Some Error Occured");
+      }
+    }
+    viewSinglePlacement();
   }, [singlePlacementId, singlePlacement.title, loading]);
 
   return (
@@ -79,7 +87,9 @@ function ViewSinglePlacement(props) {
 
             <Grid container spacing={3} style={{ marginTop: "8%" }}>
               <Grid item xs={12} sm={8} lg={9}>
-                <Typography variant="overline">by {singlePlacement.author}</Typography>
+                <Typography variant="overline">
+                  by {singlePlacement.author}
+                </Typography>
                 <br />
                 <Divider />
                 <br />

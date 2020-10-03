@@ -7,7 +7,16 @@ import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
 import { ArrowBackIos, KeyboardArrowUp } from "@material-ui/icons";
 
 // Components
-import { AppBar, Toolbar, Button, Typography, Container, Fab, ThemeProvider, Tooltip } from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  Button,
+  Typography,
+  Container,
+  Fab,
+  ThemeProvider,
+  Tooltip,
+} from "@material-ui/core";
 import ViewBlogs from "./ViewBlogs.js";
 import Form from "./Form.js";
 
@@ -44,12 +53,6 @@ function Blog(props) {
 
       <Container fixed style={{ marginTop: "3%", marginBottom: "3%" }} id="back-to-top-anchor">
         <Form />
-      </Container>
-
-      <Container fixed>
-        <Typography gutterBottom variant="h4">
-          This is the page where blogs of all users are displayed
-        </Typography>
       </Container>
 
       {/* Display Blogs */}

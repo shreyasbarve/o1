@@ -6,28 +6,33 @@ import PlacementModels from "../../Models/Placements/PlacementModels";
 // Components
 import { TextField, Button, Typography } from "@material-ui/core";
 
-function RequestPlacement() {
+function RequestPlacement(props) {
+  // Server response
+  const [serverReply, setserverReply] = useState("");
   // Posting the placement
-  const [requestPlacement, setrequestPlacement] = useState({
+  const initialState = {
     fullname: "",
     college: "",
     branch: "",
     email: "",
-  });
+  };
+  const [requestPlacement, setrequestPlacement] = useState(initialState);
   const postPlacement = async (e) => {
     e.preventDefault();
-    PlacementModels.requestPlacement(requestPlacement);
-    setrequestPlacement({
-      fullname: "",
-      college: "",
-      branch: "",
-      email: "",
-    });
+    try {
+      await PlacementModels.requestPlacement(requestPlacement);
+      setrequestPlacement(initialState);
+      setserverReply("Request sent");
+      props.onAfterRequest();
+    } catch (error) {
+      setserverReply("Request not sent");
+    }
   };
   return (
     <>
       <Typography variant="button" gutterBottom>
-        Fill up the request form. Ensure that all the details are correct. You will be contacted from the admin
+        Fill up the request form. Ensure that all the details are correct. You
+        will be contacted from the admin
       </Typography>
       <form onSubmit={postPlacement} noValidate autoComplete="off">
         <TextField
@@ -95,10 +100,16 @@ function RequestPlacement() {
             })
           }
         />
-        <Button type="submit" variant="contained" color="primary" style={{ marginTop: "2%", marginBottom: "2%" }}>
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          style={{ marginTop: "2%", marginBottom: "2%" }}
+        >
           Request
         </Button>
       </form>
+      <Typography variant="overline">{serverReply}</Typography>
     </>
   );
 }

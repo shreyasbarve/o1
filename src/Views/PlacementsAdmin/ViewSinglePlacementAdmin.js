@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 
 // CSS
 import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
@@ -33,21 +33,31 @@ function ViewSinglePlacementAdmin(props) {
   const AppBarStyle = AppBarStyles();
   const LoadingStyle = LoadingStyles();
 
-  const [singlePlacementId, setsinglePlacementId] = useState(JSON.stringify(props.history.location.state.idofplacement));
+  const match = useRouteMatch();
 
-  if (singlePlacementId === undefined) {
-    setsinglePlacementId(1);
-  }
+  const placementid = match.params.id;
+// eslint-disable-next-line
+  const [singlePlacementId, setsinglePlacementId] = useState(placementid);
 
   // Getting Data of the Single Placement
   const [singlePlacement, setsinglePlacement] = useState([]);
-  const key = "gAAAAABfYyrPc24Rm_-3GlzW0nzgy2kfCHevEb3KnbDEBUwnwqIrBMVhBaTxcf1PS6FgRjSDJ6o1IBcbfhTycyQFuqR3sJn_XQ==";
+  const key =
+    "gAAAAABfYyrPc24Rm_-3GlzW0nzgy2kfCHevEb3KnbDEBUwnwqIrBMVhBaTxcf1PS6FgRjSDJ6o1IBcbfhTycyQFuqR3sJn_XQ==";
   useEffect(() => {
-    PlacementModels.viewSinglePlacementAdmin(singlePlacementId, key).then((res) => {
-      setsinglePlacement(res.data[0]);
-      setloading(false);
-      document.title = `${singlePlacement.title}`;
-    });
+    async function viewSinglePlacement() {
+      try {
+        const res = await PlacementModels.viewSinglePlacementAdmin(
+          singlePlacementId,
+          key
+        );
+        setsinglePlacement(res.data[0]);
+        setloading(false);
+        document.title = `${singlePlacement.title}`;
+      } catch (error) {
+        alert("Some Error Occured");
+      }
+    }
+    viewSinglePlacement();
   }, [singlePlacementId, singlePlacement.title, loading]);
 
   return (
@@ -79,7 +89,9 @@ function ViewSinglePlacementAdmin(props) {
 
             <Grid container style={{ marginTop: "8%" }}>
               <Grid item xs={12} sm={8} lg={9}>
-                <Typography variant="overline">by {singlePlacement.author}</Typography>
+                <Typography variant="overline">
+                  by {singlePlacement.author}
+                </Typography>
                 <br />
                 <Divider />
                 <br />

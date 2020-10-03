@@ -35,11 +35,14 @@ function ViewPlacements(props) {
   // Get the placement data from server
   const [loading, setloading] = useState(true);
   const [placements, setplacements] = useState([]);
-  const viewAllPlacements = () => {
-    PlacementModels.viewAllPlacements().then((res) => {
+  const viewAllPlacements = async () => {
+    try {
+      const res = await PlacementModels.viewAllPlacements();
       setplacements(res.data);
       setloading(false);
-    });
+    } catch (error) {
+      alert("Some Error Occured");
+    }
   };
 
   useEffect(() => {
@@ -60,7 +63,13 @@ function ViewPlacements(props) {
               <Slide bottom>
                 <Card className={CardStyle.root} elevation={3}>
                   <CardActionArea>
-                    <CardMedia component="img" alt="Some Image" image={`https://source.unsplash.com/1600x900/?coding,programming`} title="Image Title" className={CardStyle.media} />
+                    <CardMedia
+                      component="img"
+                      alt="Some Image"
+                      image={`https://source.unsplash.com/1600x900/?coding,programming`}
+                      title="Image Title"
+                      className={CardStyle.media}
+                    />
                     <CardContent>
                       <Typography gutterBottom variant="h5" noWrap>
                         {placement.title}
@@ -68,20 +77,28 @@ function ViewPlacements(props) {
 
                       <Divider />
 
-                      <Typography variant="overline" color="textSecondary" noWrap>
+                      <Typography
+                        variant="overline"
+                        color="textSecondary"
+                        noWrap
+                      >
                         Author: {placement.author}
                       </Typography>
                     </CardContent>
                     <CardActions>
                       <Link
-                        to={{
-                          pathname: `singleplacement/${placement.id}`,
-                          state: { idofplacement: placement.id },
-                        }}
+                        to={`singleplacement/${placement.id}`}
                         color="inherit"
                         style={{ textDecoration: "none" }}
                       >
-                        <Chip avatar={<Avatar>{placement.author.substring(0, 1)}</Avatar>} label="Go to placement" clickable color="primary" />
+                        <Chip
+                          avatar={
+                            <Avatar>{placement.author.substring(0, 1)}</Avatar>
+                          }
+                          label="Go to placement"
+                          clickable
+                          color="primary"
+                        />
                       </Link>
                     </CardActions>
                   </CardActionArea>

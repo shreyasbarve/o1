@@ -1,0 +1,28 @@
+.blog{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 3rem;
+    padding: 2rem;
+}
+.card:hover{
+    transform: scale(1.1);
+	box-shadow: 2px 0px 20px 0px rgba(0, 0, 0, 0.3);
+	transition: box-shadow 0.5s, transform 0.5s;
+}
+.card{
+    margin: 15px;
+}
+.heading{
+    align-items: center;
+    justify-content: center;
+    color: black;
+    padding-top: 80px;
+    margin-bottom: 0.1 rem solid #ff0080;
+}
+h1{
+    margin-bottom: 0.1 rem solid #ff0080;
+}
+.card-title{
+    color:#f0ad4e;
+}

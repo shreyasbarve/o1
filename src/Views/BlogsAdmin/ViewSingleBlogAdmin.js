@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 
 // CSS
 import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
@@ -33,21 +33,28 @@ function ViewSingleBlogAdmin(props) {
   const AppBarStyle = AppBarStyles();
   const LoadingStyle = LoadingStyles();
 
-  const [singleBlogId, setsingleBlogId] = useState(JSON.stringify(props.history.location.state.idofblog));
+  const match = useRouteMatch();
 
-  if (singleBlogId === undefined) {
-    setsingleBlogId(1);
-  }
+  const blogid = match.params.id;
+// eslint-disable-next-line
+  const [singleBlogId, setsingleBlogId] = useState(blogid);
 
   // Getting Data of the Single Blog
   const [singleBlog, setsingleBlog] = useState([]);
-  const key = "gAAAAABfYyrPc24Rm_-3GlzW0nzgy2kfCHevEb3KnbDEBUwnwqIrBMVhBaTxcf1PS6FgRjSDJ6o1IBcbfhTycyQFuqR3sJn_XQ==";
+  const key =
+    "gAAAAABfYyrPc24Rm_-3GlzW0nzgy2kfCHevEb3KnbDEBUwnwqIrBMVhBaTxcf1PS6FgRjSDJ6o1IBcbfhTycyQFuqR3sJn_XQ==";
   useEffect(() => {
-    BlogModels.viewSingleBlogAdmin(singleBlogId, key).then((res) => {
-      setsingleBlog(res.data[0]);
-      setloading(false);
-      document.title = `${singleBlog.title}`;
-    });
+    async function viewSingleBlog() {
+      try {
+        const res = await BlogModels.viewSingleBlogAdmin(singleBlogId, key);
+        setsingleBlog(res.data[0]);
+        setloading(false);
+        document.title = `${singleBlog.title}`;
+      } catch (error) {
+        alert("Some Error Occured");
+      }
+    }
+    viewSingleBlog();
   }, [singleBlogId, singleBlog.title, loading]);
 
   return (
@@ -79,7 +86,9 @@ function ViewSingleBlogAdmin(props) {
 
             <Grid container style={{ marginTop: "8%" }}>
               <Grid item xs={12} sm={8} lg={9}>
-                <Typography variant="overline">by {singleBlog.author}</Typography>
+                <Typography variant="overline">
+                  by {singleBlog.author}
+                </Typography>
                 <br />
                 <Divider />
                 <br />

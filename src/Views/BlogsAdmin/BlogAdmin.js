@@ -5,7 +5,15 @@ import { Link } from "react-router-dom";
 import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
 import { ArrowBackIos, KeyboardArrowUp } from "@material-ui/icons";
 
-import { AppBar, Toolbar, Button, Typography, Container, Fab, ThemeProvider, Tooltip } from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  Button,
+  Typography,
+  Fab,
+  ThemeProvider,
+  Tooltip,
+} from "@material-ui/core";
 import ScrollTop from "../../Components/ScrollTop";
 import ViewBlogsAdmin from "./ViewBlogsAdmin.js";
 
@@ -39,12 +47,6 @@ function BlogAdmin(props) {
           </AppBar>
         </div>
       </ThemeProvider>
-
-      <Container fixed id="back-to-top-anchor">
-        <Typography gutterBottom variant="h4">
-          This is the page where blogs of all users are displayed
-        </Typography>
-      </Container>
 
       {/* Display Admin Blogs */}
       <ViewBlogsAdmin />

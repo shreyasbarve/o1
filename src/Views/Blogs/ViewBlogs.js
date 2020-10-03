@@ -35,11 +35,14 @@ function ViewBlogs(props) {
   // Get the blog data from server
   const [loading, setloading] = useState(true);
   const [blogs, setblogs] = useState([]);
-  const viewAllBlogs = () => {
-    BlogModels.viewAllBlogs().then((res) => {
+  const viewAllBlogs = async () => {
+    try {
+      const res = await BlogModels.viewAllBlogs();
       setblogs(res.data);
       setloading(false);
-    });
+    } catch (error) {
+      alert("Some Error Occured");
+    }
   };
 
   useEffect(() => {
@@ -60,7 +63,13 @@ function ViewBlogs(props) {
               <Slide bottom>
                 <Card className={CardStyle.root} elevation={3}>
                   <CardActionArea>
-                    <CardMedia component="img" alt="Some Image" image={`https://source.unsplash.com/1600x900/?coding,programming`} title="Image Title" className={CardStyle.media} />
+                    <CardMedia
+                      component="img"
+                      alt="Some Image"
+                      image={`https://source.unsplash.com/1600x900/?coding,programming`}
+                      title="Image Title"
+                      className={CardStyle.media}
+                    />
                     <CardContent>
                       <Typography gutterBottom variant="h5" noWrap>
                         {blog.title}
@@ -68,20 +77,28 @@ function ViewBlogs(props) {
 
                       <Divider />
 
-                      <Typography variant="overline" color="textSecondary" noWrap>
+                      <Typography
+                        variant="overline"
+                        color="textSecondary"
+                        noWrap
+                      >
                         Author: {blog.author}
                       </Typography>
                     </CardContent>
                     <CardActions>
                       <Link
-                        to={{
-                          pathname: `singleblog/${blog.id}`,
-                          state: { idofblog: blog.id },
-                        }}
+                        to={`singleblog/${blog.id}`}
                         color="inherit"
                         style={{ textDecoration: "none" }}
                       >
-                        <Chip avatar={<Avatar>{blog.author.substring(0, 1)}</Avatar>} label="Go to Blog" clickable color="primary" />
+                        <Chip
+                          avatar={
+                            <Avatar>{blog.author.substring(0, 1)}</Avatar>
+                          }
+                          label="Go to Blog"
+                          clickable
+                          color="primary"
+                        />
                       </Link>
                     </CardActions>
                   </CardActionArea>

@@ -5,30 +5,36 @@ import BlogModels from "../../Models/Blogs/BlogModels";
 
 // Components
 import { TextField, Button, Typography } from "@material-ui/core";
-import Snackbar from "../../Components/SnackBar";
 
-function RequestBlog() {
+function RequestBlog(props) {
+  // Server response
+  const [serverReply, setserverReply] = useState("");
+
   // Posting the blog
-  const [requestBlog, setrequestBlog] = useState({
+  const initialState = {
     fullname: "",
     college: "",
     branch: "",
     email: "",
-  });
+  };
+  const [requestBlog, setrequestBlog] = useState(initialState);
   const postBlog = async (e) => {
     e.preventDefault();
-    BlogModels.requestBlog(requestBlog);
-    setrequestBlog({
-      fullname: "",
-      college: "",
-      branch: "",
-      email: "",
-    });
+    try {
+      await BlogModels.requestBlog(requestBlog);
+      setrequestBlog(initialState);
+      setserverReply("Request sent");
+      props.onAfterRequest();
+    } catch (error) {
+      setserverReply("Request not sent");
+    }
   };
+
   return (
     <>
       <Typography variant="button" gutterBottom>
-        Fill up the request form. Ensure that all the details are correct. You will be contacted from the admin
+        Fill up the request form. Ensure that all the details are correct. You
+        will be contacted from the admin
       </Typography>
       <form onSubmit={postBlog} noValidate autoComplete="off">
         <TextField
@@ -96,12 +102,16 @@ function RequestBlog() {
             })
           }
         />
-        <Button type="submit" variant="contained" color="primary" style={{ marginTop: "2%", marginBottom: "2%" }}>
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          style={{ marginTop: "2%", marginBottom: "2%" }}
+        >
           Request
         </Button>
-
-        <Snackbar notification="Request Submitted"/>
       </form>
+      <Typography variant="overline">{serverReply}</Typography>
     </>
   );
 }

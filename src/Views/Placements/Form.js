@@ -4,7 +4,16 @@ import React, { useState } from "react";
 import { Close } from "@material-ui/icons";
 
 // Components
-import { Button, Dialog, DialogTitle, useTheme, useMediaQuery, DialogActions, Divider, IconButton } from "@material-ui/core";
+import {
+  Button,
+  Dialog,
+  DialogTitle,
+  useTheme,
+  useMediaQuery,
+  DialogActions,
+  Divider,
+  IconButton,
+} from "@material-ui/core";
 import FillForm from "./StepperForm";
 
 function Form() {
