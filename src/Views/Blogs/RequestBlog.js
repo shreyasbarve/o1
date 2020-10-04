@@ -5,6 +5,7 @@ import BlogModels from "../../Models/Blogs/BlogModels";
 
 // Components
 import { TextField, Button, Typography } from "@material-ui/core";
+import SnackBar from "../../Components/SnackBar";
 
 function RequestBlog(props) {
   // Server response
@@ -32,6 +33,7 @@ function RequestBlog(props) {
 
   return (
     <>
+      <SnackBar message="Request loled" />
       <Typography variant="button" gutterBottom>
         Fill up the request form. Ensure that all the details are correct. You
         will be contacted from the admin

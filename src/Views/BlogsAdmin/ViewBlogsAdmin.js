@@ -49,9 +49,7 @@ function ViewBlogsAdmin(props) {
   const deleteBlog = async (blogid) => {
     try {
       await BlogModels.deleteBlog(blogid, key);
-      () => {
-        setblogs((blogs) => blogs.filter((i) => i.id !== blogid));
-      };
+      setblogs((blogs) => blogs.filter((i) => i.id !== blogid));
     } catch (error) {
       alert("Some Error Occured");
     }

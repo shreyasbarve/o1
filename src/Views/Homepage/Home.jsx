@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../assets/vendor/ionicons/css/ionicons.min.css";
 import Fade from "react-reveal/Fade";

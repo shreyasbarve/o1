@@ -49,11 +49,9 @@ function ViewPlacementsAdmin(props) {
   const deletePlacement = async (placementid) => {
     try {
       await PlacementModels.deletePlacement(placementid, key);
-      () => {
-        setplacements((placement) =>
-          placement.filter((i) => i.id !== placementid)
-        );
-      };
+      setplacements((placement) =>
+        placement.filter((i) => i.id !== placementid)
+      );
     } catch (error) {
       alert("Some Errror Occured");
     }
