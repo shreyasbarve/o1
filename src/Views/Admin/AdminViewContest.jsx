@@ -109,12 +109,12 @@ const AdminViewContest = () => {
         </div>
       </section>
       <div
-        className="modal fade"
-        id="modalLoginForm"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="myModalLabel"
-        aria-hidden="true"
+className="modal fade"
+id="modalLoginForm"
+tabIndex="-1"
+role="dialog"
+aria-labelledby="myModalLabel"
+aria-hidden="true"
       >
         <div className="modal-dialog" role="document">
           <div className="modal-content">

@@ -39,7 +39,7 @@ ReactDOM.render(
           <Navbar />
           <About />
         </Route>
-        <Route exact path="/viewContest">
+        <Route exact path="/contest">
           <Navbar />
           <ViewContest />
         </Route>

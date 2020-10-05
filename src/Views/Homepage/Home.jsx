@@ -169,7 +169,7 @@ const Home = () => {
                     <i className="ion-ios-analytics-outline i1"></i>
                   </div>
                   <h4 className="title">
-                    <NavLink to="/viewBlog">Daily Blogs</NavLink>
+                    <NavLink to="/blog">Daily Blogs</NavLink>
                   </h4>
                   <p className="description">
                     We have blogs on various topics like React, Django,
@@ -183,7 +183,7 @@ const Home = () => {
                     <i className="ion-ios-bookmarks-outline i2"></i>
                   </div>
                   <h4 className="title">
-                    <a href="#hero">Bunch of Contest</a>
+                    <NavLink to="/contest">Bunch of Contest</NavLink>
                   </h4>
                   <p className="description">
                     Our Website will give daily update about various ongoing
@@ -199,7 +199,7 @@ const Home = () => {
                     <i className="ion-ios-paper-outline i3"></i>
                   </div>
                   <h4 className="title">
-                    <a href="#hero">Placement Corner</a>
+                  <NavLink to="/placement">Placement Corner</NavLink>
                   </h4>
                   <p className="description">
                     Get inspired from the students who cracked great offers at

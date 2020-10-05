@@ -115,7 +115,7 @@ function ViewPlacementsAdmin(props) {
                       color="primary"
                       onClick={() => approvePlacement(placement.id)}
                     >
-                      Delete
+                      Approve
                     </Button>
 
                     <Button

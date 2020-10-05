@@ -70,7 +70,8 @@ const Navbar = () => {
               </div>
             </div>
             <div className="modal-footer d-flex justify-content-center">
-              <button className="btn bg-primary btn-send" onClick={enterKey}>
+              <button className="btn bg-primary btn-send close" 
+                data-dismiss="modal" onClick={enterKey}>
                 Send
               </button>
             </div>
@@ -107,7 +108,7 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li className="nav-item mr-2">
-                <NavLink className="nav-link" to="/viewContest">
+                <NavLink className="nav-link" to="/contest">
                   <span className="fa fa-address-card fa-md"></span> Contest{" "}
                 </NavLink>
               </li>
