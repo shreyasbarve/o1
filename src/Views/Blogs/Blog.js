@@ -10,7 +10,6 @@ import { ArrowBackIos, KeyboardArrowUp } from "@material-ui/icons";
 import {
   AppBar,
   Toolbar,
-  Button,
   Typography,
   Container,
   Fab,
@@ -42,27 +41,33 @@ function Blog(props) {
                 Blogs
               </Typography>
 
-              <Typography>
+              {/* <Typography>
                 <Button color="inherit">Login</Button>
                 <Button color="inherit">Sign Up</Button>
-              </Typography>
+              </Typography> */}
             </Toolbar>
           </AppBar>
         </div>
       </ThemeProvider>
 
-      <Container fixed style={{ marginTop: "3%", marginBottom: "3%" }} id="back-to-top-anchor">
+      <Container
+        fixed
+        style={{ marginTop: "3%", marginBottom: "3%" }}
+        id="back-to-top-anchor"
+      >
         <Form />
       </Container>
 
       {/* Display Blogs */}
       <ViewBlogs />
 
-      <ScrollTop {...props}>
-        <Fab color="secondary" size="small">
-          <KeyboardArrowUp />
-        </Fab>
-      </ScrollTop>
+      <div>
+        <ScrollTop {...props}>
+          <Fab color="secondary" size="small">
+            <KeyboardArrowUp />
+          </Fab>
+        </ScrollTop>
+      </div>
     </>
   );
 }

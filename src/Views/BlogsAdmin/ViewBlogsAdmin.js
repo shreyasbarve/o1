@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { read_cookie } from "sfcookies";
 
 // CSS
 import CardStyles from "../../Styles/CardStyles";
@@ -32,8 +33,7 @@ function ViewBlogsAdmin(props) {
   const LoadingStyle = LoadingStyles();
 
   // Get the blog data from server
-  const key =
-    "gAAAAABfYys99vhKbNtgKJ5PB_HgqIeQ5qFW_Nz4j8m_p8p0zOKVFjs4y6VxMeCLJMmJtB2e7X7F69tYenleGxfBxeOqPyPjJll-60Ol9AJWW48JI6cCAKG0fDAGdJPlDAom8TUl_r6l";
+  const key = read_cookie("adminKey");
   const [loading, setloading] = useState(true);
   const [blogs, setblogs] = useState([]);
   const viewAllBlogs = async () => {
@@ -67,6 +67,7 @@ function ViewBlogsAdmin(props) {
   useEffect(() => {
     document.title = "Admin Blogs";
     viewAllBlogs();
+    // eslint-disable-next-line
   }, []);
 
   return (

@@ -8,7 +8,6 @@ import { ArrowBackIos, KeyboardArrowUp } from "@material-ui/icons";
 import {
   AppBar,
   Toolbar,
-  Button,
   Typography,
   Container,
   Fab,
@@ -41,10 +40,10 @@ function Placement(props) {
                 Placements
               </Typography>
 
-              <Typography>
+              {/* <Typography>
                 <Button color="inherit">Login</Button>
                 <Button color="inherit">Sign Up</Button>
-              </Typography>
+              </Typography> */}
             </Toolbar>
           </AppBar>
         </div>

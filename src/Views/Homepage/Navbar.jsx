@@ -3,12 +3,13 @@ import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import { NavLink, useHistory } from "react-router-dom";
 import AdminModels from "../../Models/Admin/AdminModels";
+import { bake_cookie } from "sfcookies";
 
 const Navbar = () => {
   const history = useHistory();
 
   const [admin, setAdmin] = useState({
-    email: "",
+    name: "",
     key: "",
   });
 
@@ -16,6 +17,8 @@ const Navbar = () => {
     e.preventDefault();
     try {
       await AdminModels.verifyAdmin(admin);
+      bake_cookie("adminName", admin.name);
+      bake_cookie("adminKey", admin.key);
       history.push("/adminContest");
     } catch (error) {
       alert("Some error occured");
@@ -50,7 +53,7 @@ const Navbar = () => {
               <div className="md-form mb-5">
                 <input
                   type="text"
-                  id="defaultForm-email"
+                  id="defaultForm-name"
                   value={admin.name}
                   onChange={(e) => setAdmin({ ...admin, name: e.target.value })}
                   className="form-control validate"
@@ -70,8 +73,11 @@ const Navbar = () => {
               </div>
             </div>
             <div className="modal-footer d-flex justify-content-center">
-              <button className="btn bg-primary btn-send close" 
-                data-dismiss="modal" onClick={enterKey}>
+              <button
+                className="btn bg-primary btn-send close"
+                data-dismiss="modal"
+                onClick={enterKey}
+              >
                 Send
               </button>
             </div>

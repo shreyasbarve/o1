@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { read_cookie } from "sfcookies";
 
 // CSS
 import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
@@ -8,7 +9,6 @@ import { ArrowBackIos, KeyboardArrowUp } from "@material-ui/icons";
 import {
   AppBar,
   Toolbar,
-  Button,
   Typography,
   Container,
   Fab,
@@ -31,7 +31,7 @@ function PlacementAdmin(props) {
             <Toolbar>
               <Typography className={AppBarStyle.title}>
                 <Tooltip title="Go Back">
-                  <Link to="/" style={{ color: "inherit" }}>
+                  <Link to="/adminContest" style={{ color: "inherit" }}>
                     <ArrowBackIos />
                   </Link>
                 </Tooltip>
@@ -40,10 +40,7 @@ function PlacementAdmin(props) {
                 Admin Placements
               </Typography>
 
-              <Typography>
-                <Button color="inherit">Login</Button>
-                <Button color="inherit">Sign Up</Button>
-              </Typography>
+              <Typography>User:{read_cookie("adminName")}</Typography>
             </Toolbar>
           </AppBar>
         </div>

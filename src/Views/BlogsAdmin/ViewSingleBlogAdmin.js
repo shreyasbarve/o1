@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
+import { read_cookie } from "sfcookies";
 
 // CSS
 import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
@@ -36,13 +37,12 @@ function ViewSingleBlogAdmin(props) {
   const match = useRouteMatch();
 
   const blogid = match.params.id;
-// eslint-disable-next-line
+  // eslint-disable-next-line
   const [singleBlogId, setsingleBlogId] = useState(blogid);
 
   // Getting Data of the Single Blog
   const [singleBlog, setsingleBlog] = useState([]);
-  const key =
-    "gAAAAABfYyrPc24Rm_-3GlzW0nzgy2kfCHevEb3KnbDEBUwnwqIrBMVhBaTxcf1PS6FgRjSDJ6o1IBcbfhTycyQFuqR3sJn_XQ==";
+  const key = read_cookie("adminKey");
   useEffect(() => {
     async function viewSingleBlog() {
       try {
@@ -55,7 +55,7 @@ function ViewSingleBlogAdmin(props) {
       }
     }
     viewSingleBlog();
-  }, [singleBlogId, singleBlog.title, loading]);
+  }, [singleBlogId, singleBlog.title, loading, key]);
 
   return (
     <div style={{ backgroundImage: `url(${image})`, height: "100rem" }}>
