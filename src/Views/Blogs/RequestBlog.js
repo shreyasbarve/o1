@@ -33,7 +33,7 @@ function RequestBlog(props) {
 
   return (
     <>
-      <SnackBar message="Request loled" />
+      <SnackBar message="Request checking" />
       <Typography variant="button" gutterBottom>
         Fill up the request form. Ensure that all the details are correct. You
         will be contacted from the admin

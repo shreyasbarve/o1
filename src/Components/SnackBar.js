@@ -42,6 +42,7 @@ export default function CustomizedSnackbars({ message }) {
         open={openSuccess}
         autoHideDuration={4000}
         onClose={handleCloseSuccess}
+        anchorOrigin={{ horizontal: "center", vertical: "top" }}
       >
         <Alert onClose={handleCloseSuccess} severity="success">
           {message}
@@ -56,6 +57,7 @@ export default function CustomizedSnackbars({ message }) {
           open={openError}
           autoHideDuration={4000}
           onClose={handleCloseError}
+          anchorOrigin={{ horizontal: "center", vertical: "top" }}
         >
           <Alert onClose={handleCloseError} severity="error">
             {message}
