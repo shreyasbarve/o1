@@ -1,6 +1,7 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import Snackbar from "@material-ui/core/Snackbar";
+import { useSelector, useDispatch } from "react-redux";
+import { Snackbar } from "@material-ui/core";
+import { setSnackbar } from "./SnackBarReducer";
 import MuiAlert from "@material-ui/lab/Alert";
 import SnackBarStyles from "../Styles/SnackBarStyles";
 
@@ -8,62 +9,38 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-export default function CustomizedSnackbars({ message }) {
+export default function CustomizedSnackbars() {
   const SnackBarStyle = SnackBarStyles();
-  const [openSuccess, setOpenSuccess] = React.useState(false);
-  const [openError, setOpenError] = React.useState(false);
 
-  const handleClickSuccess = () => {
-    setOpenSuccess(true);
-  };
-  const handleCloseSuccess = (event, reason) => {
+  // redux
+  const dispatch = useDispatch();
+  const snackbarOpen = useSelector((state) => state.snackbar.snackbarOpen);
+  const snackbarseverity = useSelector(
+    (state) => state.snackbar.snackbarseverity
+  );
+  const snackbarMessage = useSelector(
+    (state) => state.snackbar.snackbarMessage
+  );
+
+  const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
-    setOpenSuccess(false);
-  };
-
-  const handleClickError = () => {
-    setOpenError(true);
-  };
-  const handleCloseError = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpenError(false);
+    dispatch(setSnackbar(false, snackbarseverity, snackbarMessage));
   };
 
   return (
     <div className={SnackBarStyle.root}>
-      <Button variant="outlined" onClick={handleClickSuccess}>
-        Open success snackbar
-      </Button>
       <Snackbar
-        open={openSuccess}
+        open={snackbarOpen}
         autoHideDuration={4000}
-        onClose={handleCloseSuccess}
+        onClose={handleClose}
         anchorOrigin={{ horizontal: "center", vertical: "top" }}
       >
-        <Alert onClose={handleCloseSuccess} severity="success">
-          {message}
+        <Alert onClose={handleClose} severity={snackbarseverity}>
+          {snackbarMessage}
         </Alert>
       </Snackbar>
-
-      <div className={SnackBarStyle.root}>
-        <Button variant="outlined" onClick={handleClickError}>
-          Open error snackbar
-        </Button>
-        <Snackbar
-          open={openError}
-          autoHideDuration={4000}
-          onClose={handleCloseError}
-          anchorOrigin={{ horizontal: "center", vertical: "top" }}
-        >
-          <Alert onClose={handleCloseError} severity="error">
-            {message}
-          </Alert>
-        </Snackbar>
-      </div>
     </div>
   );
 }

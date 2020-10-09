@@ -1,10 +1,15 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { NavLink } from "react-router-dom";
 import "../../assets/css/style.css";
 import ContestModels from "../../Models/Contests/ContestModels";
+import setSnackbar from "../../Components/SnackBarReducer";
 
 const AdminViewContest = () => {
+  // Redux
+  const dispatch = useDispatch();
+
   const [addcontest, setAddcontest] = useState({
     name: "",
     platform: "",
@@ -20,8 +25,9 @@ const AdminViewContest = () => {
     e.preventDefault();
     try {
       await ContestModels.viewContestAdmin(addcontest);
+      dispatch(setSnackbar(true, "success", "Contest added successfully"));
     } catch (error) {
-      alert("Some Error Occured");
+      dispatch(setSnackbar(true, "error", "Some error occured"));
     }
   };
 
@@ -109,12 +115,12 @@ const AdminViewContest = () => {
         </div>
       </section>
       <div
-className="modal fade"
-id="modalLoginForm"
-tabIndex="-1"
-role="dialog"
-aria-labelledby="myModalLabel"
-aria-hidden="true"
+        className="modal fade"
+        id="modalLoginForm"
+        tabIndex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel"
+        aria-hidden="true"
       >
         <div className="modal-dialog" role="document">
           <div className="modal-content">

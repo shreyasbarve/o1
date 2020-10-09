@@ -1,11 +1,16 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import { NavLink, useHistory } from "react-router-dom";
 import AdminModels from "../../Models/Admin/AdminModels";
 import { bake_cookie } from "sfcookies";
+import setSnackbar from "../../Components/SnackBarReducer";
 
 const Navbar = () => {
+  // Redux
+  const dispatch = useDispatch();
+
   const history = useHistory();
 
   const [admin, setAdmin] = useState({
@@ -19,9 +24,10 @@ const Navbar = () => {
       await AdminModels.verifyAdmin(admin);
       bake_cookie("adminName", admin.name);
       bake_cookie("adminKey", admin.key);
+      dispatch(setSnackbar(true, "success", "Login successfull"));
       history.push("/adminContest");
     } catch (error) {
-      alert("Some error occured");
+      dispatch(setSnackbar(true, "error", "Login failed. Try again"));
     }
   };
 

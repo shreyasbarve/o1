@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useRouteMatch } from "react-router-dom";
 
 // CSS
@@ -26,8 +27,12 @@ import {
   LinearProgress,
   ThemeProvider,
 } from "@material-ui/core";
+import setSnackbar from "../../Components/SnackBarReducer";
 
 function ViewSinglePlacement(props) {
+  // Redux
+  const dispatch = useDispatch();
+
   const [loading, setloading] = useState(true);
   // Styling for elements
   const AppBarStyle = AppBarStyles();
@@ -36,7 +41,7 @@ function ViewSinglePlacement(props) {
   const match = useRouteMatch();
 
   const placementid = match.params.id;
-// eslint-disable-next-line
+  // eslint-disable-next-line
   const [singlePlacementId, setsinglePlacementId] = useState(placementid);
 
   // Getting Data of the Single Placement
@@ -52,11 +57,11 @@ function ViewSinglePlacement(props) {
         setloading(false);
         document.title = `${singlePlacement.title}`;
       } catch (error) {
-        alert("Some Error Occured");
+        dispatch(setSnackbar(true, "error", "Some error occured"));
       }
     }
     viewSinglePlacement();
-  }, [singlePlacementId, singlePlacement.title, loading]);
+  }, [singlePlacementId, singlePlacement.title, loading, dispatch]);
 
   return (
     <div style={{ backgroundImage: `url(${image})`, height: "100rem" }}>

@@ -1,16 +1,21 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 // API
 import BlogModels from "../../Models/Blogs/BlogModels";
 
 // Components
 import { Button, TextField, Typography } from "@material-ui/core";
+import { setSnackbar } from "../../Components/SnackBarReducer";
 
 // Quill
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
 function CreateBlog(props) {
+  // Redux
+  const dispatch = useDispatch();
+
   // Quill
   // eslint-disable-next-line
   const [modules, setmodules] = React.useState({
@@ -46,9 +51,6 @@ function CreateBlog(props) {
     "video",
   ]);
 
-  // Server response
-  const [serverReply, setserverReply] = useState("");
-
   // Posting the blog
   const initialState = {
     author: "",
@@ -64,10 +66,10 @@ function CreateBlog(props) {
     try {
       await BlogModels.createBlog(createBlog);
       setcreateBlog(initialState);
-      setserverReply("post Created");
+      dispatch(setSnackbar(true, "success", "Blog post created"));
       props.onAfterCreate();
     } catch (error) {
-      setserverReply("Post Not Created");
+      dispatch(setSnackbar(true, "error", "Blog post not created"));
     }
   };
 
@@ -190,7 +192,6 @@ function CreateBlog(props) {
           Create
         </Button>
       </form>
-      <Typography variant="overline">{serverReply}</Typography>
     </>
   );
 }

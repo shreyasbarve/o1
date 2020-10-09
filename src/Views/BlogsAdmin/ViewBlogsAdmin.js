@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { read_cookie } from "sfcookies";
 
@@ -26,8 +27,12 @@ import {
   LinearProgress,
   Button,
 } from "@material-ui/core";
+import setSnackbar from "../../Components/SnackBarReducer";
 
 function ViewBlogsAdmin(props) {
+  // Redux
+  const dispatch = useDispatch();
+
   // CSS for styling
   const CardStyle = CardStyles();
   const LoadingStyle = LoadingStyles();
@@ -42,7 +47,7 @@ function ViewBlogsAdmin(props) {
       setblogs(res.data);
       setloading(false);
     } catch (error) {
-      alert("Some Error Occured");
+      dispatch(setSnackbar(true, "error", "Some error occured"));
     }
   };
 
@@ -50,17 +55,18 @@ function ViewBlogsAdmin(props) {
     try {
       await BlogModels.deleteBlog(blogid, key);
       setblogs((blogs) => blogs.filter((i) => i.id !== blogid));
+      dispatch(setSnackbar(true, "success", "Blog post deleted"));
     } catch (error) {
-      alert("Some Error Occured");
+      dispatch(setSnackbar(true, "error", "Some error occured"));
     }
   };
 
   const approveBlog = async (blogid) => {
     try {
       await BlogModels.approveBlog(blogid, key);
-      alert("Blog Approved");
+      dispatch(setSnackbar(true, "success", "Blog post approved"));
     } catch (error) {
-      alert("Some Error Occured");
+      dispatch(setSnackbar(true, "error", "Some error occured"));
     }
   };
 

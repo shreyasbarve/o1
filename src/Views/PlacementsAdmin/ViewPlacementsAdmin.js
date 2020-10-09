@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { read_cookie } from "sfcookies";
 
@@ -26,8 +27,12 @@ import {
   LinearProgress,
   Button,
 } from "@material-ui/core";
+import setSnackbar from "../../Components/SnackBarReducer";
 
 function ViewPlacementsAdmin(props) {
+  // Redux
+  const dispatch = useDispatch();
+
   // CSS for styling
   const CardStyle = CardStyles();
   const LoadingStyle = LoadingStyles();
@@ -52,17 +57,18 @@ function ViewPlacementsAdmin(props) {
       setplacements((placement) =>
         placement.filter((i) => i.id !== placementid)
       );
+      dispatch(setSnackbar(true, "success", "Placement post deleted"));
     } catch (error) {
-      alert("Some Errror Occured");
+      dispatch(setSnackbar(true, "error", "Some error occured"));
     }
   };
 
   const approvePlacement = async (placementid) => {
     try {
       await PlacementModels.approvePlacement(placementid, key);
-      alert("Blog Approved");
+      dispatch(setSnackbar(true, "success", "Placement post approved"));
     } catch (error) {
-      alert("Some Error Occured");
+      dispatch(setSnackbar(true, "error", "Some error occured"));
     }
   };
 

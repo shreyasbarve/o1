@@ -1,15 +1,16 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 // API
 import BlogModels from "../../Models/Blogs/BlogModels";
 
 // Components
 import { TextField, Button, Typography } from "@material-ui/core";
-import SnackBar from "../../Components/SnackBar";
+import { setSnackbar } from "../../Components/SnackBarReducer";
 
 function RequestBlog(props) {
-  // Server response
-  const [serverReply, setserverReply] = useState("");
+  // Redux
+  const dispatch = useDispatch();
 
   // Posting the blog
   const initialState = {
@@ -24,16 +25,15 @@ function RequestBlog(props) {
     try {
       await BlogModels.requestBlog(requestBlog);
       setrequestBlog(initialState);
-      setserverReply("Request sent");
+      dispatch(setSnackbar(true, "success", "Request sent"));
       props.onAfterRequest();
     } catch (error) {
-      setserverReply("Request not sent");
+      dispatch(setSnackbar(true, "error", "Request not sent"));
     }
   };
 
   return (
     <>
-      <SnackBar message="Request checking" />
       <Typography variant="button" gutterBottom>
         Fill up the request form. Ensure that all the details are correct. You
         will be contacted from the admin
@@ -113,7 +113,6 @@ function RequestBlog(props) {
           Request
         </Button>
       </form>
-      <Typography variant="overline">{serverReply}</Typography>
     </>
   );
 }

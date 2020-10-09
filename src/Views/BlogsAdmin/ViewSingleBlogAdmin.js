@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useRouteMatch } from "react-router-dom";
 import { read_cookie } from "sfcookies";
 
@@ -27,8 +28,12 @@ import {
   LinearProgress,
   ThemeProvider,
 } from "@material-ui/core";
+import setSnackbar from "../../Components/SnackBarReducer";
 
 function ViewSingleBlogAdmin(props) {
+  // Redux
+  const dispatch = useDispatch();
+
   const [loading, setloading] = useState(true);
   // Styling for elements
   const AppBarStyle = AppBarStyles();
@@ -51,11 +56,11 @@ function ViewSingleBlogAdmin(props) {
         setloading(false);
         document.title = `${singleBlog.title}`;
       } catch (error) {
-        alert("Some Error Occured");
+        dispatch(setSnackbar(true, "error", "Some error occured"));
       }
     }
     viewSingleBlog();
-  }, [singleBlogId, singleBlog.title, loading, key]);
+  }, [singleBlogId, singleBlog.title, loading, key, dispatch]);
 
   return (
     <div style={{ backgroundImage: `url(${image})`, height: "100rem" }}>

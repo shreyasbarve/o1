@@ -1,16 +1,21 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 // API
 import PlacementModels from "../../Models/Placements/PlacementModels";
 
 // Components
 import { Button, TextField, Typography } from "@material-ui/core";
+import { setSnackbar } from "../../Components/SnackBarReducer";
 
 // Quill
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
 function CreatePlacement(props) {
+  // Redux
+  const dispatch = useDispatch();
+
   // Quill
   // eslint-disable-next-line
   const [modules, setmodules] = React.useState({
@@ -46,9 +51,6 @@ function CreatePlacement(props) {
     "video",
   ]);
 
-  // Server response
-  const [serverReply, setserverReply] = useState("");
-
   // Posting the placement
   const initialState = {
     author: "",
@@ -64,10 +66,10 @@ function CreatePlacement(props) {
     try {
       await PlacementModels.createPlacement(createPlacement);
       setcreatePlacement(initialState);
-      setserverReply("Post created");
+      dispatch(setSnackbar(true, "success", "Placement post created"));
       props.onAfterCreate();
     } catch (error) {
-      setserverReply("Post not created");
+      dispatch(setSnackbar(true, "error", "Placement post not created"));
     }
   };
   return (
@@ -189,7 +191,6 @@ function CreatePlacement(props) {
           Create
         </Button>
       </form>
-      <Typography variant="overline">{serverReply}</Typography>
     </>
   );
 }
