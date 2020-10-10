@@ -28,7 +28,6 @@ import {
   Button,
 } from "@material-ui/core";
 import setSnackbar from "../../Components/SnackBarReducer";
-import AlertDialog from "../../Components/AlertDialog";
 
 function ViewBlogsAdmin(props) {
   // Redux
@@ -85,7 +84,6 @@ function ViewBlogsAdmin(props) {
         </div>
       ) : (
         <Grid container spacing={3}>
-          <AlertDialog />
           {blogs.map((blog) => (
             <Grid item xs={12} sm={6} lg={3} key={blog.id}>
               <Slide bottom>

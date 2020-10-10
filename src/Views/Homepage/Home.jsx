@@ -106,7 +106,7 @@ const Home = () => {
               <div className="md-form mb-4">
                 <input
                   type="password"
-                  id="defaultForm-pass"
+                  id="defaultForm-pass-home"
                   value={subscribe.key}
                   onChange={(e) =>
                     setSubscribe({ ...subscribe, key: e.target.value })

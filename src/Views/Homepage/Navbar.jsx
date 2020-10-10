@@ -24,8 +24,8 @@ const Navbar = () => {
       await AdminModels.verifyAdmin(admin);
       bake_cookie("adminName", admin.name);
       bake_cookie("adminKey", admin.key);
-      dispatch(setSnackbar(true, "success", "Login successfull"));
       history.push("/adminContest");
+      dispatch(setSnackbar(true, "success", "Login successfull"));
     } catch (error) {
       dispatch(setSnackbar(true, "error", "Login failed. Try again"));
     }
@@ -70,7 +70,7 @@ const Navbar = () => {
               <div className="md-form mb-4">
                 <input
                   type="password"
-                  id="defaultForm-pass"
+                  id="defaultForm-pass-navbar"
                   value={admin.Key}
                   onChange={(e) => setAdmin({ ...admin, key: e.target.value })}
                   className="form-control validate"

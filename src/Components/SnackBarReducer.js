@@ -6,7 +6,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case "snackbar_success":
+    case "snackbar_open":
       const { snackbarOpen, snackbarseverity, snackbarMessage } = action;
       return {
         ...state,
@@ -24,7 +24,7 @@ export const setSnackbar = (
   snackbarseverity = "sucess",
   snackbarMessage = ""
 ) => ({
-  type: "snackbar_success",
+  type: "snackbar_open",
   snackbarOpen,
   snackbarseverity,
   snackbarMessage,
