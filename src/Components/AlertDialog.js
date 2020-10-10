@@ -6,14 +6,10 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-} from "@material-ui/core/Button";
+} from "@material-ui/core";
 
 export default function AlertDialog() {
   const [open, setOpen] = useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
 
   const handleClose = () => {
     setOpen(false);
@@ -21,7 +17,7 @@ export default function AlertDialog() {
 
   return (
     <>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      <Button variant="outlined" color="primary" onClick={() => setOpen(true)}>
         Open alert dialog
       </Button>
       <Dialog open={open} onClose={handleClose}>
