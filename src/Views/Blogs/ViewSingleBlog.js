@@ -7,6 +7,7 @@ import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
 import LoadingStyles from "../../Styles/LoadingStyles";
 import image from "../../codeImage.jpg";
 import { ArrowBackIos } from "@material-ui/icons";
+import "../../Styles/forImage.css";
 
 // API
 import BlogModels from "../../Models/Blogs/BlogModels";
@@ -96,7 +97,11 @@ function ViewSingleBlog(props) {
                 <br />
                 <Divider />
                 <br />
-                <Typography gutterBottom variant="body1">
+                <Typography
+                  gutterBottom
+                  variant="body1"
+                  style={{ overflow: "auto" }}
+                >
                   {parse(singleBlog.body)}
                 </Typography>
               </Grid>

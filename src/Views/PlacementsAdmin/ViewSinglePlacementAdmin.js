@@ -30,6 +30,7 @@ import {
   ThemeProvider,
 } from "@material-ui/core";
 import setSnackbar from "../../Components/SnackBarReducer";
+import "../../Styles/forImage.css";
 
 function ViewSinglePlacementAdmin(props) {
   // Redux
@@ -48,12 +49,14 @@ function ViewSinglePlacementAdmin(props) {
 
   // Getting Data of the Single Placement
   const [singlePlacement, setsinglePlacement] = useState([]);
+  const name = read_cookie("adminName");
   const key = read_cookie("adminKey");
   useEffect(() => {
     async function viewSinglePlacement() {
       try {
         const res = await PlacementModels.viewSinglePlacementAdmin(
           singlePlacementId,
+          name,
           key
         );
         setsinglePlacement(res.data[0]);
@@ -64,7 +67,7 @@ function ViewSinglePlacementAdmin(props) {
       }
     }
     viewSinglePlacement();
-  }, [singlePlacementId, singlePlacement.title, loading, key, dispatch]);
+  }, [singlePlacementId, singlePlacement.title, loading, name, key, dispatch]);
 
   return (
     <div style={{ backgroundImage: `url(${image})`, height: "100rem" }}>
@@ -101,7 +104,11 @@ function ViewSinglePlacementAdmin(props) {
                 <br />
                 <Divider />
                 <br />
-                <Typography gutterBottom variant="body1">
+                <Typography
+                  gutterBottom
+                  variant="body1"
+                  style={{ overflow: "auto" }}
+                >
                   {parse(singlePlacement.body)}
                 </Typography>
               </Grid>

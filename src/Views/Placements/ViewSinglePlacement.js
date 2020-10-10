@@ -7,6 +7,7 @@ import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
 import LoadingStyles from "../../Styles/LoadingStyles";
 import image from "../../codeImage.jpg";
 import { ArrowBackIos } from "@material-ui/icons";
+import "../../Styles/forImage.css";
 
 // API
 import PlacementModels from "../../Models/Placements/PlacementModels";
@@ -98,7 +99,11 @@ function ViewSinglePlacement(props) {
                 <br />
                 <Divider />
                 <br />
-                <Typography gutterBottom variant="body1">
+                <Typography
+                  gutterBottom
+                  variant="body1"
+                  style={{ overflow: "auto" }}
+                >
                   {parse(singlePlacement.body)}
                 </Typography>
               </Grid>

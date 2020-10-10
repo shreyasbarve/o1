@@ -6,17 +6,23 @@ const BlogModels = {
   viewAllBlogs: async () => {
     return await axios.get(`${BASE_URL}/`);
   },
-  viewAllBlogsAdmin: async (hashid) => {
-    return await axios.post(`${BASE_URL}/`, { key: hashid });
+  viewAllBlogsAdmin: async (username, hashid) => {
+    return await axios.post(`${BASE_URL}/`, { name: username, key: hashid });
   },
-  approveBlog: async (id, hashid) => {
-    return await axios.post(`${BASE_URL}/approve/${id}`, { key: hashid });
+  approveBlog: async (id, username, hashid) => {
+    return await axios.post(`${BASE_URL}/approve/${id}`, {
+      name: username,
+      key: hashid,
+    });
   },
   createBlog: async (userData) => {
     return await axios.post(`${BASE_URL}/create/`, userData);
   },
-  deleteBlog: async (id, hashid) => {
-    return await axios.post(`${BASE_URL}/delete/${id}`, { key: hashid });
+  deleteBlog: async (id, username, hashid) => {
+    return await axios.post(`${BASE_URL}/delete/${id}`, {
+      name: username,
+      key: hashid,
+    });
   },
   requestBlog: async (userData) => {
     return await axios.post(`${BASE_URL}/requestkey/`, userData);
@@ -24,8 +30,11 @@ const BlogModels = {
   viewSingleBlog: async (id) => {
     return await axios.get(`${BASE_URL}/${id}/`);
   },
-  viewSingleBlogAdmin: async (id, hashid) => {
-    return await axios.post(`${BASE_URL}/${id}/`, { key: hashid });
+  viewSingleBlogAdmin: async (id, username, hashid) => {
+    return await axios.post(`${BASE_URL}/${id}/`, {
+      name: username,
+      key: hashid,
+    });
   },
 };
 

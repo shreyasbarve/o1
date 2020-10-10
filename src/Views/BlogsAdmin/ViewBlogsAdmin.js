@@ -38,12 +38,13 @@ function ViewBlogsAdmin(props) {
   const LoadingStyle = LoadingStyles();
 
   // Get the blog data from server
+  const name = read_cookie("adminName");
   const key = read_cookie("adminKey");
   const [loading, setloading] = useState(true);
   const [blogs, setblogs] = useState([]);
   const viewAllBlogs = async () => {
     try {
-      const res = await BlogModels.viewAllBlogsAdmin(key);
+      const res = await BlogModels.viewAllBlogsAdmin(name, key);
       setblogs(res.data);
       setloading(false);
     } catch (error) {
@@ -53,7 +54,7 @@ function ViewBlogsAdmin(props) {
 
   const deleteBlog = async (blogid) => {
     try {
-      await BlogModels.deleteBlog(blogid, key);
+      await BlogModels.deleteBlog(blogid, name, key);
       setblogs((blogs) => blogs.filter((i) => i.id !== blogid));
       dispatch(setSnackbar(true, "success", "Blog post deleted"));
     } catch (error) {
@@ -63,7 +64,7 @@ function ViewBlogsAdmin(props) {
 
   const approveBlog = async (blogid) => {
     try {
-      await BlogModels.approveBlog(blogid, key);
+      await BlogModels.approveBlog(blogid, name, key);
       dispatch(setSnackbar(true, "success", "Blog post approved"));
     } catch (error) {
       dispatch(setSnackbar(true, "error", "Some error occured"));

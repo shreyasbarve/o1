@@ -38,22 +38,23 @@ function ViewPlacementsAdmin(props) {
   const LoadingStyle = LoadingStyles();
 
   // Get the placement data from server
+  const name = read_cookie("adminName");
   const key = read_cookie("adminKey");
   const [loading, setloading] = useState(true);
   const [placements, setplacements] = useState([]);
   const viewAllPlacements = async () => {
     try {
-      const res = await PlacementModels.viewAllPlacementsAdmin(key);
+      const res = await PlacementModels.viewAllPlacementsAdmin(name, key);
       setplacements(res.data);
       setloading(false);
     } catch (error) {
-      dispatch(setSnackbar(true, "error", "Some error occured"));
+      // dispatch(setSnackbar(true, "error", "Some error occured"));
     }
   };
 
   const deletePlacement = async (placementid) => {
     try {
-      await PlacementModels.deletePlacement(placementid, key);
+      await PlacementModels.deletePlacement(placementid, name, key);
       setplacements((placement) =>
         placement.filter((i) => i.id !== placementid)
       );
@@ -65,7 +66,7 @@ function ViewPlacementsAdmin(props) {
 
   const approvePlacement = async (placementid) => {
     try {
-      await PlacementModels.approvePlacement(placementid, key);
+      await PlacementModels.approvePlacement(placementid, name, key);
       dispatch(setSnackbar(true, "success", "Placement post approved"));
     } catch (error) {
       dispatch(setSnackbar(true, "error", "Some error occured"));

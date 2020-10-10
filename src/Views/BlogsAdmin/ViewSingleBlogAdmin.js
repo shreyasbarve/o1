@@ -8,6 +8,7 @@ import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
 import LoadingStyles from "../../Styles/LoadingStyles";
 import image from "../../codeImage.jpg";
 import { ArrowBackIos } from "@material-ui/icons";
+import "../../Styles/forImage.css";
 
 // API
 import BlogModels from "../../Models/Blogs/BlogModels";
@@ -47,11 +48,16 @@ function ViewSingleBlogAdmin(props) {
 
   // Getting Data of the Single Blog
   const [singleBlog, setsingleBlog] = useState([]);
+  const name = read_cookie("adminName");
   const key = read_cookie("adminKey");
   useEffect(() => {
     async function viewSingleBlog() {
       try {
-        const res = await BlogModels.viewSingleBlogAdmin(singleBlogId, key);
+        const res = await BlogModels.viewSingleBlogAdmin(
+          singleBlogId,
+          name,
+          key
+        );
         setsingleBlog(res.data[0]);
         setloading(false);
         document.title = `${singleBlog.title}`;
@@ -60,7 +66,7 @@ function ViewSingleBlogAdmin(props) {
       }
     }
     viewSingleBlog();
-  }, [singleBlogId, singleBlog.title, loading, key, dispatch]);
+  }, [singleBlogId, singleBlog.title, loading, name, key, dispatch]);
 
   return (
     <div style={{ backgroundImage: `url(${image})`, height: "100rem" }}>
@@ -97,7 +103,11 @@ function ViewSingleBlogAdmin(props) {
                 <br />
                 <Divider />
                 <br />
-                <Typography gutterBottom variant="body1">
+                <Typography
+                  gutterBottom
+                  variant="body1"
+                  style={{ overflow: "auto" }}
+                >
                   {parse(singleBlog.body)}
                 </Typography>
               </Grid>
