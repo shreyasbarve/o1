@@ -47,7 +47,7 @@ function ViewPlacementsAdmin(props) {
       setplacements(res.data);
       setloading(false);
     } catch (error) {
-      alert("Some Errror Occured");
+      dispatch(setSnackbar(true, "error", "Some error occured"));
     }
   };
 
