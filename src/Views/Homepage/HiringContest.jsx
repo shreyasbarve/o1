@@ -1,21 +1,27 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../assets/css/contest.css";
 import ContestModels from "../../Models/Contests/ContestModels";
+import setSnackbar from "../../Components/SnackBarReducer";
 
 const HiringContest = () => {
+  // Redux
+  const dispatch = useDispatch();
+
   const [contests, setContests] = useState([]);
   const getcontest = async () => {
     try {
       const res = await ContestModels.hiringContest();
       setContests(res.data);
     } catch (error) {
-      alert("Some Error Occured");
+      dispatch(setSnackbar(true, "error", "Some error occured"));
     }
   };
 
   useEffect(() => {
     getcontest();
+    // eslint-disable-next-line
   }, []);
 
   return (

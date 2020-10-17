@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../assets/vendor/ionicons/css/ionicons.min.css";
 import Fade from "react-reveal/Fade";
@@ -19,8 +20,12 @@ import Testimonial3 from "../../assets/img/testimonial-3.jpg";
 import Testimonial4 from "../../assets/img/testimonial-4.jpg";
 import { NavLink } from "react-router-dom";
 import MailModels from "../../Models/Mail/MailModels";
+import setSnackbar from "../../Components/SnackBarReducer";
 
 const Home = () => {
+  // Redux
+  const dispatch = useDispatch();
+
   const [studentinfo, setstudentinfo] = useState({
     email: "",
   });
@@ -34,19 +39,21 @@ const Home = () => {
     e.preventDefault();
     try {
       await MailModels.verifyMail(studentinfo);
-      alert("A key has been sent to enterd Mail");
+      dispatch(
+        setSnackbar(true, "success", "A key has been sent to your email")
+      );
     } catch (error) {
-      alert("Email already in use");
+      dispatch(setSnackbar(true, "error", "Email already in use"));
     }
   };
 
   const subscribestudent = async (e) => {
     e.preventDefault();
     try {
-      await MailModels.addMail(subscribe)
-      alert("registered Succesfully");
+      await MailModels.addMail(subscribe);
+      dispatch(setSnackbar(true, "success", "Registered successfully"));
     } catch (error) {
-      alert("Invalid Email or Key");
+      dispatch(setSnackbar(true, "success", "Invalid email or key"));
     }
   };
 
@@ -99,7 +106,7 @@ const Home = () => {
               <div className="md-form mb-4">
                 <input
                   type="password"
-                  id="defaultForm-pass"
+                  id="defaultForm-pass-home"
                   value={subscribe.key}
                   onChange={(e) =>
                     setSubscribe({ ...subscribe, key: e.target.value })
@@ -199,7 +206,7 @@ const Home = () => {
                     <i className="ion-ios-paper-outline i3"></i>
                   </div>
                   <h4 className="title">
-                  <NavLink to="/placement">Placement Corner</NavLink>
+                    <NavLink to="/placement">Placement Corner</NavLink>
                   </h4>
                   <p className="description">
                     Get inspired from the students who cracked great offers at

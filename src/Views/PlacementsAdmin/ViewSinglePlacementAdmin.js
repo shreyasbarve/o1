@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+
 import { Link, useRouteMatch } from "react-router-dom";
 import { read_cookie } from "sfcookies";
 
@@ -27,8 +29,13 @@ import {
   LinearProgress,
   ThemeProvider,
 } from "@material-ui/core";
+import setSnackbar from "../../Components/SnackBarReducer";
+import "../../Styles/forImage.css";
 
 function ViewSinglePlacementAdmin(props) {
+  // Redux
+  const dispatch = useDispatch();
+
   const [loading, setloading] = useState(true);
   // Styling for elements
   const AppBarStyle = AppBarStyles();
@@ -42,23 +49,25 @@ function ViewSinglePlacementAdmin(props) {
 
   // Getting Data of the Single Placement
   const [singlePlacement, setsinglePlacement] = useState([]);
+  const name = read_cookie("adminName");
   const key = read_cookie("adminKey");
   useEffect(() => {
     async function viewSinglePlacement() {
       try {
         const res = await PlacementModels.viewSinglePlacementAdmin(
           singlePlacementId,
+          name,
           key
         );
         setsinglePlacement(res.data[0]);
         setloading(false);
         document.title = `${singlePlacement.title}`;
       } catch (error) {
-        alert("Some Error Occured");
+        dispatch(setSnackbar(true, "error", "Some error occured"));
       }
     }
     viewSinglePlacement();
-  }, [singlePlacementId, singlePlacement.title, loading, key]);
+  }, [singlePlacementId, singlePlacement.title, loading, name, key, dispatch]);
 
   return (
     <div style={{ backgroundImage: `url(${image})`, height: "100rem" }}>
@@ -95,7 +104,11 @@ function ViewSinglePlacementAdmin(props) {
                 <br />
                 <Divider />
                 <br />
-                <Typography gutterBottom variant="body1">
+                <Typography
+                  gutterBottom
+                  variant="body1"
+                  style={{ overflow: "auto" }}
+                >
                   {parse(singlePlacement.body)}
                 </Typography>
               </Grid>

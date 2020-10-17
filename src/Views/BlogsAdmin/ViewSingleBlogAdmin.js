@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useRouteMatch } from "react-router-dom";
 import { read_cookie } from "sfcookies";
 
@@ -7,6 +8,7 @@ import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
 import LoadingStyles from "../../Styles/LoadingStyles";
 import image from "../../codeImage.jpg";
 import { ArrowBackIos } from "@material-ui/icons";
+import "../../Styles/forImage.css";
 
 // API
 import BlogModels from "../../Models/Blogs/BlogModels";
@@ -27,8 +29,12 @@ import {
   LinearProgress,
   ThemeProvider,
 } from "@material-ui/core";
+import setSnackbar from "../../Components/SnackBarReducer";
 
 function ViewSingleBlogAdmin(props) {
+  // Redux
+  const dispatch = useDispatch();
+
   const [loading, setloading] = useState(true);
   // Styling for elements
   const AppBarStyle = AppBarStyles();
@@ -42,20 +48,25 @@ function ViewSingleBlogAdmin(props) {
 
   // Getting Data of the Single Blog
   const [singleBlog, setsingleBlog] = useState([]);
+  const name = read_cookie("adminName");
   const key = read_cookie("adminKey");
   useEffect(() => {
     async function viewSingleBlog() {
       try {
-        const res = await BlogModels.viewSingleBlogAdmin(singleBlogId, key);
+        const res = await BlogModels.viewSingleBlogAdmin(
+          singleBlogId,
+          name,
+          key
+        );
         setsingleBlog(res.data[0]);
         setloading(false);
         document.title = `${singleBlog.title}`;
       } catch (error) {
-        alert("Some Error Occured");
+        dispatch(setSnackbar(true, "error", "Some error occured"));
       }
     }
     viewSingleBlog();
-  }, [singleBlogId, singleBlog.title, loading, key]);
+  }, [singleBlogId, singleBlog.title, loading, name, key, dispatch]);
 
   return (
     <div style={{ backgroundImage: `url(${image})`, height: "100rem" }}>
@@ -92,7 +103,11 @@ function ViewSingleBlogAdmin(props) {
                 <br />
                 <Divider />
                 <br />
-                <Typography gutterBottom variant="body1">
+                <Typography
+                  gutterBottom
+                  variant="body1"
+                  style={{ overflow: "auto" }}
+                >
                   {parse(singleBlog.body)}
                 </Typography>
               </Grid>

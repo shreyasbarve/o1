@@ -1,11 +1,16 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import { NavLink, useHistory } from "react-router-dom";
 import AdminModels from "../../Models/Admin/AdminModels";
 import { bake_cookie } from "sfcookies";
+import setSnackbar from "../../Components/SnackBarReducer";
 
 const Navbar = () => {
+  // Redux
+  const dispatch = useDispatch();
+
   const history = useHistory();
 
   const [admin, setAdmin] = useState({
@@ -20,8 +25,9 @@ const Navbar = () => {
       bake_cookie("adminName", admin.name);
       bake_cookie("adminKey", admin.key);
       history.push("/adminContest");
+      dispatch(setSnackbar(true, "success", "Login successfull"));
     } catch (error) {
-      alert("Some error occured");
+      dispatch(setSnackbar(true, "error", "Login failed. Try again"));
     }
   };
 
@@ -64,7 +70,7 @@ const Navbar = () => {
               <div className="md-form mb-4">
                 <input
                   type="password"
-                  id="defaultForm-pass"
+                  id="defaultForm-pass-navbar"
                   value={admin.Key}
                   onChange={(e) => setAdmin({ ...admin, key: e.target.value })}
                   className="form-control validate"

@@ -1,14 +1,17 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 // API
 import PlacementModels from "../../Models/Placements/PlacementModels";
 
 // Components
 import { TextField, Button, Typography } from "@material-ui/core";
+import { setSnackbar } from "../../Components/SnackBarReducer";
 
 function RequestPlacement(props) {
-  // Server response
-  const [serverReply, setserverReply] = useState("");
+  // Redux
+  const dispatch = useDispatch();
+
   // Posting the placement
   const initialState = {
     fullname: "",
@@ -22,10 +25,10 @@ function RequestPlacement(props) {
     try {
       await PlacementModels.requestPlacement(requestPlacement);
       setrequestPlacement(initialState);
-      setserverReply("Request sent");
+      dispatch(setSnackbar(true, "success", "Request sent"));
       props.onAfterRequest();
     } catch (error) {
-      setserverReply("Request not sent");
+      dispatch(setSnackbar(true, "error", "Request not sent"));
     }
   };
   return (
@@ -109,7 +112,6 @@ function RequestPlacement(props) {
           Request
         </Button>
       </form>
-      <Typography variant="overline">{serverReply}</Typography>
     </>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 // CSS
@@ -26,8 +27,12 @@ import {
   Avatar,
   LinearProgress,
 } from "@material-ui/core";
+import setSnackbar from "../../Components/SnackBarReducer";
 
 function ViewBlogs(props) {
+  // Redux
+  const dispatch = useDispatch();
+
   // CSS for styling
   const CardStyle = CardStyles();
   const LoadingStyle = LoadingStyles();
@@ -41,13 +46,14 @@ function ViewBlogs(props) {
       setblogs(res.data);
       setloading(false);
     } catch (error) {
-      alert("Some Error Occured");
+      dispatch(setSnackbar(true, "error", "Some error occured"));
     }
   };
 
   useEffect(() => {
     document.title = "Blogs";
     viewAllBlogs();
+    // eslint-disable-next-line
   }, []);
 
   return (

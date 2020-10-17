@@ -40,11 +40,6 @@ function Blog(props) {
               <Typography variant="h5" className={AppBarStyle.title}>
                 Blogs
               </Typography>
-
-              {/* <Typography>
-                <Button color="inherit">Login</Button>
-                <Button color="inherit">Sign Up</Button>
-              </Typography> */}
             </Toolbar>
           </AppBar>
         </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useRouteMatch } from "react-router-dom";
 
 // CSS
@@ -6,6 +7,7 @@ import AppBarStyles, { AppbarTheme } from "../../Styles/AppBarStyles";
 import LoadingStyles from "../../Styles/LoadingStyles";
 import image from "../../codeImage.jpg";
 import { ArrowBackIos } from "@material-ui/icons";
+import "../../Styles/forImage.css";
 
 // API
 import PlacementModels from "../../Models/Placements/PlacementModels";
@@ -26,8 +28,12 @@ import {
   LinearProgress,
   ThemeProvider,
 } from "@material-ui/core";
+import setSnackbar from "../../Components/SnackBarReducer";
 
 function ViewSinglePlacement(props) {
+  // Redux
+  const dispatch = useDispatch();
+
   const [loading, setloading] = useState(true);
   // Styling for elements
   const AppBarStyle = AppBarStyles();
@@ -36,7 +42,7 @@ function ViewSinglePlacement(props) {
   const match = useRouteMatch();
 
   const placementid = match.params.id;
-// eslint-disable-next-line
+  // eslint-disable-next-line
   const [singlePlacementId, setsinglePlacementId] = useState(placementid);
 
   // Getting Data of the Single Placement
@@ -52,11 +58,11 @@ function ViewSinglePlacement(props) {
         setloading(false);
         document.title = `${singlePlacement.title}`;
       } catch (error) {
-        alert("Some Error Occured");
+        dispatch(setSnackbar(true, "error", "Some error occured"));
       }
     }
     viewSinglePlacement();
-  }, [singlePlacementId, singlePlacement.title, loading]);
+  }, [singlePlacementId, singlePlacement.title, loading, dispatch]);
 
   return (
     <div style={{ backgroundImage: `url(${image})`, height: "100rem" }}>
@@ -93,7 +99,11 @@ function ViewSinglePlacement(props) {
                 <br />
                 <Divider />
                 <br />
-                <Typography gutterBottom variant="body1">
+                <Typography
+                  gutterBottom
+                  variant="body1"
+                  style={{ overflow: "auto" }}
+                >
                   {parse(singlePlacement.body)}
                 </Typography>
               </Grid>

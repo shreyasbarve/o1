@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { read_cookie } from "sfcookies";
 
@@ -26,41 +27,47 @@ import {
   LinearProgress,
   Button,
 } from "@material-ui/core";
+import setSnackbar from "../../Components/SnackBarReducer";
 
 function ViewBlogsAdmin(props) {
+  // Redux
+  const dispatch = useDispatch();
+
   // CSS for styling
   const CardStyle = CardStyles();
   const LoadingStyle = LoadingStyles();
 
   // Get the blog data from server
+  const name = read_cookie("adminName");
   const key = read_cookie("adminKey");
   const [loading, setloading] = useState(true);
   const [blogs, setblogs] = useState([]);
   const viewAllBlogs = async () => {
     try {
-      const res = await BlogModels.viewAllBlogsAdmin(key);
+      const res = await BlogModels.viewAllBlogsAdmin(name, key);
       setblogs(res.data);
       setloading(false);
     } catch (error) {
-      alert("Some Error Occured");
+      dispatch(setSnackbar(true, "error", "Some error occured"));
     }
   };
 
   const deleteBlog = async (blogid) => {
     try {
-      await BlogModels.deleteBlog(blogid, key);
+      await BlogModels.deleteBlog(blogid, name, key);
       setblogs((blogs) => blogs.filter((i) => i.id !== blogid));
+      dispatch(setSnackbar(true, "success", "Blog post deleted"));
     } catch (error) {
-      alert("Some Error Occured");
+      dispatch(setSnackbar(true, "error", "Some error occured"));
     }
   };
 
   const approveBlog = async (blogid) => {
     try {
-      await BlogModels.approveBlog(blogid, key);
-      alert("Blog Approved");
+      await BlogModels.approveBlog(blogid, name, key);
+      dispatch(setSnackbar(true, "success", "Blog post approved"));
     } catch (error) {
-      alert("Some Error Occured");
+      dispatch(setSnackbar(true, "error", "Some error occured"));
     }
   };
 

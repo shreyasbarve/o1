@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { read_cookie } from "sfcookies";
 
@@ -26,43 +27,49 @@ import {
   LinearProgress,
   Button,
 } from "@material-ui/core";
+import setSnackbar from "../../Components/SnackBarReducer";
 
 function ViewPlacementsAdmin(props) {
+  // Redux
+  const dispatch = useDispatch();
+
   // CSS for styling
   const CardStyle = CardStyles();
   const LoadingStyle = LoadingStyles();
 
   // Get the placement data from server
+  const name = read_cookie("adminName");
   const key = read_cookie("adminKey");
   const [loading, setloading] = useState(true);
   const [placements, setplacements] = useState([]);
   const viewAllPlacements = async () => {
     try {
-      const res = await PlacementModels.viewAllPlacementsAdmin(key);
+      const res = await PlacementModels.viewAllPlacementsAdmin(name, key);
       setplacements(res.data);
       setloading(false);
     } catch (error) {
-      alert("Some Errror Occured");
+      // dispatch(setSnackbar(true, "error", "Some error occured"));
     }
   };
 
   const deletePlacement = async (placementid) => {
     try {
-      await PlacementModels.deletePlacement(placementid, key);
+      await PlacementModels.deletePlacement(placementid, name, key);
       setplacements((placement) =>
         placement.filter((i) => i.id !== placementid)
       );
+      dispatch(setSnackbar(true, "success", "Placement post deleted"));
     } catch (error) {
-      alert("Some Errror Occured");
+      dispatch(setSnackbar(true, "error", "Some error occured"));
     }
   };
 
   const approvePlacement = async (placementid) => {
     try {
-      await PlacementModels.approvePlacement(placementid, key);
-      alert("Blog Approved");
+      await PlacementModels.approvePlacement(placementid, name, key);
+      dispatch(setSnackbar(true, "success", "Placement post approved"));
     } catch (error) {
-      alert("Some Error Occured");
+      dispatch(setSnackbar(true, "error", "Some error occured"));
     }
   };
 

@@ -10,7 +10,7 @@ const AddContest = () => {
       const res = await ContestModels.viewContest();
       setContests(res.data);
     } catch (error) {
-      alert("Some Error Occured");
+      dispatch(setSnackbar(true, "error", "Some error occured"));
     }
   };
 
@@ -30,7 +30,7 @@ const AddContest = () => {
     try {
       await ContestModels.viewContestAdmin(addcontest);
     } catch (error) {
-      alert("Some error has occured");
+      dispatch(setSnackbar(true, "error", "Some error occured"));
     }
   };
 
