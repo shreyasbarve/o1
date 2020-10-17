@@ -24,7 +24,7 @@ import O1coding from "./Views/Homepage/O(1)coding";
 import DailyCoding from "./Views/Homepage/DailyCoding";
 import Hiring from "./Views/Homepage/HiringContest";
 import AdminViewContest from "./Views/Admin/AdminViewContest";
-
+import Footer from './Views/footer/footer';
 const hist = createBrowserHistory();
 
 ReactDOM.render(
@@ -34,6 +34,7 @@ ReactDOM.render(
         <Route exact path="/">
           <Navbar />
           <Home />
+          <Footer/>
         </Route>
         <Route exact path="/about">
           <Navbar />

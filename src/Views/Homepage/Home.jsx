@@ -207,7 +207,7 @@ const Home = () => {
                   </p>
                 </div>
               </div>
-              <div className="col-md-6 col-lg-4">
+              {/* <div className="col-md-6 col-lg-4">
                 <div className="box">
                   <div className="icon icon4">
                     <i className="ion-ios-paper-outline i4"></i>
@@ -250,7 +250,7 @@ const Home = () => {
                     Nam libero tempore, cum soluta nobis est eligendi
                   </p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
