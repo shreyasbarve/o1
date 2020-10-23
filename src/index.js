@@ -69,7 +69,6 @@ ReactDOM.render(
             <SingleBlogAdmin />
           </Route>
           <Route exact path="/adminBlog">
-            <Admin />
             <AdminBlog />
           </Route>
           <Route exact path="/placement">
@@ -82,7 +81,6 @@ ReactDOM.render(
             <SinglePlacementAdmin />
           </Route>
           <Route exact path="/adminPlacement">
-            <Admin />
             <AdminPlacement />
           </Route>
           <Route exact path="/adminContest">
