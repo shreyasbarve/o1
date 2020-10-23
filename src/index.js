@@ -19,6 +19,7 @@ import SinglePlacementAdmin from "./Views/PlacementsAdmin/ViewSinglePlacementAdm
 import AdminBlog from "./Views/BlogsAdmin/BlogAdmin";
 import AdminPlacement from "./Views/PlacementsAdmin/PlacementAdmin";
 import Admin from "./Views/Admin/Admin";
+import Footer from "./Views/footer/footer";
 // import AddContest from "./Views/Admin/AddContest";
 import O1coding from "./Views/Homepage/O(1)coding";
 import DailyCoding from "./Views/Homepage/DailyCoding";
@@ -38,14 +39,17 @@ ReactDOM.render(
           <Route exact path="/">
             <Navbar />
             <Home />
+            <Footer />
           </Route>
           <Route exact path="/about">
             <Navbar />
             <About />
+            <Footer />
           </Route>
           <Route exact path="/contest">
             <Navbar />
             <ViewContest />
+            <Footer />
           </Route>
           <Route exact path="/O1coding">
             <Navbar />
@@ -86,6 +90,7 @@ ReactDOM.render(
           <Route exact path="/adminContest">
             <Admin />
             <AdminViewContest />
+            <Footer />
           </Route>
           <Redirect to="/" />
         </Switch>
